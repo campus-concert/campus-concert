@@ -107,8 +107,8 @@ The app/ directory has this structure:
 ```
 .deploy/
   .gitignore     # don't commit mup.js or settings.json
-  mup.sample.js  # sample mup.js file used for deploying the application
-  settings.sample.json # sample settings file
+  mup.js  # mup.js file used for deploying the application
+  settings.json # settings file
   
 client/
   main.html      # The boilerplate HTML with a "root" div to be manipulated by React.
