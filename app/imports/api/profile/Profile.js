@@ -17,9 +17,13 @@ class ProfilesCollection {
       image: String,
       description: String,
       contact: String,
-      location: String,
       goals: String,
       owner: String,
+      location: {
+        type: String,
+        allowedValues: ['Honolulu', 'Pearl City', 'Kailua'],
+        defaultValue: 'n/a',
+      },
       instruments: {
         type: String,
         allowedValues: ['piano', 'guitar', 'flute', 'trumpet'],

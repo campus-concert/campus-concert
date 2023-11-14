@@ -26,3 +26,14 @@ body {
   padding-top: 10px;
   padding-bottom: 20px;
 }
+
+.border-thick {
+  border: 3px solid;
+}
+
+.welcome-title {
+  font-size: 2.5rem; /* Adjust the font size as needed */
+  font-weight: bold;
+  color: #333; /* Adjust the color as needed */
+}
+
