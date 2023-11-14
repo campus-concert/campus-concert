@@ -1,0 +1,46 @@
+import { Mongo } from 'meteor/mongo';
+import SimpleSchema from 'simpl-schema';
+
+/**
+ * The ProfilesCollection. It encapsulates state and variable values for profiles.
+ */
+class ProfilesCollection {
+  constructor() {
+    // The name of this collection.
+    this.name = 'ProfilesCollection';
+    // Define the Mongo collection.
+    this.collection = new Mongo.Collection(this.name);
+    // Define the structure of each document in the collection.
+    this.schema = new SimpleSchema({
+      firstName: String,
+      lastName: String,
+      image: String,
+      description: String,
+      contact: String,
+      location: String,
+      goals: String,
+      owner: String,
+      instruments: {
+        type: String,
+        allowedValues: ['piano', 'guitar', 'flute', 'trumpet'],
+        defaultValue: 'n/a',
+      },
+      tastes: {
+        type: String,
+        allowedValues: ['pop', 'rock', 'hip-hop', 'jazz'],
+        defaultValue: 'n/a',
+      },
+    });
+    // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
+    this.collection.attachSchema(this.schema);
+    // Define names for publications and subscriptions
+    this.userPublicationName = `${this.name}.publication.user`;
+    this.adminPublicationName = `${this.name}.publication.admin`;
+  }
+}
+
+/**
+ * The singleton instance of the ProfilesCollection.
+ * @type {ProfilesCollection}
+ */
+export const Profiles = new ProfilesCollection();

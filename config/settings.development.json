@@ -9,5 +9,18 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+
+  "defaultProfiles": [{
+    "firstName": "Philip", "lastName": "Johnson",
+    "image": "https://github.com/philipmjohnson.png",
+    "description": "I am a Professor of Information and Computer Sciences at the University of Hawaii, Director of the Collaborative Software Development Laboratory, and the CEO of OpenPowerQuality.com.",
+    "instruments": "guitar",
+    "tastes": "pop",
+    "location": "Kailua",
+    "goals": "learn music theory",
+    "owner": "john@foo.com",
+    "contact": "john@foo.com"
+    }
   ]
 }
