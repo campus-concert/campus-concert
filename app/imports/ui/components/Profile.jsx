@@ -6,7 +6,7 @@ import { Youtube, Spotify, Cloud } from 'react-bootstrap-icons';
 
 /** Renders a single row in the List Contacts table. See pages/ListContacts.jsx. */
 const Profile = ({ profile }) => (
-  <Card className="d-flex flex-column">
+  <Card className="d-flex flex-column h-100">
     <Card.Header className="bg-dark text-white text-center position-relative">
       <Image src={profile.image} roundedCircle width={200} className="mt-3" />
       <div className="d-flex justify-content-end p-3 w-100 position-absolute top-0 end-0">
