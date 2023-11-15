@@ -11,16 +11,51 @@
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
   ],
 
-  "defaultProfiles": [{
-    "firstName": "Philip", "lastName": "Johnson",
-    "image": "https://github.com/philipmjohnson.png",
-    "description": "I am a Professor of Information and Computer Sciences at the University of Hawaii, Director of the Collaborative Software Development Laboratory, and the CEO of OpenPowerQuality.com.",
-    "instruments": "guitar",
-    "tastes": "pop",
-    "location": "Kailua",
-    "goals": "learn music theory",
-    "owner": "john@foo.com",
-    "contact": "john@foo.com"
+  "defaultProfiles": [
+    {
+      "firstName": "Philip",
+      "lastName": "Johnson",
+      "image": "https://github.com/philipmjohnson.png",
+      "description": "I am a Professor of Information and Computer Sciences at the University of Hawaii, Director of the Collaborative Software Development Laboratory, and the CEO of OpenPowerQuality.com.",
+      "instruments": "guitar",
+      "tastes": "pop",
+      "location": "Kailua",
+      "goals": "learn music theory",
+      "owner": "john@foo.com",
+      "contact": "john@foo.com",
+      "youtubeLink": "https://www.youtube.com/user/philipmjohnson",
+      "spotifyLink": "https://open.spotify.com/user/123456789",
+      "soundcloudLink": "https://soundcloud.com/philipmjohnson"
+    },
+    {
+      "firstName": "Henri",
+      "lastName": "Casanova",
+      "image": "https://avatars0.githubusercontent.com/u/7494478?s=460&v=4",
+      "description": "I am originally from France. I maintain a list of reports from my surf sessions. I have proof that I ran the Hana relay with an actual Team.",
+      "instruments": ["trumpet", "flute"],
+      "tastes": "hip-hop",
+      "location": "Honolulu",
+      "goals": "learn music theory",
+      "owner": "john@foo.com",
+      "contact": "john@foo.com",
+      "youtubeLink": "https://www.youtube.com/user/henri.casanova",
+      "spotifyLink": "https://open.spotify.com/user/987654321",
+      "soundcloudLink": "https://soundcloud.com/henricasanova"
+    },
+    {
+      "firstName": "Kim",
+      "lastName": "Binsted",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/kim_binsted-square-300x300.jpg",
+      "description": "Kim Binsted received her BSc in Physics at McGill (1991), and her PhD in Artificial Intelligence from the University of Edinburgh (1996). Her thesis topic was the computational modeling and generation of punning riddles, and her program, JAPE (Joke Analysis and Production Engine), generated puns such as \"What do you call a Martian who drinks beer? An ale-ien!\".",
+      "instruments": ["flute", "piano"],
+      "tastes": "jazz",
+      "location": "Pearl City",
+      "goals": "learn music theory",
+      "owner": "john@foo.com",
+      "contact": "john@foo.com",
+      "youtubeLink": "https://www.youtube.com/user/kimbinsted",
+      "spotifyLink": "https://open.spotify.com/user/1122334455",
+      "soundcloudLink": "https://soundcloud.com/kimbinsted"
     }
   ]
 }
