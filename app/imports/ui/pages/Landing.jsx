@@ -12,16 +12,9 @@ const Landing = () => (
           <Card.Body id="card-body">
             <h1>Welcome to Campus Concerts</h1>
             <h5>Share the World!</h5>
+            <h6>Mockup Page</h6>
           </Card.Body>
         </Card>
-      </Col>
-      <Col xs={8} className="d-flex flex-column justify-content-center">
-        <h1>Welcome to this template</h1>
-        <p>Now get to work and modify this app!</p>
-        <br />
-        <br />
-        <Nav.Link id="user-home" as={NavLink} to="/userhome" key="userhome"><h4>Mockup of A User Home Page</h4>
-        </Nav.Link>
       </Col>
     </Row>
 
