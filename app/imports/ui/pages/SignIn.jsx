@@ -37,7 +37,7 @@ const SignIn = () => {
   // console.log('render', error, redirect);
   // if correct authentication, redirect to page instead of login screen
   if (redirect) {
-    return (<Navigate to="/" />);
+    return (<Navigate to="/userhome" />);
   }
   // Otherwise return the Login form.
   return (
@@ -75,10 +75,14 @@ const SignIn = () => {
         <Col>
           <h1 className="my-5 display-5 fw-bold ls-tight">
             Welcome back<br />
-            <span></span>
+            <span />
           </h1>
           <p className="mb-4 opacity-70">
-            Welcome back, maestro! We were worried you got lost in a sea of sheet music or perhaps tangled up in guitar strings. It's been so long that even our metronome missed a beat. Your return is like finding the perfect harmony in a chaotic cacophony. Dust off your instruments, grab a cup of coffee (or a melodious beverage of your choice), and let's get back to the groove together. The stage is set, the spotlight is on you, and our community of musicians is eagerly waiting for your encore performance. Let the reunion tour begin!            </p>
+            Welcome back, maestro! We were worried you got lost in a sea of sheet music or perhaps tangled up in guitar strings.
+            It´s been so long that even our metronome missed a beat. Your return is like finding the perfect harmony in a chaotic cacophony.
+            Dust off your instruments, grab a cup of coffee (or a melodious beverage of your choice), and let´s get back to the groove together.
+            The stage is set, the spotlight is on you, and our community of musicians is eagerly waiting for your encore performance. Let the reunion tour begin!
+          </p>
           <footer className="blockquote-footer">The <cite title="Source Title">Campus Concert</cite> team</footer>
         </Col>
       </Row>

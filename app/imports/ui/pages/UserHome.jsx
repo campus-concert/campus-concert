@@ -15,10 +15,10 @@ const UserHome = () => (
     <Row className="justify-content-center">
       {/* Edit Profile Box */}
       <Col xs={10} sm={8} md={6} lg={4} className="mb-4">
-        <Link to="/edit-profile" className="text-decoration-none">
+        <Link to="/userprofile" className="text-decoration-none">
           <div className="home-box text-center rounded p-4 border-thick text-black bg-white">
             <PersonCircle size={60} className="box-icon mb-3" />
-            <h3 className="box-title">Edit My Profile</h3>
+            <h3 className="box-title">View My Profile</h3>
           </div>
         </Link>
       </Col>

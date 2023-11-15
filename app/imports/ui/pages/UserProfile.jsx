@@ -1,4 +1,3 @@
-// UserProfile.jsx
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useParams } from 'react-router-dom';
@@ -10,18 +9,23 @@ import LoadingSpinner from '../components/LoadingSpinner';
 
 const UserProfile = () => {
   const { userId } = useParams(); // Get the userId from the route parameter
-  const { ready, userProfile } = useTracker(() => {
+  let { ready, userProfile } = useTracker(() => {
     const subscription = Meteor.subscribe(Profiles.userPublicationName);
     const rdy = subscription.ready();
-    const userProf = Profiles.collection.findOne({ _id: userId }) || {};
+    const userProf = Profiles.collection.findOne({ _id: userId });
     return {
       userProfile: userProf,
       ready: rdy,
     };
-  }, [userId]);
+  });
 
   // Set the page title based on the user's first and last name
   const pageTitle = userProfile ? `${userProfile.firstName} ${userProfile.lastName}'s Profile` : 'User Profile';
+  let own = false;
+  if (!userId && Meteor.user()) {
+    userProfile = Profiles.collection.findOne({ contact: Meteor.user().username });
+    own = true;
+  }
 
   return ready ? (
     <Container className="py-3">
@@ -30,7 +34,7 @@ const UserProfile = () => {
           <Col className="text-center">
             <h2>{pageTitle}</h2>
           </Col>
-          <Profile profile={userProfile} />
+          <Profile profile={userProfile} own={own} />
         </Col>
       </Row>
     </Container>

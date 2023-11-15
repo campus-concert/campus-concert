@@ -6,11 +6,9 @@ import { Profiles } from '../../api/profile/Profile';
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
 Meteor.publish(Profiles.userPublicationName, function () {
-  if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Profiles.collection.find({ owner: username });
-  }
-  return this.ready();
+  return (
+    Profiles.collection.find()
+  );
 });
 
 Meteor.publish(Stuffs.userPublicationName, function () {

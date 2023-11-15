@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, SelectField, SubmitField, LongTextField, TextField, HiddenField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SelectField, SubmitField, LongTextField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -93,6 +93,7 @@ const CreateProfile = () => {
                   </Col>
                   <Col>
                     <SelectField
+                      // TODO make this possible to add several instruments
                       name="instruments"
                       placeholder="Choose instrument"
                       showInlineError
@@ -100,13 +101,13 @@ const CreateProfile = () => {
                   </Col>
                   <Col>
                     <SelectField
+                      // TODO make it possible to add several tastes
                       name="tastes"
                       placeholder="Choose taste"
                       showInlineError
                     />
                   </Col>
                 </Row>
-                <HiddenField name="owner" value="j" />
                 <SubmitField value="Submit" />
                 <ErrorsField />
               </Card.Body>

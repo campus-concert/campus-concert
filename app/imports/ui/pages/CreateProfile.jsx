@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, SelectField, SubmitField, LongTextField, TextField, HiddenField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SelectField, SubmitField, LongTextField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -26,9 +26,8 @@ const CreateProfile = () => {
   // On submit, insert the data.
   const submit = (data) => {
     const { firstName, lastName, image, description, contact, location, goals, instruments, tastes } = data;
-    const owner = Meteor.user().username;
     Profiles.collection.insert(
-      { firstName, lastName, image, description, contact, location, goals, instruments, tastes, owner },
+      { firstName, lastName, image, description, contact, location, goals, instruments, tastes },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -100,7 +99,6 @@ const CreateProfile = () => {
                     />
                   </Col>
                 </Row>
-                <HiddenField name="owner" value="j" />
                 <SubmitField value="Submit" />
                 <ErrorsField />
               </Card.Body>

@@ -12,7 +12,6 @@ class ProfilesCollection {
       description: String,
       contact: String,
       goals: String,
-      owner: String,
       location: {
         type: String,
         allowedValues: ['Honolulu', 'Pearl City', 'Kailua'],
