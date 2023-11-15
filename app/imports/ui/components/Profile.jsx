@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Card, Image } from 'react-bootstrap';
+import { Card, Image, Button } from 'react-bootstrap';
 import { Youtube, Spotify, Cloud } from 'react-bootstrap-icons';
 
 const Profile = ({ profile }) => (
-  <Card className="d-flex flex-column h-100">
+  <Card className="d-flex flex-column">
     <Card.Header className="bg-dark text-white text-center position-relative">
       <Image src={profile.image} roundedCircle width={200} className="mt-3" />
       <div className="d-flex justify-content-end p-3 w-100 position-absolute top-0 end-0">
@@ -48,11 +48,11 @@ const Profile = ({ profile }) => (
         </div>
 
         <div className="mb-2">
-          <Card.Text><h5>Goals:</h5>{profile.goals}</Card.Text>
+          <Card.Text><h5>Location:</h5>{profile.location}</Card.Text>
         </div>
 
         <div className="mb-2">
-          <Card.Text><h5>Location:</h5>{profile.location}</Card.Text>
+          <Card.Text><h5>Goals:</h5>{profile.goals}</Card.Text>
         </div>
 
         <div className="mb-2">
@@ -61,7 +61,11 @@ const Profile = ({ profile }) => (
 
         <Card.Text className="my-2"><h5>Description:</h5>{profile.description}</Card.Text>
 
-        <Link className="mt-3" to={`/message/${profile._id}`}>Message</Link>
+        <Link to={`/message/${profile._id}`}>
+          <Button variant="primary" size="md" className="mt-3">
+            Message
+          </Button>
+        </Link>
       </div>
     </Card.Body>
   </Card>
