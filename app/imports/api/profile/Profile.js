@@ -22,17 +22,14 @@ class ProfilesCollection {
       location: {
         type: String,
         allowedValues: ['Honolulu', 'Pearl City', 'Kailua'],
-        defaultValue: 'n/a',
       },
       instruments: {
         type: String,
         allowedValues: ['piano', 'guitar', 'flute', 'trumpet'],
-        defaultValue: 'n/a',
       },
       tastes: {
         type: String,
         allowedValues: ['pop', 'rock', 'hip-hop', 'jazz'],
-        defaultValue: 'n/a',
       },
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.

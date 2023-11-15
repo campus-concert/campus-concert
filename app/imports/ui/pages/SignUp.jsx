@@ -10,7 +10,7 @@ import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstra
 /**
  * SignUp component is similar to signin component, but we create a new user instead.
  */
-const SignUp = ({ location }) => {
+const SignUp = () => {
   const [error, setError] = useState('');
   const [redirectToReferer, setRedirectToRef] = useState(false);
 
@@ -33,11 +33,9 @@ const SignUp = ({ location }) => {
     });
   };
 
-  /* Display the signup form. Redirect to add page after successful registration and login. */
-  const { from } = location?.state || { from: { pathname: '/add' } };
-  // if correct authentication, redirect to from: page instead of signup screen
+  // if correct authentication, redirect to userhome:
   if (redirectToReferer) {
-    return <Navigate to={from} />;
+    return <Navigate to="/createprofile" />;
   }
   return (
     <Container id="signup-page" className="py-3">
