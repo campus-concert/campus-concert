@@ -16,7 +16,6 @@ const Landing = () => (
         <br />
         <br />
         <Nav.Link id="user-home" as={NavLink} to="/userhome" key="userhome"><h4>Mockup of A User Home Page</h4> </Nav.Link>
-        <Nav.Link id="user-profile" as={NavLink} to="/userprofile" key="userprofile"><h4>Mockup of A User Profile</h4> </Nav.Link>
       </Col>
 
     </Row>
