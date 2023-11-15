@@ -41,13 +41,13 @@ const SignIn = () => {
   }
   // Otherwise return the Login form.
   return (
-    <Container id="signin-page" className="py-3">
-      <Row className="justify-content-center">
+    <Container id="signin-page" className="py-5">
+      <Row className="justify-content-evenly">
         <Col xs={5}>
           <Col className="text-center">
-            <h2>Login to your account</h2>
+            <h2>Member login</h2>
           </Col>
-          <AutoForm schema={bridge} onSubmit={data => submit(data)}>
+          <AutoForm className="shadow p-3 mb-5 bg-white rounded" schema={bridge} onSubmit={data => submit(data)}>
             <Card>
               <Card.Body>
                 <TextField id="signin-form-email" name="email" placeholder="E-mail address" />
@@ -57,8 +57,11 @@ const SignIn = () => {
               </Card.Body>
             </Card>
           </AutoForm>
+          <div className="divider d-flex align-items-center my-4">
+            <p className="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+          </div>
           <Alert variant="light">
-            <Link to="/signup">Click here to Register</Link>
+            <p className="p-0 m-0">Not a member? <Link to="/signup">Register</Link></p>
           </Alert>
           {error === '' ? (
             ''
@@ -68,6 +71,15 @@ const SignIn = () => {
               {error}
             </Alert>
           )}
+        </Col>
+        <Col>
+          <h1 className="my-5 display-5 fw-bold ls-tight">
+            Welcome back<br />
+            <span></span>
+          </h1>
+          <p className="mb-4 opacity-70">
+            Welcome back, maestro! We were worried you got lost in a sea of sheet music or perhaps tangled up in guitar strings. It's been so long that even our metronome missed a beat. Your return is like finding the perfect harmony in a chaotic cacophony. Dust off your instruments, grab a cup of coffee (or a melodious beverage of your choice), and let's get back to the groove together. The stage is set, the spotlight is on you, and our community of musicians is eagerly waiting for your encore performance. Let the reunion tour begin!            </p>
+          <footer className="blockquote-footer">The <cite title="Source Title">Campus Concert</cite> team</footer>
         </Col>
       </Row>
     </Container>
