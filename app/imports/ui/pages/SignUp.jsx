@@ -40,13 +40,13 @@ const SignUp = ({ location }) => {
     return <Navigate to={from} />;
   }
   return (
-    <Container id="signup-page" className="py-3">
+    <Container id="signup-page" className="py-5">
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center">
             <h2>Register your account</h2>
           </Col>
-          <AutoForm schema={bridge} onSubmit={data => submit(data)}>
+          <AutoForm className="shadow p-3 mb-5 bg-white rounded" schema={bridge} onSubmit={data => submit(data)}>
             <Card>
               <Card.Body>
                 <TextField name="email" placeholder="E-mail address" />
@@ -56,6 +56,9 @@ const SignUp = ({ location }) => {
               </Card.Body>
             </Card>
           </AutoForm>
+          <div className="divider d-flex align-items-center my-4">
+            <p className="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+          </div>
           <Alert variant="light">
             Already have an account? Login
             {' '}
@@ -69,6 +72,16 @@ const SignUp = ({ location }) => {
               {error}
             </Alert>
           )}
+        </Col>
+        <Col>
+          <h1 className="my-5 display-5 fw-bold ls-tight">
+            Elevate your musical journey <br />
+            <span>with Campus Concert</span>
+          </h1>
+          <p className="mb-4 opacity-70">
+            Step into the Campus Concert community, where musicians in UH Manoa unite to amplify creativity. Whether you're a seasoned player or a fresh face, this is your space to compose, connect, and captivate. Join us in fostering a harmonious environment where every artist's voice adds a unique note to our collective composition. Dive into the rhythm of collaboration at Campus Concert – where individual expressions blend to create a vibrant musical tapestry.
+          </p>
+          <footer className="blockquote-footer">The <cite title="Source Title">Campus Concert</cite> team</footer>
         </Col>
       </Row>
     </Container>
