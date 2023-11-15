@@ -29,7 +29,6 @@ const UserProfile = () => {
         <Col md={7}>
           <Col className="text-center">
             <h2>User Profile (mockup)</h2>
-            {/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
           </Col>
           {profiles.map((profile) => <Profile key={profile._id} profile={profile} />)}
         </Col>

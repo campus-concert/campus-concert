@@ -65,6 +65,9 @@ const Profile = ({ profile }) => (
         <Link className="mt-3" to={`/message/${profile._id}`}>Message</Link>
       </div>
     </Card.Body>
+    <Card.Footer>
+      <Link to={`/edit/${profile._id}`}>Edit</Link>
+    </Card.Footer>
   </Card>
 );
 
