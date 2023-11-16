@@ -5,56 +5,58 @@ import { PersonCircle, People, MusicNote, MusicNoteBeamed } from 'react-bootstra
 
 const UserHome = () => (
   <Container className="mt-5 gray-background">
-    <Row className="justify-content-center mb-4">
-      {/* Welcome Title */}
-      <Col xs={12} className="text-center">
-        <h1 className="welcome-title">Welcome to Campus Concert, [insert user]</h1>
-      </Col>
-    </Row>
+    <Link to="/userhome" className="text-decoration-none">
+      <Row className="justify-content-center mb-4">
+        {/* Welcome Title */}
+        <Col xs={12} className="text-center">
+          <h1 className="welcome-title">Welcome to Campus Concert, [insert user]</h1>
+        </Col>
+      </Row>
 
-    <Row className="justify-content-center">
-      {/* Edit Profile Box */}
-      <Col xs={10} sm={8} md={6} lg={4} className="mb-4">
-        <Link to="/userprofile" className="text-decoration-none">
-          <div className="home-box text-center rounded p-4 border-thick text-black bg-white">
-            <PersonCircle size={60} className="box-icon mb-3" />
-            <h3 className="box-title">View My Profile</h3>
-          </div>
-        </Link>
-      </Col>
+      <Row className="justify-content-center">
+        {/* Edit Profile Box */}
+        <Col xs={10} sm={8} md={6} lg={4} className="mb-4">
+          <Link to="/userprofile" className="text-decoration-none">
+            <div className="home-box text-center rounded p-4 border-thick text-black bg-white">
+              <PersonCircle size={60} className="box-icon mb-3" />
+              <h3 className="box-title">View My Profile</h3>
+            </div>
+          </Link>
+        </Col>
 
-      {/* Create/Edit Concert Box */}
-      <Col xs={10} sm={8} md={6} lg={4} className="mb-4">
-        <Link to="/create-edit-concert" className="text-decoration-none">
-          <div className="home-box text-center rounded p-4 border-thick text-black bg-white">
-            <MusicNote size={60} className="box-icon mb-3" />
-            <h3 className="box-title">Create/Edit a Concert</h3>
-          </div>
-        </Link>
-      </Col>
-    </Row>
+        {/* Create/Edit Concert Box */}
+        <Col xs={10} sm={8} md={6} lg={4} className="mb-4">
+          <Link to="/create-edit-concert" className="text-decoration-none">
+            <div className="home-box text-center rounded p-4 border-thick text-black bg-white">
+              <MusicNote size={60} className="box-icon mb-3" />
+              <h3 className="box-title">Create/Edit a Concert</h3>
+            </div>
+          </Link>
+        </Col>
+      </Row>
 
-    <Row className="justify-content-center">
-      {/* Browse All Profiles Box */}
-      <Col xs={10} sm={8} md={6} lg={4} className="mb-4">
-        <Link to="/browse-all-profiles" className="text-decoration-none">
-          <div className="home-box text-center rounded p-4 border-thick text-black bg-white">
-            <People size={60} className="box-icon mb-3" />
-            <h3 className="box-title">Browse All Profiles</h3>
-          </div>
-        </Link>
-      </Col>
+      <Row className="justify-content-center">
+        {/* Browse All Profiles Box */}
+        <Col xs={10} sm={8} md={6} lg={4} className="mb-4">
+          <Link to="/browse-all-profiles" className="text-decoration-none">
+            <div className="home-box text-center rounded p-4 border-thick text-black bg-white">
+              <People size={60} className="box-icon mb-3" />
+              <h3 className="box-title">Browse All Profiles</h3>
+            </div>
+          </Link>
+        </Col>
 
-      {/* Browse All Concerts Box */}
-      <Col xs={10} sm={8} md={6} lg={4} className="mb-4">
-        <Link to="/browse-all-concerts" className="text-decoration-none">
-          <div className="home-box text-center rounded p-4 border-thick text-black bg-white">
-            <MusicNoteBeamed size={60} className="box-icon mb-3" />
-            <h3 className="box-title">Browse All Concerts</h3>
-          </div>
-        </Link>
-      </Col>
-    </Row>
+        {/* Browse All Concerts Box */}
+        <Col xs={10} sm={8} md={6} lg={4} className="mb-4">
+          <Link to="/browse-all-concerts" className="text-decoration-none">
+            <div className="home-box text-center rounded p-4 border-thick text-black bg-white">
+              <MusicNoteBeamed size={60} className="box-icon mb-3" />
+              <h3 className="box-title">Browse All Concerts</h3>
+            </div>
+          </Link>
+        </Col>
+      </Row>
+    </Link>
   </Container>
 );
 

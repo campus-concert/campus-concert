@@ -45,10 +45,9 @@ const SignIn = () => {
       <Row className="justify-content-evenly">
         <Col xs={5}>
           <Col className="text-center">
-            <h2>Member login</h2>
             <Card className="mb-4">
               <Card.Body>
-                <h2>Login to your account</h2>
+                <h2>Member login</h2>
               </Card.Body>
             </Card>
           </Col>
@@ -82,7 +81,7 @@ const SignIn = () => {
             Welcome back<br />
             <span />
           </h1>
-          <p className="mb-4 opacity-70">
+          <p className="mb-4 opacity-70v">
             Welcome back, maestro! We were worried you got lost in a sea of sheet music or perhaps tangled up in guitar strings.
             It´s been so long that even our metronome missed a beat. Your return is like finding the perfect harmony in a chaotic cacophony.
             Dust off your instruments, grab a cup of coffee (or a melodious beverage of your choice), and let´s get back to the groove together.

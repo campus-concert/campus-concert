@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Container, Nav, Row, Card, Button } from 'react-bootstrap';
+import { Col, Container, Row, Card, Button } from 'react-bootstrap';
 import { PeopleFill, People } from 'react-bootstrap-icons';
 import { NavLink } from 'react-router-dom';
 
@@ -12,7 +12,6 @@ const Landing = () => (
           <Card.Body id="card-body">
             <h1>Welcome to Campus Concerts</h1>
             <h5>Share the World!</h5>
-            <h6>Mockup Page</h6>
           </Card.Body>
         </Card>
       </Col>
