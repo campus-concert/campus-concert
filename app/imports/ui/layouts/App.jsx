@@ -22,6 +22,7 @@ import ContactPage from '../pages/ContactPage';
 import AdminHome from '../pages/AdminHome';
 import CreateProfile from '../pages/CreateProfile';
 import EditProfile from '../pages/EditProfile';
+import ListCommentsAdmin from '../pages/ListCommentsAdmin';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -50,6 +51,7 @@ const App = () => {
           <Route path="/userprofile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
+          <Route path="/admin-comments" element={<AdminProtectedRoute ready={ready}><ListCommentsAdmin /></AdminProtectedRoute>} />
           <Route path="/adminhome" element={<AdminProtectedRoute ready={ready}><AdminHome /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
