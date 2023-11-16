@@ -12,7 +12,6 @@ const Landing = () => (
           <Card.Body id="card-body">
             <h1>Welcome to Campus Concerts</h1>
             <h5>Share the World!</h5>
-            <h6>Mockup Page</h6>
           </Card.Body>
         </Card>
       </Col>
