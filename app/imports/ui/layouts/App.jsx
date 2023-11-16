@@ -20,7 +20,6 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import BrowseProfiles from '../pages/BrowseProfiles';
 import ContactPage from '../pages/ContactPage';
 import AdminHome from '../pages/AdminHome';
-import CreateProfile from '../pages/CreateProfile';
 import EditProfile from '../pages/EditProfile';
 import ListCommentsAdmin from '../pages/ListCommentsAdmin';
 
@@ -42,7 +41,6 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
           <Route path="/contact-page" element={<ContactPage />} />
-          <Route path="/createprofile" element={<CreateProfile />} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
           <Route path="/browse-all-profiles" element={<ProtectedRoute><BrowseProfiles /></ProtectedRoute>} />
           <Route path="/userprofile/:userId" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
