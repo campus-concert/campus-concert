@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Container, Nav, Row, Card, Button } from 'react-bootstrap';
+import { Col, Container, Row, Card, Button } from 'react-bootstrap';
 import { PeopleFill, People } from 'react-bootstrap-icons';
 import { NavLink } from 'react-router-dom';
 
@@ -24,7 +24,7 @@ const Landing = () => (
           <Card.Body id="card-body" className="mb-3">
             <People size={100} />
             <h1>Create a Profile</h1>
-            <h6>Create a Profile to share your interests on your skills, type of intstrument and etc.</h6>
+            <h6>Create a Profile to share your interests, instruments you play and more.</h6>
             <Button id="login-dropdown-sign-up" as={NavLink} to="/signup">Sign Up</Button>
           </Card.Body>
         </Card>

@@ -8,7 +8,7 @@ const UserHome = () => (
     <Row className="justify-content-center mb-4">
       {/* Welcome Title */}
       <Col xs={12} className="text-center">
-        <h1 className="welcome-title">Welcome to Campus Concert, [insert user]</h1>
+        <h1 className="welcome-title">Welcome to Campus Concert</h1>
       </Col>
     </Row>
 

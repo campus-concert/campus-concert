@@ -50,60 +50,62 @@ const CreateProfile = () => {
     <Container className="py-3">
       <Row className="justify-content-center">
         <Col xs={10}>
-          <Col className="text-center"><h2>Create User</h2></Col>
-          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-            <Card>
-              <Card.Body>
-                <Row>
-                  <Col>
-                    <TextField name="firstName" showInlineError />
-                  </Col>
-                  <Col>
-                    <TextField name="lastName" showInlineError />
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    <TextField name="image" placeholder="Please insert URL" showInlineError />
-                  </Col>
-                  <Col>
-                    <TextField
-                      name="contact"
-                      value={Meteor.user().username}
-                      showInlineError
-                    />
-                  </Col>
-                </Row>
-                <LongTextField name="description" showInlineError />
-                <TextField name="goals" showInlineError />
-                <Row>
-                  <Col>
-                    <SelectField
-                      name="location"
-                      placeholder="Choose location"
-                      showInlineError
-                    />
-                  </Col>
-                  <Col>
-                    <SelectField
-                      name="instruments"
-                      placeholder="Choose instrument"
-                      showInlineError
-                    />
-                  </Col>
-                  <Col>
-                    <SelectField
-                      name="tastes"
-                      placeholder="Choose taste"
-                      showInlineError
-                    />
-                  </Col>
-                </Row>
-                <SubmitField value="Submit" />
-                <ErrorsField />
-              </Card.Body>
-            </Card>
-          </AutoForm>
+          <Card className="p-4 mb-4"> {/* Underlay title with a white box */}
+            <Col className="text-center"><h2>Create User</h2></Col>
+            <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
+              <Card>
+                <Card.Body>
+                  <Row>
+                    <Col>
+                      <TextField name="firstName" showInlineError />
+                    </Col>
+                    <Col>
+                      <TextField name="lastName" showInlineError />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <TextField name="image" placeholder="Please insert URL" showInlineError />
+                    </Col>
+                    <Col>
+                      <TextField
+                        name="contact"
+                        value={Meteor.user().username}
+                        showInlineError
+                      />
+                    </Col>
+                  </Row>
+                  <LongTextField name="description" showInlineError />
+                  <TextField name="goals" showInlineError />
+                  <Row>
+                    <Col>
+                      <SelectField
+                        name="location"
+                        placeholder="Choose location"
+                        showInlineError
+                      />
+                    </Col>
+                    <Col>
+                      <SelectField
+                        name="instruments"
+                        placeholder="Choose instrument"
+                        showInlineError
+                      />
+                    </Col>
+                    <Col>
+                      <SelectField
+                        name="tastes"
+                        placeholder="Choose taste"
+                        showInlineError
+                      />
+                    </Col>
+                  </Row>
+                  <SubmitField value="Submit" />
+                  <ErrorsField />
+                </Card.Body>
+              </Card>
+            </AutoForm>
+          </Card>
         </Col>
       </Row>
     </Container>

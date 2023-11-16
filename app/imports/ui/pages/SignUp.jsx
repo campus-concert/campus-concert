@@ -41,36 +41,35 @@ const SignUp = () => {
     <Container id="signup-page" className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>
-          <Col className="text-center">
-            <Card className="mb-4">
-              <Card.Body>
-                <h2>Register your account</h2>
-              </Card.Body>
-            </Card>
-          </Col>
-          <AutoForm schema={bridge} onSubmit={data => submit(data)}>
-            <Card>
+          <Card className="p-4 mb-4"> {/* Merged components into one white box */}
+            <Col className="text-center">
+              <h2>Register your account</h2>
+            </Col>
+            <AutoForm schema={bridge} onSubmit={data => submit(data)}>
               <Card.Body>
                 <TextField name="email" placeholder="E-mail address" />
                 <TextField name="password" placeholder="Password" type="password" />
                 <ErrorsField />
                 <SubmitField />
               </Card.Body>
-            </Card>
-          </AutoForm>
-          <Alert variant="light">
-            Already have an account? Login
-            {' '}
-            <Link to="/signin">here</Link>
-          </Alert>
-          {error === '' ? (
-            ''
-          ) : (
-            <Alert variant="danger">
-              <Alert.Heading>Registration was not successful</Alert.Heading>
-              {error}
+            </AutoForm>
+            <div className="divider d-flex align-items-center my-4">
+              <p className="text-center fw-bold mx-3 mb-0 text-muted">OR</p> {/* Horizontal line with "OR" */}
+            </div>
+            <Alert variant="light">
+              Already have an account? Login
+              {' '}
+              <Link to="/signin">here</Link>
             </Alert>
-          )}
+            {error === '' ? (
+              ''
+            ) : (
+              <Alert variant="danger">
+                <Alert.Heading>Registration was not successful</Alert.Heading>
+                {error}
+              </Alert>
+            )}
+          </Card>
         </Col>
       </Row>
     </Container>

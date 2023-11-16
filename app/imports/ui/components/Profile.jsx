@@ -7,7 +7,7 @@ import { Youtube, Spotify, Cloud } from 'react-bootstrap-icons';
 const Profile = ({ profile, own = false }) => {
 
   if (!profile) {
-    return <div>If statement</div>;
+    return <div>No Profile found</div>;
   }
 
   return own ? (
