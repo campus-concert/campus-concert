@@ -2,8 +2,6 @@ import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Profiles } from '../../api/profile/Profile';
 
-/* eslint-disable no-console */
-
 // Initialize the database with a default data document.
 const addData = (data) => {
   console.log(`  Adding: ${data.name} (${data.owner})`);
@@ -18,14 +16,14 @@ if (Stuffs.collection.find().count() === 0) {
   }
 }
 
-const addProfile = (profile) => {
-  console.log(`  Adding: ${profile.lastName} (${profile.owner})`);
-  Profiles.collection.insert(profile);
+const addProfile = (firstName, lastName, image, description, contact, location, goals, instruments, tastes) => {
+  console.log(`  Adding: ${lastName} (${contact})`);
+  Profiles.collection.insert({ firstName, lastName, image, description, contact, location, goals, instruments, tastes });
 };
 
 if (Profiles.collection.find().count() === 0) {
-  if (Meteor.settings.defaultProfiles) {
+  if (Meteor.settings.defaultAccounts) {
     console.log('Creating default profiles.');
-    Meteor.settings.defaultProfiles.forEach(profile => addProfile(profile));
+    Meteor.settings.defaultAccounts.forEach(({ firstName, lastName, image, description, contact, location, goals, instruments, tastes }) => addProfile(firstName, lastName, image, description, contact, location, goals, instruments, tastes));
   }
 }
