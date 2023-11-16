@@ -1,41 +1,48 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Col, Container, Row } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 import { Profiles } from '../../api/profile/Profile';
 import Profile from '../components/Profile';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-/* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 const UserProfile = () => {
-  // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  const { ready, profiles } = useTracker(() => {
-    // Note that this subscription will get cleaned up
-    // when your component is unmounted or deps change.
-    // Get access to Stuff documents.
+  const { userId } = useParams();
+  // eslint-disable-next-line prefer-const
+  let { ready, userProfile } = useTracker(() => {
     const subscription = Meteor.subscribe(Profiles.userPublicationName);
-    // Determine if the subscription is ready
     const rdy = subscription.ready();
-    // Get the Stuff documents
-    const profileItems = Profiles.collection.find({}).fetch();
+    const userProf = Profiles.collection.findOne({ _id: userId });
     return {
-      profiles: profileItems,
+      userProfile: userProf,
       ready: rdy,
     };
-  }, []);
-  return (ready ? (
+  });
+
+  const pageTitle = userProfile ? `${userProfile.firstName} ${userProfile.lastName}'s Profile` : 'User Profile';
+  let own = false;
+  if (!userId && Meteor.user()) {
+    userProfile = Profiles.collection.findOne({ contact: Meteor.user().username });
+    own = true;
+  }
+
+  return ready ? (
     <Container className="py-3">
       <Row className="justify-content-center">
         <Col md={7}>
-          <Col className="text-center">
-            <h2>User Profile (mockup)</h2>
-            {/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
-          </Col>
-          {profiles.map((profile) => <Profile key={profile._id} profile={profile} />)}
+          <Card className="p-4 mb-4"> {/* Stylish box added here */}
+            <Col className="text-center">
+              <h2>{pageTitle}</h2>
+            </Col>
+            <Profile profile={userProfile} own={own} />
+          </Card>
         </Col>
       </Row>
     </Container>
-  ) : <LoadingSpinner />);
+  ) : (
+    <LoadingSpinner />
+  );
 };
 
 export default UserProfile;

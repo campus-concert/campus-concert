@@ -10,7 +10,7 @@ import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstra
 /**
  * SignUp component is similar to signin component, but we create a new user instead.
  */
-const SignUp = ({ location }) => {
+const SignUp = () => {
   const [error, setError] = useState('');
   const [redirectToReferer, setRedirectToRef] = useState(false);
 
@@ -33,48 +33,53 @@ const SignUp = ({ location }) => {
     });
   };
 
-  /* Display the signup form. Redirect to add page after successful registration and login. */
-  const { from } = location?.state || { from: { pathname: '/add' } };
-  // if correct authentication, redirect to from: page instead of signup screen
+  // if correct authentication, redirect to userhome:
   if (redirectToReferer) {
-    return <Navigate to={from} />;
+    return <Navigate to="/createprofile" />;
   }
   return (
     <Container id="signup-page" className="py-5">
-      <Row className="justify-content-center">
-        <Col xs={5}>
+    <Row className="justify-content-center">
+      <Col xs={5}>
+        <Card className="mb-4 p-4">
           <Col className="text-center">
-            <h2>Register your account</h2>
+            <h2>New user login</h2>
           </Col>
-          <AutoForm className="shadow p-3 mb-5 bg-white rounded" schema={bridge} onSubmit={data => submit(data)}>
-            <Card>
-              <Card.Body>
-                <TextField name="email" placeholder="E-mail address" />
-                <TextField name="password" placeholder="Password" type="password" />
-                <ErrorsField />
-                <SubmitField />
-              </Card.Body>
-            </Card>
-          </AutoForm>
-          <div className="divider d-flex align-items-center my-4">
-            <p className="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
-          </div>
-          <Alert variant="light">
-            Already have an account? Login
-            {' '}
-            <Link to="/signin">here</Link>
-          </Alert>
-          {error === '' ? (
-            ''
-          ) : (
-            <Alert variant="danger">
-              <Alert.Heading>Registration was not successful</Alert.Heading>
-              {error}
+          <hr className="my-2" />
+          <Card.Body>
+            <h2>Create a new account</h2>
+            <AutoForm schema={bridge} onSubmit={data => submit(data)}>
+              <Card>
+                <Card.Body>
+                  <TextField name="email" placeholder="E-mail address" />
+                  <TextField name="password" placeholder="Password" type="password" />
+                  <ErrorsField />
+                  <SubmitField />
+                </Card.Body>
+              </Card>
+            </AutoForm>
+            <div className="divider d-flex align-items-center my-2">
+              <p className="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+            </div>
+            <Alert variant="light" className="mb-0">
+              Already have an account? Login
+              {' '}
+              <Link to="/signin">here</Link>
             </Alert>
-          )}
-        </Col>
-        <Col>
-          <h1 className="my-5 display-5 fw-bold ls-tight">
+            {error === '' ? (
+              ''
+            ) : (
+              <Alert variant="danger">
+                <Alert.Heading>Registration was not successful</Alert.Heading>
+                {error}
+              </Alert>
+            )}
+          </Card.Body>
+        </Card>
+      </Col>
+      <Col>
+        <Card className="p-4 mb-4">
+          <h1 className="my-3 display-5 fw-bold ls-tight">
             Elevate your musical journey <br />
             <span>with Campus Concert</span>
           </h1>
@@ -82,10 +87,11 @@ const SignUp = ({ location }) => {
             Step into the Campus Concert community, where musicians in UH Manoa unite to amplify creativity. Whether you're a seasoned player or a fresh face, this is your space to compose, connect, and captivate. Join us in fostering a harmonious environment where every artist's voice adds a unique note to our collective composition. Dive into the rhythm of collaboration at Campus Concert – where individual expressions blend to create a vibrant musical tapestry.
           </p>
           <footer className="blockquote-footer">The <cite title="Source Title">Campus Concert</cite> team</footer>
-        </Col>
-      </Row>
-    </Container>
-  );
+        </Card>
+      </Col>
+    </Row>
+  </Container>
+);
 };
 
 /* Ensure that the React Router location object is available in case we need to redirect. */

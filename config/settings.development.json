@@ -1,18 +1,44 @@
 {
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
-    { "email": "john@foo.com", "password": "changeme" }
-  ],
-
-  "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
-  ],
-
-  "defaultProfiles": [
     {
+      "email": "admin@foo.com",
+      "password": "changeme",
+      "role": "admin",
+      "firstName": "Admin",
+      "lastName": "Foo",
+      "image": "https://github.com/philipmjohnson.png",
+      "description": "Admin Foo is a fictional administrator",
+      "instruments": "guitar",
+      "tastes": "pop",
+      "location": "Kailua",
+      "goals": "Rule the world",
+      "contact": "admin@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "john@foo.com",
+      "password": "changeme",
+      "firstName": "John",
+      "lastName": "Foo",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/kim_binsted-square-300x300.jpg",
+      "description": "John Foo is a fictional user.",
+      "instruments": [
+        "flute",
+        "piano"
+      ],
+      "tastes": "jazz",
+      "location": "Pearl City",
+      "goals": "Survive college",
+      "contact": "john@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "philip@foo.com",
+      "password": "changeme",
       "firstName": "Philip",
       "lastName": "Johnson",
       "image": "https://github.com/philipmjohnson.png",
@@ -21,41 +47,75 @@
       "tastes": "pop",
       "location": "Kailua",
       "goals": "learn music theory",
-      "owner": "john@foo.com",
-      "contact": "john@foo.com",
+      "contact": "philip@foo.com",
       "youtubeLink": "https://www.youtube.com/user/philipmjohnson",
       "spotifyLink": "https://open.spotify.com/user/123456789",
       "soundcloudLink": "https://soundcloud.com/philipmjohnson"
     },
     {
+      "email": "henri@foo.com",
+      "password": "changeme",
       "firstName": "Henri",
       "lastName": "Casanova",
       "image": "https://avatars0.githubusercontent.com/u/7494478?s=460&v=4",
       "description": "I am originally from France. I maintain a list of reports from my surf sessions. I have proof that I ran the Hana relay with an actual Team.",
-      "instruments": ["trumpet", "flute"],
+      "instruments": [
+        "trumpet",
+        "flute"
+      ],
       "tastes": "hip-hop",
       "location": "Honolulu",
       "goals": "learn music theory",
-      "owner": "john@foo.com",
-      "contact": "john@foo.com",
+      "contact": "henri@foo.com",
       "youtubeLink": "https://www.youtube.com/user/henri.casanova",
       "spotifyLink": "https://open.spotify.com/user/987654321",
       "soundcloudLink": "https://soundcloud.com/henricasanova"
     },
     {
+      "email": "kim@foo.com",
+      "password": "changeme",
       "firstName": "Kim",
       "lastName": "Binsted",
       "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/kim_binsted-square-300x300.jpg",
       "description": "Kim Binsted received her BSc in Physics at McGill (1991), and her PhD in Artificial Intelligence from the University of Edinburgh (1996). Her thesis topic was the computational modeling and generation of punning riddles, and her program, JAPE (Joke Analysis and Production Engine), generated puns such as \"What do you call a Martian who drinks beer? An ale-ien!\".",
-      "instruments": ["flute", "piano"],
+      "instruments": [
+        "flute",
+        "piano"
+      ],
       "tastes": "jazz",
       "location": "Pearl City",
       "goals": "learn music theory",
-      "owner": "john@foo.com",
-      "contact": "john@foo.com",
+      "contact": "kim@foo.com",
       "youtubeLink": "https://www.youtube.com/user/kimbinsted",
       "spotifyLink": "https://open.spotify.com/user/1122334455",
       "soundcloudLink": "https://soundcloud.com/kimbinsted"
+    }
+  ],
+
+  "defaultData": [
+    {
+      "name": "Basket",
+      "quantity": 3,
+      "owner": "john@foo.com",
+      "condition": "excellent"
+    },
+    {
+      "name": "Bicycle",
+      "quantity": 2,
+      "owner": "john@foo.com",
+      "condition": "poor"
+    },
+    {
+      "name": "Banana",
+      "quantity": 2,
+      "owner": "admin@foo.com",
+      "condition": "good"
+    },
+    {
+      "name": "Boogie Board",
+      "quantity": 2,
+      "owner": "admin@foo.com",
+      "condition": "excellent"
     }
   ]
 }

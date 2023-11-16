@@ -1,24 +1,43 @@
 import React from 'react';
-import { Col, Container, Image, Nav, Row } from 'react-bootstrap';
+import { Col, Container, Row, Card, Button } from 'react-bootstrap';
+import { PeopleFill, People } from 'react-bootstrap-icons';
 import { NavLink } from 'react-router-dom';
 
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
-  <Container id="landing-page" fluid className="py-3">
-    <Row className="align-middle text-center">
-      <Col xs={4}>
-        <Image roundedCircle src="/images/meteor-logo.png" width="150px" />
+  <Container id="landing-page" fluid className="py-5">
+    <Row className="justify-content-center">
+      <Col xs={4} className="text-center">
+        <Card className="mb-4">
+          <Card.Body id="card-body">
+            <h1>Welcome to Campus Concerts</h1>
+            <h5>Share the World!</h5>
+          </Card.Body>
+        </Card>
       </Col>
+    </Row>
 
-      <Col xs={8} className="d-flex flex-column justify-content-center">
-        <h1>Welcome to this template</h1>
-        <p>Now get to work and modify this app!</p>
-        <br />
-        <br />
-        <Nav.Link id="user-home" as={NavLink} to="/userhome" key="userhome"><h4>Mockup of A User Home Page</h4> </Nav.Link>
-        <Nav.Link id="user-profile" as={NavLink} to="/userprofile" key="userprofile"><h4>Mockup of A User Profile</h4> </Nav.Link>
+    <Row className="justify-content-center">
+      <Col xs={4} className="text-center">
+        <Card>
+          <Card.Body id="card-body" className="mb-3">
+            <People size={100} />
+            <h1>Create a Profile</h1>
+            <h6>Create a Profile to share your interests, instruments you play and more.</h6>
+            <Button id="login-dropdown-sign-up" as={NavLink} to="/signup">Sign Up</Button>
+          </Card.Body>
+        </Card>
       </Col>
-
+      <Col xs={4} className="text-center">
+        <Card>
+          <Card.Body id="card-body" className="mb-3">
+            <PeopleFill size={100} />
+            <h1>Connect with Others</h1>
+            <h6>Connect with others by looking at other profiles and sharing your interests with each other.</h6>
+            <Button id="login-dropdown-sign-in" as={NavLink} to="/signin">Sign In</Button>
+          </Card.Body>
+        </Card>
+      </Col>
     </Row>
   </Container>
 );

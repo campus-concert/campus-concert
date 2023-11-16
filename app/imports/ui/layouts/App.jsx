@@ -10,7 +10,6 @@ import ListStuffAdmin from '../pages/ListStuffAdmin';
 import AddStuff from '../pages/AddStuff';
 import UserProfile from '../pages/UserProfile';
 import UserHome from '../pages/UserHome';
-import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
 import SignOut from '../pages/SignOut';
@@ -19,7 +18,11 @@ import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
 import LoadingSpinner from '../components/LoadingSpinner';
 import BrowseProfiles from '../pages/BrowseProfiles';
+import ContactPage from '../pages/ContactPage';
 import AdminHome from '../pages/AdminHome';
+import CreateProfile from '../pages/CreateProfile';
+import EditProfile from '../pages/EditProfile';
+import ListCommentsAdmin from '../pages/ListCommentsAdmin';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -38,13 +41,17 @@ const App = () => {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
+          <Route path="/contact-page" element={<ContactPage />} />
+          <Route path="/createprofile" element={<CreateProfile />} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
           <Route path="/browse-all-profiles" element={<ProtectedRoute><BrowseProfiles /></ProtectedRoute>} />
+          <Route path="/userprofile/:userId" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
           <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
           <Route path="/userhome" element={<ProtectedRoute><UserHome /></ProtectedRoute>} />
           <Route path="/userprofile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
-          <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
+          <Route path="/edit/:_id" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
+          <Route path="/admin-comments" element={<AdminProtectedRoute ready={ready}><ListCommentsAdmin /></AdminProtectedRoute>} />
           <Route path="/adminhome" element={<AdminProtectedRoute ready={ready}><AdminHome /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />

@@ -5,24 +5,29 @@
 :root {
   --matr-navbar-bg: #ECECEC;
   --matr-navbar-bg-rgb: 236, 236, 236;
+  --matr-landing-text-color: white;
 }
 
 /* Change bootstrap variable values.
  See https://getbootstrap.com/docs/5.2/customize/css-variables/
  */
+
 body {
   --bs-light-rgb: var(--matr-navbar-bg-rgb);
+  background: fixed center url("/images/manoa.jpeg");
+  background-size : cover;
 }
 
 /* Set the alert background on the signin and signup pages. */
 #signin-page .alert-light, #signup-page .alert-light {
   --bs-alert-bg: var(--matr-navbar-bg);
+  color: black;
 }
 
 /* Define custom styles */
 .gray-background {
   background-color: var(--matr-navbar-bg);
-  color: var(--bs-dark);
+  color: var(--bs-light);
   padding-top: 10px;
   padding-bottom: 20px;
 }
@@ -37,7 +42,16 @@ body {
   color: #333; /* Adjust the color as needed */
 }
 
-/* Used in SignUp.jsx */
+/* Footer styling */
+footer a {
+  color: black;
+  text-decoration: none;
+}
+footer a:hover {
+  color: cornflowerblue;
+}
+
+/* Used in SignIn.jsx */
 .divider:after,
 .divider:before {
   content: "";
@@ -45,3 +59,5 @@ body {
   height: 1px;
   background: #eee;
 }
+
+
