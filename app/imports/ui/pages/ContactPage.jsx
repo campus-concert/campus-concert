@@ -30,14 +30,20 @@ const ContactPage = () => {
     <Container className="py-3">
       <Row className="justify-content-center">
         <Col xs={10}>
-          <Col className="text-center"><h2>Got a Question?</h2></Col>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <Card>
               <Card.Body>
-                <TextField name="email" label="Email" />
-                <LongTextField name="comment" label="Message" />
-                <SubmitField value="Submit" />
-                <HiddenField name="createdAt" value={new Date()} />
+                <Col className="text-center mb-3"> {/* Added this line */}
+                  <h2>Got a Question?</h2>
+                </Col>
+                <Card>
+                  <Card.Body>
+                    <TextField name="email" label="Email" />
+                    <LongTextField name="comment" label="Message" />
+                    <SubmitField value="Submit" />
+                    <HiddenField name="createdAt" value={new Date()} />
+                  </Card.Body>
+                </Card>
               </Card.Body>
             </Card>
           </AutoForm>
