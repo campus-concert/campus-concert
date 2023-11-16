@@ -23,7 +23,7 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">
             {currentUser ? ([
-              <Nav.Link id="add-stuff-nav" as={NavLink} to="/createprofile" key="add">Add Profile</Nav.Link>,
+              {/*<Nav.Link id="add-stuff-nav" as={NavLink} to="/createprofile" key="add">Add Profile</Nav.Link>,*/},
               <Nav.Link id="welcome-user-nav" as={NavLink} to="/userhome" key="view">User Home Page</Nav.Link>,
               <Nav.Link id="profile-stuff-nav" as={NavLink} to="/userprofile" key="list">View My Profile</Nav.Link>,
               <Nav.Link id="list-stuff-nav" as={NavLink} to="/browse-all-profiles" key="list">Browse Profiles</Nav.Link>,
