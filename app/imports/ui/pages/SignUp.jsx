@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
 import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import CreateProfile from './CreateProfile';
 
 /**
  * SignUp component is similar to signin component, but we create a new user instead.
  */
 const SignUp = () => {
   const [error, setError] = useState('');
+  // const [redirectToReferer, setRedirectToRef] = useState(false);
   const [redirectToReferer, setRedirectToRef] = useState(false);
 
   const schema = new SimpleSchema({
@@ -35,7 +37,7 @@ const SignUp = () => {
 
   // if correct authentication, redirect to userhome:
   if (redirectToReferer) {
-    return <Navigate to="/createprofile" />;
+    return <CreateProfile />;
   }
   return (
     <Container id="signup-page" className="py-3">
