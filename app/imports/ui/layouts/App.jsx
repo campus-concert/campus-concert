@@ -47,7 +47,7 @@ const App = () => {
           <Route path="/userhome" element={<ProtectedRoute><UserHome /></ProtectedRoute>} />
           <Route path="/userprofile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
-          {/* <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />*/}
+          <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
           <Route path="/adminhome" element={<AdminProtectedRoute ready={ready}><AdminHome /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
