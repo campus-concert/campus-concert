@@ -5,6 +5,7 @@ import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { Roles } from 'meteor/alanning:roles';
 
 /**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
@@ -37,6 +38,9 @@ const SignIn = () => {
   // console.log('render', error, redirect);
   // if correct authentication, redirect to page instead of login screen
   if (redirect) {
+    if (Roles.userIsInRole(Meteor.userId(), 'admin')) {
+      return (<Navigate to="/adminhome" />);
+    }
     return (<Navigate to="/userhome" />);
   }
   // Otherwise return the Login form.

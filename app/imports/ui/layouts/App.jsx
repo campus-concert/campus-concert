@@ -20,7 +20,6 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import BrowseProfiles from '../pages/BrowseProfiles';
 import ContactPage from '../pages/ContactPage';
 import AdminHome from '../pages/AdminHome';
-import CreateProfile from '../pages/CreateProfile';
 import EditProfile from '../pages/EditProfile';
 import ListCommentsAdmin from '../pages/ListCommentsAdmin';
 
@@ -37,12 +36,11 @@ const App = () => {
       <div className="d-flex flex-column min-vh-100">
         <NavBar />
         <Routes>
-          <Route exact path="/" element={<Landing />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/signout" element={<SignOut />} />
+          <Route exact path="/" element={<NotLoggedInRoute><Landing /></NotLoggedInRoute>} />
+          <Route path="/signin" element={<NotLoggedInRoute><SignIn /></NotLoggedInRoute>} />
+          <Route path="/signup" element={<NotLoggedInRoute><SignUp /></NotLoggedInRoute>} />
+          <Route path="/signout" element={<NotLoggedInRoute><SignOut /></NotLoggedInRoute>} />
           <Route path="/contact-page" element={<ContactPage />} />
-          <Route path="/createprofile" element={<CreateProfile />} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
           <Route path="/browse-all-profiles" element={<ProtectedRoute><BrowseProfiles /></ProtectedRoute>} />
           <Route path="/userprofile/:userId" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
@@ -107,6 +105,25 @@ AdminProtectedRoute.propTypes = {
 AdminProtectedRoute.defaultProps = {
   ready: false,
   children: <Landing />,
+};
+
+/*
+ * NotLoggedInRoute (see React Router v6 sample)
+ * Checks for Meteor login before routing to the requested page, otherwise goes to the requested page.
+ * @param {any} { component: Component, ...rest }
+ */
+const NotLoggedInRoute = ({ children }) => {
+  const isLogged = Meteor.userId() !== null;
+  return !isLogged ? children : <Navigate to="/userhome" />;
+};
+
+// Require a component and location to be passed to each NotLoggedInRoute.
+NotLoggedInRoute.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+};
+
+NotLoggedInRoute.defaultProps = {
+  children: <Navigate to="/userhome" />,
 };
 
 export default App;
