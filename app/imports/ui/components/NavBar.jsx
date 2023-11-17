@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { NavLink } from 'react-router-dom';
@@ -12,13 +12,37 @@ const NavBar = () => {
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
 
+  // shouldNavigate works in tandem with targetRoute as there was a bug when calling setTargetRoute since the state update doesn't happen immediately.
+  const [targetRoute, setTargetRoute] = useState('/');
+  const [shouldNavigate, setShouldNavigate] = useState(false);
+
+  const handleBrandClick = (event) => {
+    event.preventDefault(); // Prevent default link behavior
+    if (Roles.userIsInRole(Meteor.userId(), 'admin')) {
+      setTargetRoute('/adminhome');
+    } else if (Meteor.userId()) {
+      setTargetRoute('/userhome');
+    } else {
+      setTargetRoute('/');
+    }
+    setShouldNavigate(true);
+  };
+
+  useEffect(() => {
+    if (shouldNavigate) {
+      document.getElementById('hidden-nav-link').click();
+      setShouldNavigate(false);
+    }
+  }, [shouldNavigate, targetRoute]);
+
   return (
     <Navbar bg="light" expand="lg">
       <Container className="nav justify-content-start">
         <Image src="/images/logo-1.png" className="rounded float-start" width="60px" />
-        <Navbar.Brand as={NavLink} to="/">
+        <Navbar.Brand as={NavLink} onClick={handleBrandClick}>
           <h2>Campus Concerts</h2>
         </Navbar.Brand>
+        <NavLink id="hidden-nav-link" to={targetRoute} style={{ display: 'none' }} />
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">
@@ -64,4 +88,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default (NavBar);
