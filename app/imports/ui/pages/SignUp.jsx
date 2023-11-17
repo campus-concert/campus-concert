@@ -86,10 +86,10 @@ const SignUp = () => {
               <span>with Campus Concert</span>
             </h1>
             <p className="mb-4 opacity-70">
-              `Step into the Campus Concert community, where
+              Step into the Campus Concert community, where
               musicians in UH Manoa unite to amplify creativity. Whether you`&apos;`re a seasoned player or a fresh face, this is your space to compose, connect, and captivate. J
               oin us in fostering a harmonious environment where every artist`&apos;`s voice adds a unique note to our collective composition. Dive into the rhythm of collabor
-              ation at Campus Concert – where individual expressions blend to create a vibrant musical tapestry.`
+              ation at Campus Concert – where individual expressions blend to create a vibrant musical tapestry.
             </p>
             <footer className="blockquote-footer">The <cite title="Source Title">Campus Concert</cite> team</footer>
           </Card>
