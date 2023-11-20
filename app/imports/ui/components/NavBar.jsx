@@ -24,7 +24,7 @@ const NavBar = () => {
           <Nav className="me-auto justify-content-start">
             {currentUser ? ([
               <Nav.Link id="welcome-user-nav" as={NavLink} to="/userhome" key="view">User Home Page</Nav.Link>,
-              <Nav.Link id="profile-stuff-nav" as={NavLink} to="/userprofile" key="user">View My Profile</Nav.Link>,
+              <Nav.Link id="user-profile-nav" as={NavLink} to="/userprofile" key="user">View My Profile</Nav.Link>,
               <Nav.Link id="list-stuff-nav" as={NavLink} to="/browse-all-profiles" key="browse">Browse Profiles</Nav.Link>,
               <Nav.Link id="add-concert-nav" as={NavLink} to="/createconcert" key="add">Create Concert</Nav.Link>,
               <Nav.Link id="concert-stuff-nav" as={Nav.Link} to="/browse-all-concerts" key="concert">Browse Concerts</Nav.Link>,
