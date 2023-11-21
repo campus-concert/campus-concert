@@ -10,6 +10,17 @@ class UserProfilePage {
   async isDisplayed(testController) {
     await testController.expect(this.pageSelector.exists).ok();
   }
+
+  async hasProfile(testController) {
+    const profile = Selector('#user-profile-card');
+    await testController.expect(profile.exists).ok();
+  }
+
+  async hasEditProfile(testController) {
+    const editProfile = Selector('#edit-profile');
+    await testController.expect(editProfile.exists).ok();
+  }
+
 }
 
 export const userProfilePage = new UserProfilePage();

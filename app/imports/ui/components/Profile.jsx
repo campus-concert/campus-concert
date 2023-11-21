@@ -11,7 +11,7 @@ const Profile = ({ profile, own = false }) => {
   }
 
   return own ? (
-    <Card className="d-flex flex-column">
+    <Card id="user-profile-card" className="d-flex flex-column">
       <Card.Header className="bg-dark text-white text-center position-relative">
         <Image src={profile.image} roundedCircle width={200} className="mt-3" />
         <div className="d-flex justify-content-end p-3 w-100 position-absolute top-0 end-0">
@@ -63,7 +63,7 @@ const Profile = ({ profile, own = false }) => {
         </div>
       </Card.Body>
       <Card.Footer>
-        <Link to={`/edit/${profile._id}`}>Edit</Link>
+        <Link id="edit-profile-button" to={`/edit/${profile._id}`}>Edit</Link>
       </Card.Footer>
     </Card>
   ) : (
