@@ -39,7 +39,7 @@ const App = () => {
           <Route exact path="/" element={<NotLoggedInRoute><Landing /></NotLoggedInRoute>} />
           <Route path="/signin" element={<NotLoggedInRoute><SignIn /></NotLoggedInRoute>} />
           <Route path="/signup" element={<NotLoggedInRoute><SignUp /></NotLoggedInRoute>} />
-          <Route path="/signout" element={<NotLoggedInRoute><SignOut /></NotLoggedInRoute>} />
+          <Route path="/signout" element={<SignOut />} />
           <Route path="/contact-page" element={<ContactPage />} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
           <Route path="/browse-all-profiles" element={<ProtectedRoute><BrowseProfiles /></ProtectedRoute>} />

@@ -1,6 +1,7 @@
 import { landingPage } from './landing.page';
 import { signinPage } from './signin.page';
 import { signoutPage } from './signout.page';
+import { signupPage } from './signup.page';
 import { navBar } from './navbar.component';
 
 /* global fixture:false, test:false */
@@ -22,3 +23,10 @@ test('Test that signin and signout work', async (testController) => {
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
+
+test('Test that signup work', async (testController) => {
+  await navBar.gotoSignUpPage(testController);
+  await signupPage.signupUser(testController, 'newUser@hawaii.edu', 'changeme');
+});
+
+
