@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { Profiles } from '../../api/profile/Profile';
+import { Concerts } from '../../api/concert/Concert';
 import { Comments } from '../../api/comment/Comment';
 
 // User-level publication.
@@ -9,6 +10,12 @@ import { Comments } from '../../api/comment/Comment';
 Meteor.publish(Profiles.userPublicationName, function () {
   return (
     Profiles.collection.find()
+  );
+});
+
+Meteor.publish(Concerts.userPublicationName, function () {
+  return (
+    Concerts.collection.find()
   );
 });
 

@@ -15,7 +15,15 @@
       "contact": "admin@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
-      "soundcloudLink": "https://soundcloud.com/"
+      "soundcloudLink": "https://soundcloud.com/",
+      "concertName": "Test Concert",
+      "date": "Feb 2, 2024",
+      "time": "2 am",
+      "concertLocation": "Ala Wai Canal",
+      "instrumentsNeeded": "guitar",
+      "genres": "hip-hop",
+      "concertDescription": "test description",
+      "concertContact": "8085555555"
     },
     {
       "email": "john@foo.com",
@@ -34,7 +42,15 @@
       "contact": "john@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
-      "soundcloudLink": "https://soundcloud.com/"
+      "soundcloudLink": "https://soundcloud.com/",
+      "concertName": "Test Concert",
+      "date": "Feb 2, 2024",
+      "time": "2 am",
+      "concertLocation": "Ala Wai Canal",
+      "instrumentsNeeded": "guitar",
+      "genres": "hip-hop",
+      "concertDescription": "test description",
+      "concertContact": "8085555555"
     },
     {
       "email": "philip@foo.com",
@@ -50,7 +66,15 @@
       "contact": "philip@foo.com",
       "youtubeLink": "https://www.youtube.com/user/philipmjohnson",
       "spotifyLink": "https://open.spotify.com/user/123456789",
-      "soundcloudLink": "https://soundcloud.com/philipmjohnson"
+      "soundcloudLink": "https://soundcloud.com/philipmjohnson",
+      "concertName": "Test Concert",
+      "date": "Feb 2, 2024",
+      "time": "2 am",
+      "concertLocation": "Ala Wai Canal",
+      "instrumentsNeeded": "guitar",
+      "genres": "hip-hop",
+      "concertDescription": "test description",
+      "concertContact": "8085555555"
     },
     {
       "email": "henri@foo.com",
@@ -69,7 +93,15 @@
       "contact": "henri@foo.com",
       "youtubeLink": "https://www.youtube.com/user/henri.casanova",
       "spotifyLink": "https://open.spotify.com/user/987654321",
-      "soundcloudLink": "https://soundcloud.com/henricasanova"
+      "soundcloudLink": "https://soundcloud.com/henricasanova",
+      "concertName": "Test Concert",
+      "date": "Feb 2, 2024",
+      "time": "2 am",
+      "concertLocation": "Ala Wai Canal",
+      "instrumentsNeeded": "guitar",
+      "genres": "hip-hop",
+      "concertDescription": "test description",
+      "concertContact": "8085555555"
     },
     {
       "email": "kim@foo.com",
@@ -88,7 +120,15 @@
       "contact": "kim@foo.com",
       "youtubeLink": "https://www.youtube.com/user/kimbinsted",
       "spotifyLink": "https://open.spotify.com/user/1122334455",
-      "soundcloudLink": "https://soundcloud.com/kimbinsted"
+      "soundcloudLink": "https://soundcloud.com/kimbinsted",
+      "concertName": "Test Concert",
+      "date": "Feb 2, 2024",
+      "time": "2 am",
+      "concertLocation": "Ala Wai Canal",
+      "instrumentsNeeded": "guitar",
+      "genres": "hip-hop",
+      "concertDescription": "test description",
+      "concertContact": "8085555555"
     }
   ],
 

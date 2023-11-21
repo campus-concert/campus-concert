@@ -5,7 +5,7 @@ import { Col, Container, Row, Card } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Concerts } from '../../api/concert/Concert';
 import LoadingSpinner from '../components/LoadingSpinner';
-import ProfileBasic from '../components/ProfileBasic';
+import ConcertBasic from '../components/ConcertBasic';
 
 const BrowseConcerts = () => {
   const navigate = useNavigate();
@@ -29,9 +29,9 @@ const BrowseConcerts = () => {
               <h2>Browse Concerts</h2>
             </Col>
             <Row xs={1} md={2} lg={3} className="g-4">
-              {concerts.map((profile, index) => (
+              {concerts.map((concert, index) => (
                 <Col key={index}>
-                  <ProfileBasic profile={profile} showDetailsLink onClick={() => navigate(`/profile/${profile._id}`)} />
+                  <ConcertBasic concert={concert} showDetailsLink onClick={() => navigate(`/concert/${concert._id}`)} />
                 </Col>
               ))}
             </Row>
