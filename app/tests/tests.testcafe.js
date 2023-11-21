@@ -41,18 +41,13 @@ test('Test editing the user profile', async (testController) => {
   await navBar.isLoggedIn(testController, credentials.username);
   await navBar.gotoUserProfile(testController);
   await userProfilePage.isDisplayed(testController);
-  await testController.click('#edit-profile-button');
+  await userProfilePage.hasEditProfile(testController);
+  await userProfilePage.gotoEditProfile(testController);
   await editProfilePage.isDisplayed(testController);
-  await editProfilePage.editProfile(
-    testController,
-    'Carl',
-    'Bar',
-    'https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/03/GettyImages-1092658864_hero-1024x575.jpg?w=1155&h=1528',
-    'Editing',
-    'Passing',
-    'Honolulu',
-    'guitar',
-    'pop',
-  );
+  await editProfilePage.editProfile(testController);
+  await editProfilePage.checkEditedProfile(testController);
+  await userProfilePage.hasEditProfile(testController);
+  await userProfilePage.gotoEditProfile(testController);
+  await editProfilePage.resetEditedProfile(testController);
   await navBar.logout(testController);
 });

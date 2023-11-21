@@ -17,8 +17,12 @@ class UserProfilePage {
   }
 
   async hasEditProfile(testController) {
-    const editProfile = Selector('#edit-profile');
+    const editProfile = Selector('#edit-profile-button');
     await testController.expect(editProfile.exists).ok();
+  }
+
+  async gotoEditProfile(testController) {
+    await testController.click('#edit-profile-button');
   }
 
 }

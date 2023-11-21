@@ -64,7 +64,7 @@ const CreateProfile = () => {
                 <Card.Body>
                   <Row>
                     <Col>
-                      <TextField id="edit-profile-first-Name" name="firstName" showInlineError />
+                      <TextField id="edit-profile-first-name" name="firstName" showInlineError />
                     </Col>
                     <Col>
                       <TextField id="edit-profile-last-name" name="lastName" showInlineError />
@@ -84,11 +84,11 @@ const CreateProfile = () => {
                     </Col>
                   </Row>
                   <LongTextField id="edit-profile-description" name="description" showInlineError />
-                  <TextField name="goals" showInlineError />
+                  <TextField id="edit-profile-goal" name="goals" showInlineError />
                   <Row>
                     <Col>
                       <SelectField
-                        id="eedit-profile-location"
+                        id="edit-profile-location"
                         name="location"
                         placeholder="Choose location"
                         showInlineError

@@ -40,26 +40,26 @@ const Profile = ({ profile, own = false }) => {
             <Cloud size={25} />
           </a>
         </div>
-        <Card.Title className="my-2">{profile.firstName} {profile.lastName}</Card.Title>
+        <Card.Title id="profile-name" className="my-2">{profile.firstName} {profile.lastName}</Card.Title>
       </Card.Header>
       <Card.Body className="flex-grow-1">
         <div className="d-flex flex-column">
           <div className="mb-2">
-            <Card.Text><h5>Instruments:</h5>{profile.instruments.join(', ')}</Card.Text>
+            <Card.Text id="profile-instruments"><h5>Instruments:</h5>{profile.instruments.join(', ')}</Card.Text>
           </div>
           <div className="mb-2">
-            <Card.Text><h5>Musical Tastes:</h5>{profile.tastes.join(', ')}</Card.Text>
+            <Card.Text id="profile-tastes"><h5>Musical Tastes:</h5>{profile.tastes.join(', ')}</Card.Text>
           </div>
           <div className="mb-2">
-            <Card.Text><h5>Location:</h5>{profile.location}</Card.Text>
+            <Card.Text id="profile-location"><h5>Location:</h5>{profile.location}</Card.Text>
           </div>
           <div className="mb-2">
-            <Card.Text><h5>Goals:</h5>{profile.goals}</Card.Text>
+            <Card.Text id="profile-goal"><h5>Goals:</h5>{profile.goals}</Card.Text>
           </div>
           <div className="mb-2">
             <Card.Text><h5>Contact:</h5>{profile.contact}</Card.Text>
           </div>
-          <Card.Text className="my-2"><h5>Description:</h5>{profile.description}</Card.Text>
+          <Card.Text id="profile-description" className="my-2"><h5>Description:</h5>{profile.description}</Card.Text>
         </div>
       </Card.Body>
       <Card.Footer>
