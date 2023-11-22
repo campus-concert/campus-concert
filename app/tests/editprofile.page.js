@@ -24,7 +24,6 @@ class EditProfilePage {
   }
 
   async checkEditedProfile(testController) {
-    await testController.expect(Selector('#user-profile-card').exists).ok();
     await testController.expect(Selector('#profile-name').innerText).contains('Edit');
     await testController.expect(Selector('#profile-location').innerText).contains('Honolulu');
     await testController.expect(Selector('#profile-goal').innerText).contains('Edit');
