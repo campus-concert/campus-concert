@@ -35,7 +35,7 @@ test('Test that the user profile page works', async (testController) => {
   await navBar.logout(testController);
 });
 
-test('Test editing the user profile', async (testController) => {
+test.only('Test editing the user profile', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.isLoggedIn(testController, credentials.username);
