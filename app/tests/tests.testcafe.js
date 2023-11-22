@@ -45,9 +45,11 @@ test('Test editing the user profile', async (testController) => {
   await userProfilePage.gotoEditProfile(testController);
   await editProfilePage.isDisplayed(testController);
   await editProfilePage.editProfile(testController);
+  await userProfilePage.isDisplayed(testController);
   await editProfilePage.checkEditedProfile(testController);
   await userProfilePage.hasEditProfile(testController);
   await userProfilePage.gotoEditProfile(testController);
+  await editProfilePage.isDisplayed(testController);
   await editProfilePage.resetEditedProfile(testController);
   await navBar.logout(testController);
 });
