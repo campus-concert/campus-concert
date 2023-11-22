@@ -26,6 +26,25 @@ test('Test that signin and signout work', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
+test('Test that the navbar works', async (testController) => {
+  await navBar.isDisplayed(testController);
+  await navBar.ensureLogout(testController);
+  await navBar.checkLoggedOutContent(testController);
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.isLoggedIn(testController, credentials.username);
+  await navBar.checkLoggedInContent(testController);
+  await navBar.gotoUserHome(testController);
+  await userHomePage.isDisplayed(testController);
+  await navBar.gotoUserProfile(testController);
+  await userProfilePage.isDisplayed(testController);
+  await navBar.gotoCreateConcert(testController);
+  // await createConcertPage.isDisplayed(testController);
+  await navBar.gotoBrowseProfiles(testController);
+  // await browseProfilesPage.isDisplayed(testController);
+  await navBar.logout(testController);
+});
+
 test('Test that the user profile page works', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);

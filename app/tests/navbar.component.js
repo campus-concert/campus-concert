@@ -2,6 +2,10 @@ import { Selector } from 'testcafe';
 
 class NavBar {
 
+  async isDisplayed(testController) {
+    await testController.expect(Selector('#navbar').exists).ok();
+  }
+
   /** If someone is logged in, then log them out, otherwise do nothing. */
   async ensureLogout(testController) {
     const loggedInUser = await Selector('#navbar-current-user').exists;
@@ -42,6 +46,26 @@ class NavBar {
     await testController.click('#navbar-sign-out');
   }
 
+  async checkLoggedOutContent(testController) {
+    await testController.expect(Selector('#navbar-current-user').exists).notOk();
+    await testController.expect(Selector('#login-dropdown').exists).ok();
+    await testController.expect(Selector('#home-nav').exists).ok();
+    await testController.expect(Selector('#user-profile-nav').exists).notOk();
+    await testController.expect(Selector('#browse-profiles-nav').exists).notOk();
+    await testController.expect(Selector('#add-concert-na').exists).notOk();
+    await testController.expect(Selector('#browse-concerts-nav').exists).notOk();
+  }
+
+  async checkLoggedInContent(testController) {
+    await testController.expect(Selector('#navbar-current-user').exists).ok();
+    await testController.expect(Selector('#login-dropdown').exists).notOk();
+    await testController.expect(Selector('#home-nav').exists).ok();
+    await testController.expect(Selector('#user-profile-nav').exists).ok();
+    await testController.expect(Selector('#browse-profiles-nav').exists).ok();
+    await testController.expect(Selector('#add-concert-nav').exists).ok();
+    await testController.expect(Selector('#browse-concerts-nav').exists).ok();
+  }
+
   /** Pull down login menu, go to sign up page. */
   async gotoSignUpPage(testController) {
     await this.ensureLogout(testController);
@@ -53,13 +77,26 @@ class NavBar {
     await testController.click('#login-dropdown-sign-up');
   }
 
+  async gotoUserHome(testController) {
+    await testController.click('#home-nav');
+  }
+
   async gotoUserProfile(testController) {
     await testController.click('#user-profile-nav');
   }
 
-  async gotoUserHome(testController) {
-    await testController.click('#home-nav');
+  async gotoBrowseProfiles(testController) {
+    await testController.click('#browse-profiles-nav');
   }
+
+  async gotoCreateConcert(testController) {
+    await testController.click('#add-concert-nav');
+  }
+
+  async gotoBrowseConcerts(testController) {
+    await testController.click('#browse-concerts-nav');
+  }
+
 }
 
 export const navBar = new NavBar();

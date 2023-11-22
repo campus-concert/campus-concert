@@ -13,7 +13,7 @@ const NavBar = () => {
   }), []);
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar id="navbar" bg="light" expand="lg">
       <Container className="nav justify-content-start">
         <Image src="/images/logo-1.png" className="rounded float-start" width="60px" />
         <Navbar.Brand id="home-nav" as={NavLink} to="/">
@@ -24,9 +24,9 @@ const NavBar = () => {
           <Nav className="me-auto justify-content-start">
             {currentUser ? ([
               <Nav.Link id="user-profile-nav" as={NavLink} to="/userprofile" key="user">View My Profile</Nav.Link>,
-              <Nav.Link id="list-stuff-nav" as={NavLink} to="/browse-all-profiles" key="browse">Browse Profiles</Nav.Link>,
+              <Nav.Link id="browse-profiles-nav" as={NavLink} to="/browse-all-profiles" key="browse">Browse Profiles</Nav.Link>,
               <Nav.Link id="add-concert-nav" as={NavLink} to="/createconcert" key="add">Create Concert</Nav.Link>,
-              <Nav.Link id="concert-stuff-nav" as={NavLink} to="/browse-all-concerts" key="concert">Browse Concerts</Nav.Link>,
+              <Nav.Link id="browse-concerts-nav" as={NavLink} to="/browse-all-concerts" key="concert">Browse Concerts</Nav.Link>,
             ]) : ''}
             {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
               <Nav.Link id="admin-home" as={NavLink} to="/adminhome" key="admin">Admin</Nav.Link>
