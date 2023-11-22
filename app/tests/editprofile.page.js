@@ -19,7 +19,7 @@ class EditProfilePage {
     await testController.typeText('#edit-profile-goal', 'Edit');
     await testController.typeText('#edit-profile-location', 'Honolulu');
     await testController.pressKey('enter');
-    await testController.wait(1000);
+    await testController.wait(3000);
     await testController.pressKey('enter');
   }
 
@@ -39,7 +39,7 @@ class EditProfilePage {
     await testController.typeText('#edit-profile-goal', 'Survive college');
     await testController.typeText('#edit-profile-location', 'Pearl City');
     await testController.pressKey('enter');
-    await testController.wait(1000);
+    await testController.wait(3000);
     await testController.pressKey('enter');
   }
 
