@@ -20,7 +20,7 @@ class EditProfilePage {
     await testController.typeText('#edit-profile-location', 'Honolulu');
     await testController.pressKey('enter');
     await testController.wait(3000);
-    await testController.eval(() => location.reload(true));
+    await testController.pressKey('enter');
   }
 
   async checkEditedProfile(testController) {
@@ -40,7 +40,7 @@ class EditProfilePage {
     await testController.typeText('#edit-profile-location', 'Pearl City');
     await testController.pressKey('enter');
     await testController.wait(3000);
-    await testController.eval(() => location.reload(true));
+    await testController.pressKey('enter');
   }
 
   async clearForm(testController) {
