@@ -66,6 +66,16 @@ class NavBar {
     await testController.expect(Selector('#browse-concerts-nav').exists).ok();
   }
 
+  async checkUserContent(testController) {
+    await this.checkLoggedInContent(testController);
+    await testController.expect(Selector('#admin-home').exists).notOk();
+  }
+
+  async checkAdminContent(testController) {
+    await this.checkLoggedInContent(testController);
+    await testController.expect(Selector('#admin-home').exists).ok();
+  }
+
   /** Pull down login menu, go to sign up page. */
   async gotoSignUpPage(testController) {
     await this.ensureLogout(testController);
@@ -95,6 +105,10 @@ class NavBar {
 
   async gotoBrowseConcerts(testController) {
     await testController.click('#browse-concerts-nav');
+  }
+
+  async gotoAdminHome(testController) {
+    await testController.click('#admin-home');
   }
 
 }

@@ -18,6 +18,7 @@ class EditProfilePage {
     await testController.typeText('#edit-profile-description', 'Edit');
     await testController.typeText('#edit-profile-goal', 'Edit');
     await testController.typeText('#edit-profile-location', 'Honolulu');
+    await testController.expect(Selector('#edit-profile-submit').exists).ok();
     await testController.click(Selector('#edit-profile-submit .btn.btn-primary'));
     await testController.wait(3000);
     await testController.navigateTo('http://localhost:3000/userprofile');
@@ -38,6 +39,7 @@ class EditProfilePage {
     await testController.typeText('#edit-profile-description', 'John Foo is a fictional user.');
     await testController.typeText('#edit-profile-goal', 'Survive college');
     await testController.typeText('#edit-profile-location', 'Pearl City');
+    await testController.expect(Selector('#edit-profile-submit').exists).ok();
     await testController.click(Selector('#edit-profile-submit .btn.btn-primary'));
     await testController.wait(3000);
     await testController.navigateTo('http://localhost:3000/userprofile');
