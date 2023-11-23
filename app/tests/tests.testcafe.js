@@ -77,7 +77,7 @@ test('Test that the userhome works', async (testController) => {
   await navBar.logout(testController);
 });
 
-test.only('Test that the adminhome works', async (testController) => {
+test('Test that the adminhome works', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, adminCredentials.username, adminCredentials.password);
   await navBar.isLoggedIn(testController, adminCredentials.username);
