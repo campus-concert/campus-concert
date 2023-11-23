@@ -5,6 +5,7 @@ import { navBar } from './navbar.component';
 import { userProfilePage } from './userprofile.page';
 import { editProfilePage } from './editprofile.page';
 import { userHomePage } from './userhome.page';
+import { adminHomePage } from './adminhome.page';
 
 /* global fixture:false, test:false */
 
@@ -73,6 +74,33 @@ test('Test that the userhome works', async (testController) => {
   await userHomePage.isDisplayed(testController);
   await userHomePage.gotoBrowseConcerts(testController);
   // await browseConcertsPage.isDisplayed(testController);
+  await navBar.logout(testController);
+});
+
+test.only('Test that the adminhome works', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(testController, adminCredentials.username);
+  await adminHomePage.isDisplayed(testController);
+  await adminHomePage.showsButtons(testController);
+  await adminHomePage.gotoDeleteProfile(testController);
+  // await deleteProfilePage.isDisplayed(testController);
+  await navBar.gotoAdminHome(testController);
+  await adminHomePage.isDisplayed(testController);
+  await adminHomePage.gotoCreateEditConcert(testController);
+  // await createConcertPage.isDisplayed(testController);
+  await navBar.gotoAdminHome(testController);
+  await adminHomePage.isDisplayed(testController);
+  await adminHomePage.gotoBrowseProfiles(testController);
+  // await browseProfilesPage.isDisplayed(testController);
+  await navBar.gotoAdminHome(testController);
+  await adminHomePage.isDisplayed(testController);
+  await adminHomePage.gotoBrowseConcerts(testController);
+  // await browseConcertsPage.isDisplayed(testController);
+  await navBar.gotoAdminHome(testController);
+  await adminHomePage.isDisplayed(testController);
+  await adminHomePage.gotoUserComments(testController);
+  // await userCommentsPage.isDisplayed(testController);
   await navBar.logout(testController);
 });
 
