@@ -6,14 +6,12 @@ class ConcertsCollection {
     this.name = 'ConcertsCollection';
     this.collection = new Mongo.Collection(this.name);
     this.schema = new SimpleSchema({
-      firstName: String,
-      lastName: String,
+      owner: String,
       image: String,
       description: String,
       contact: String,
       date: String,
       time: String,
-      owner: String,
       location: {
         type: String,
         allowedValues: ['Honolulu', 'Pearl City', 'Kailua'],
