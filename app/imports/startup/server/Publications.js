@@ -48,6 +48,10 @@ Meteor.publish(Concerts.adminPublicationName, function () {
   return (
     Concerts.collection.find()
   );
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return Concerts.collection.find();
+  }
+  return this.ready();
 });
 
 Meteor.publish(Stuffs.adminPublicationName, function () {

@@ -17,24 +17,29 @@ class ConcertsCollection {
         allowedValues: ['Honolulu', 'Pearl City', 'Kailua'],
       },
       instruments: {
+      concertName: String,
+      concertDescription: String,
+      concertContact: String,
+      date: String,
+      time: String,
+      concertLocation: String,
+      instrumentsNeeded: {
         type: Array,
         defaultValue: [],
       },
-      'instruments.$': {
+      'instrumentsNeeded.$': {
         type: String,
         allowedValues: ['piano', 'guitar', 'flute', 'trumpet'],
       },
-      tastes: {
+      genres: {
         type: Array,
         defaultValue: [],
       },
-      'tastes.$': {
+      'genres.$': {
         type: String,
         allowedValues: ['pop', 'rock', 'hip-hop', 'jazz'],
       },
-      youtubeLink: { type: String, optional: true, defaultValue: '' },
-      spotifyLink: { type: String, optional: true, defaultValue: '' },
-      soundcloudLink: { type: String, optional: true, defaultValue: '' },
+
     });
 
     this.collection.attachSchema(this.schema);

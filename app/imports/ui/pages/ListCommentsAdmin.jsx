@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Table } from 'react-bootstrap';
+import { Card, Row, Col, Container, Table } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Comments } from '../../api/comment/Comment';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -16,26 +16,34 @@ const ListCommentsAdmin = () => {
     };
   }, []);
   return (ready ? (
-    <Container>
-      <h2 className="text-center p-3">Questions From Users</h2>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Email</th>
-            <th>Comment</th>
-            <th>Submission Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          {comments.map((comment) => (
-            <tr key={comment._id}>
-              <td>{comment.email}</td>
-              <td>{comment.comment}</td>
-              <td>{comment.createdAt.toString()}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
+    <Container className="py-3">
+      <Row className="justify-content-center">
+        <Col xs={10}>
+          <Card className="p-4 mb-4">
+            <Container>
+              <h2 className="text-center p-3">Questions From Users</h2>
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>Email</th>
+                    <th>Comment</th>
+                    <th>Submission Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {comments.map((comment) => (
+                    <tr key={comment._id}>
+                      <td>{comment.email}</td>
+                      <td>{comment.comment}</td>
+                      <td>{comment.createdAt.toString()}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </Container>
+          </Card>
+        </Col>
+      </Row>
     </Container>
   ) : <LoadingSpinner />);
 };

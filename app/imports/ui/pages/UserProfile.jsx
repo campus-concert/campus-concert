@@ -28,7 +28,7 @@ const UserProfile = () => {
   }
 
   return ready ? (
-    <Container className="py-3">
+    <Container id="user-profile-page" className="py-3">
       <Row className="justify-content-center">
         <Col md={7}>
           <Card className="p-4 mb-4"> {/* Stylish box added here */}
