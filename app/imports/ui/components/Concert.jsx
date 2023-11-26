@@ -40,7 +40,7 @@ const Concert = ({ profile, own = false }) => {
             <Cloud size={25} />
           </a>
         </div>
-        <Card.Title className="my-2">{profile.firstName} {profile.lastName}</Card.Title>
+        <Card.Title className="my-2">{profile.owner}</Card.Title>
       </Card.Header>
       <Card.Body className="flex-grow-1">
         <div className="d-flex flex-column">
@@ -99,7 +99,7 @@ const Concert = ({ profile, own = false }) => {
             <Cloud size={25} />
           </a>
         </div>
-        <Card.Title className="my-2">{profile.firstName} {profile.lastName}</Card.Title>
+        <Card.Title className="my-2">{profile.owner}</Card.Title>
       </Card.Header>
       <Card.Body className="flex-grow-1">
         <div className="d-flex flex-column">
@@ -135,15 +135,13 @@ const Concert = ({ profile, own = false }) => {
 
 Concert.propTypes = {
   profile: PropTypes.shape({
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
+    owner: PropTypes.string,
     contact: PropTypes.string,
     date: PropTypes.string,
     time: PropTypes.string,
     image: PropTypes.string,
     description: PropTypes.string,
     location: PropTypes.string,
-    owner: PropTypes.string,
     instruments: PropTypes.arrayOf(PropTypes.string),
     tastes: PropTypes.arrayOf(PropTypes.string),
     youtubeLink: PropTypes.string,

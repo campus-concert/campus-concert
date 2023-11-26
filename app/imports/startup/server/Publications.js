@@ -2,8 +2,8 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { Profiles } from '../../api/profile/Profile';
-import { Concerts } from '../../api/concert/Concert';
 import { Comments } from '../../api/comment/Comment';
+import { Concerts } from '../../api/concert/Concert';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
@@ -45,6 +45,9 @@ Meteor.publish(Profiles.adminPublicationName, function () {
 });
 
 Meteor.publish(Concerts.adminPublicationName, function () {
+  return (
+    Concerts.collection.find()
+  );
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return Concerts.collection.find();
   }
