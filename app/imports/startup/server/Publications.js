@@ -8,9 +8,7 @@ import { Concerts } from '../../api/concert/Concert';
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
 Meteor.publish(Profiles.userPublicationName, function () {
-  return (
-    Profiles.collection.find()
-  );
+  return Profiles.collection.find();
 });
 
 Meteor.publish(Concerts.userPublicationName, function () {
@@ -38,10 +36,7 @@ Meteor.publish(Comments.userPublicationName, function () {
 // Admin-level publication.
 // If logged in and with admin role, then publish all documents from all users. Otherwise, publish nothing.
 Meteor.publish(Profiles.adminPublicationName, function () {
-  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Profiles.collection.find();
-  }
-  return this.ready();
+  return Profiles.collection.find();
 });
 
 Meteor.publish(Concerts.adminPublicationName, function () {

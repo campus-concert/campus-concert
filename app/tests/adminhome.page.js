@@ -13,23 +13,15 @@ class AdminHomePage {
 
   async showsButtons(testController) {
     const buttonCount = Selector('#adminhome-button').count;
-    await testController.expect(buttonCount).eql(5);
+    await testController.expect(buttonCount).eql(3);
   }
 
-  async gotoDeleteProfile(testController) {
-    await testController.click('#delete-profile');
+  async gotoEditProfiles(testController) {
+    await testController.click('#edit-profiles');
   }
 
-  async gotoCreateEditConcert(testController) {
-    await testController.click('#create-edit-concert');
-  }
-
-  async gotoBrowseProfiles(testController) {
-    await testController.click('#browse-profiles');
-  }
-
-  async gotoBrowseConcerts(testController) {
-    await testController.click('#browse-concerts');
+  async gotoEditConcerts(testController) {
+    await testController.click('#edit-concerts');
   }
 
   async gotoUserComments(testController) {

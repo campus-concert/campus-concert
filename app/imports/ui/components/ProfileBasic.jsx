@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Card, Image, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const ProfileBasic = ({ profile, showDetailsLink }) => (
+const ProfileBasic = ({ profile, admin }) => (
   <Card className="d-flex flex-column h-100">
     <Card.Header className="bg-dark text-white text-center position-relative">
       <Image src={profile.image} roundedCircle width={200} className="mt-3" />
@@ -24,15 +24,21 @@ const ProfileBasic = ({ profile, showDetailsLink }) => (
         <div className="mb-2">
           <Card.Text><h5>Location:</h5>{profile.location}</Card.Text>
         </div>
-        {showDetailsLink && (
-          <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center">
+          {admin ? (
+            <Link to={`/userprofile/admin/${profile._id}`}>
+              <Button variant="primary" size="md">
+                View Details
+              </Button>
+            </Link>
+          ) : (
             <Link to={`/userprofile/${profile._id}`}>
               <Button variant="primary" size="md">
                 View Details
               </Button>
             </Link>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </Card.Body>
   </Card>
@@ -49,11 +55,11 @@ ProfileBasic.propTypes = {
     image: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
-  showDetailsLink: PropTypes.bool,
+  admin: PropTypes.bool,
 };
 
 ProfileBasic.defaultProps = {
-  showDetailsLink: false,
+  admin: false,
 };
 
 export default ProfileBasic;

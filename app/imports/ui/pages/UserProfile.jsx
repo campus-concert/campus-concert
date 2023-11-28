@@ -9,6 +9,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 
 const UserProfile = () => {
   const { userId } = useParams();
+  const { admin } = useParams();
   // eslint-disable-next-line prefer-const
   let { ready, userProfile } = useTracker(() => {
     const subscription = Meteor.subscribe(Profiles.userPublicationName);
@@ -21,10 +22,14 @@ const UserProfile = () => {
   });
 
   const pageTitle = userProfile ? `${userProfile.firstName} ${userProfile.lastName}'s Profile` : 'User Profile';
-  let own = false;
+  let edit = false;
+
   if (!userId && Meteor.user()) {
     userProfile = Profiles.collection.findOne({ contact: Meteor.user().username });
-    own = true;
+    edit = true;
+  }
+  if (admin) {
+    edit = true;
   }
 
   return ready ? (
@@ -35,7 +40,7 @@ const UserProfile = () => {
             <Col className="text-center">
               <h2>{pageTitle}</h2>
             </Col>
-            <Profile profile={userProfile} own={own} />
+            <Profile profile={userProfile} edit={edit} />
           </Card>
         </Col>
       </Row>

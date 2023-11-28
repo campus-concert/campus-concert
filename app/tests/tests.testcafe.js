@@ -6,6 +6,7 @@ import { userProfilePage } from './userprofile.page';
 import { editProfilePage } from './editprofile.page';
 import { userHomePage } from './userhome.page';
 import { adminHomePage } from './adminhome.page';
+import { adminBrowseProfilesPage } from './adminBrowseProfiles.page';
 
 /* global fixture:false, test:false */
 
@@ -83,16 +84,14 @@ test('Test that the adminhome works', async (testController) => {
   await navBar.isLoggedIn(testController, adminCredentials.username);
   await adminHomePage.isDisplayed(testController);
   await adminHomePage.showsButtons(testController);
-  await adminHomePage.gotoDeleteProfile(testController);
-  // await deleteProfilePage.isDisplayed(testController);
+  await adminHomePage.gotoEditProfiles(testController);
+  await adminBrowseProfilesPage.isDisplayed(testController);
   await navBar.gotoAdminHome(testController);
   await adminHomePage.isDisplayed(testController);
-  await adminHomePage.gotoCreateEditConcert(testController);
-  // await createConcertPage.isDisplayed(testController);
+  await adminHomePage.gotoEditConcerts(testController);
+  // await adminEditConcertPage.isDisplayed(testController);
   await navBar.gotoAdminHome(testController);
   await adminHomePage.isDisplayed(testController);
-  await adminHomePage.gotoBrowseProfiles(testController);
-  // await browseProfilesPage.isDisplayed(testController);
   await navBar.gotoAdminHome(testController);
   await adminHomePage.isDisplayed(testController);
   // await adminHomePage.gotoBrowseConcerts(testController);

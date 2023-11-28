@@ -6,10 +6,10 @@ import { Profiles } from '../../api/profile/Profile';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ProfileBasic from '../components/ProfileBasic';
 
-const BrowseProfiles = () => {
+const AdminBrowseProfiles = () => {
 
   const { ready, profiles } = useTracker(() => {
-    const subscription = Meteor.subscribe(Profiles.userPublicationName);
+    const subscription = Meteor.subscribe(Profiles.adminPublicationName);
     const rdy = subscription.ready();
     const profileItems = Profiles.collection.find({}).fetch();
     return {
@@ -19,17 +19,17 @@ const BrowseProfiles = () => {
   }, []);
 
   return ready ? (
-    <Container className="py-3">
+    <Container id="admin-browse-profiles-page" className="py-3">
       <Row className="justify-content-center">
         <Col>
           <Card className="p-4 mb-4"> {/* Stylish box added here */}
             <Col className="text-center">
-              <h2>Browse Profiles</h2>
+              <h2>Admin Browse Profiles</h2>
             </Col>
             <Row xs={1} md={2} lg={3} className="g-4">
               {profiles.map((profile, index) => (
                 <Col key={index}>
-                  <ProfileBasic profile={profile} />
+                  <ProfileBasic profile={profile} admin />
                 </Col>
               ))}
             </Row>
@@ -40,4 +40,4 @@ const BrowseProfiles = () => {
   ) : <LoadingSpinner />;
 };
 
-export default BrowseProfiles;
+export default AdminBrowseProfiles;
