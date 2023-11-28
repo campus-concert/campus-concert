@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, SelectField, SubmitField, LongTextField, TextField, DateField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SelectField, SubmitField, LongTextField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -47,7 +47,7 @@ const CreateConcert = () => {
   }
 
   return ready ? (
-    <Container className="py-3">
+    <Container id="create-concert-page" className="py-3">
       <Row className="justify-content-center">
         <Col xs={10}>
           <Card className="p-4 mb-4"> {/* Underlay title with a white box */}

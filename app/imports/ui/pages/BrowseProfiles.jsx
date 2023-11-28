@@ -19,7 +19,7 @@ const BrowseProfiles = () => {
   }, []);
 
   return ready ? (
-    <Container className="py-3">
+    <Container id="browse-profiles-page" className="py-3">
       <Row className="justify-content-center">
         <Col>
           <Card className="p-4 mb-4"> {/* Stylish box added here */}
