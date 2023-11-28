@@ -9,6 +9,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 
 const UserConcert = () => {
   const { userId } = useParams();
+  const { admin } = useParams();
   // eslint-disable-next-line prefer-const
   let { ready, userConcert } = useTracker(() => {
     const subscription = Meteor.subscribe(Concerts.userPublicationName);
@@ -23,10 +24,12 @@ const UserConcert = () => {
   const pageTitle = userConcert
     ? `Posted by: ${userConcert.owner}`
     : 'User Concert';
-  let own = false;
-  if (!userId && Meteor.user()) {
-    userConcert = Concerts.collection.findOne({ concertContact: Meteor.user().username });
-    own = true;
+  let edit = false;
+  if (Meteor.user()) {
+    edit = userConcert.owner === Meteor.user().username;
+  }
+  if (admin) {
+    edit = true;
   }
 
   return ready ? (
@@ -37,7 +40,7 @@ const UserConcert = () => {
             <Col className="text-center">
               <h2>{pageTitle}</h2>
             </Col>
-            <Concert concert={userConcert} own={own} />
+            <Concert concert={userConcert} edit={edit} />
           </Card>
         </Col>
       </Row>

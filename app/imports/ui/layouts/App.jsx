@@ -26,6 +26,7 @@ import BrowseConcerts from '../pages/BrowseConcerts';
 import AdminBrowseProfiles from '../pages/AdminBrowseProfiles';
 import CreateConcert from '../pages/CreateConcert';
 import EditConcert from '../pages/EditConcert';
+import AdminBrowseConcerts from '../pages/AdminBrowseConcerts';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -58,7 +59,9 @@ const App = () => {
           <Route path="/edit-concert/:_id" element={<ProtectedRoute><EditConcert /></ProtectedRoute>} />
           <Route path="/adminhome" element={<AdminProtectedRoute ready={ready}><AdminHome /></AdminProtectedRoute>} />
           <Route path="/userprofile/:admin/:userId" element={<AdminProtectedRoute ready={ready}><UserProfile /></AdminProtectedRoute>} />
+          <Route path="/userconcert/:admin/:userId" element={<AdminProtectedRoute ready={ready}><UserConcert /></AdminProtectedRoute>} />
           <Route path="/admin-browse-profiles" element={<AdminProtectedRoute ready={ready}><AdminBrowseProfiles /></AdminProtectedRoute>} />
+          <Route path="/admin-browse-concerts" element={<AdminProtectedRoute ready={ready}><AdminBrowseConcerts /></AdminProtectedRoute>} />
           <Route path="/admin-comments" element={<AdminProtectedRoute ready={ready}><ListCommentsAdmin /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />

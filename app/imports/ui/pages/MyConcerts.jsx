@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { Col, Container, Row, Card } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -8,7 +7,6 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import ConcertBasic from '../components/ConcertBasic';
 
 const MyConcerts = () => {
-  const navigate = useNavigate();
   const userId = Meteor.userId();
 
   const { ready, userConcerts } = useTracker(() => {
@@ -34,11 +32,7 @@ const MyConcerts = () => {
             <Row xs={1} md={2} lg={3} className="g-4">
               {userConcerts.map((concert) => (
                 <Col key={concert._id}>
-                  <ConcertBasic
-                    concert={concert}
-                    showDetailsLink
-                    onClick={() => navigate(`/my-concerts/${concert._id}`)}
-                  />
+                  <ConcertBasic concert={concert} />
                 </Col>
               ))}
             </Row>
