@@ -54,6 +54,7 @@ class NavBar {
     await testController.expect(Selector('#browse-profiles-nav').exists).notOk();
     await testController.expect(Selector('#add-concert-na').exists).notOk();
     await testController.expect(Selector('#browse-concerts-nav').exists).notOk();
+    await testController.expect(Selector('#my-concerts-nav').exists).notOk();
   }
 
   async checkLoggedInContent(testController) {
@@ -64,6 +65,7 @@ class NavBar {
     await testController.expect(Selector('#browse-profiles-nav').exists).ok();
     await testController.expect(Selector('#add-concert-nav').exists).ok();
     await testController.expect(Selector('#browse-concerts-nav').exists).ok();
+    await testController.expect(Selector('#my-concerts-nav').exists).ok();
   }
 
   async checkUserContent(testController) {
@@ -105,6 +107,10 @@ class NavBar {
 
   async gotoBrowseConcerts(testController) {
     await testController.click('#browse-concerts-nav');
+  }
+
+  async gotoMyConcerts(testController) {
+    await testController.click('#my-concerts-nav');
   }
 
   async gotoAdminHome(testController) {
