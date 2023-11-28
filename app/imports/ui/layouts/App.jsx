@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import UserProfile from '../pages/UserProfile';
 import UserConcert from '../pages/UserConcert';
+import MyConcerts from '../pages/MyConcerts';
 import UserHome from '../pages/UserHome';
 import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
           <Route path="/browse-all-profiles" element={<ProtectedRoute><BrowseProfiles /></ProtectedRoute>} />
           <Route path="/browse-all-concerts" element={<ProtectedRoute><BrowseConcerts /></ProtectedRoute>} />
+          <Route path="/my-concerts" element={<ProtectedRoute><MyConcerts /></ProtectedRoute>} />
           <Route path="/userprofile/:userId" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
           <Route path="/createconcert" element={<ProtectedRoute><CreateConcert /></ProtectedRoute>} />
           <Route path="/userhome" element={<ProtectedRoute><UserHome /></ProtectedRoute>} />

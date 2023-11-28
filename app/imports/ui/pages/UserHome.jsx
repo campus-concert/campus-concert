@@ -25,10 +25,10 @@ const UserHome = () => (
 
       {/* Create/Edit Concert Box */}
       <Col xs={10} sm={8} md={6} lg={4} className="mb-4">
-        <Link to="/create-edit-concert" className="text-decoration-none">
+        <Link to="/my-concerts" className="text-decoration-none">
           <div id="userhome-button" className="home-box text-center rounded p-4 border-thick text-black bg-white">
             <MusicNote size={60} className="box-icon mb-3" />
-            <h3 id="create-edit-concert" className="box-title">Create/Edit a Concert</h3>
+            <h3 id="create-edit-concert" className="box-title">View My Concerts</h3>
           </div>
         </Link>
       </Col>
