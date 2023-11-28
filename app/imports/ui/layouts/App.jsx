@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import UserProfile from '../pages/UserProfile';
+import UserConcert from '../pages/UserConcert';
 import UserHome from '../pages/UserHome';
 import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
@@ -49,6 +50,7 @@ const App = () => {
           <Route path="/createconcert" element={<ProtectedRoute><CreateConcert /></ProtectedRoute>} />
           <Route path="/userhome" element={<ProtectedRoute><UserHome /></ProtectedRoute>} />
           <Route path="/userprofile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
+          <Route path="/userconcert/:userId" element={<ProtectedRoute><UserConcert /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
           <Route path="/adminhome" element={<AdminProtectedRoute ready={ready}><AdminHome /></AdminProtectedRoute>} />
           <Route path="/userprofile/:admin/:userId" element={<AdminProtectedRoute ready={ready}><UserProfile /></AdminProtectedRoute>} />
