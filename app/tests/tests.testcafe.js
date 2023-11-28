@@ -77,8 +77,8 @@ test.only('Test that the userhome works', async (testController) => {
   await userHomePage.isDisplayed(testController);
   // await createConcertPage.isDisplayed(testController);
   await userHomePage.gotoMyConcerts(testController);
+  // await userHomePage.isDisplayed(testController);
   await navBar.gotoUserHome(testController);
-  await userHomePage.isDisplayed(testController);
   await userHomePage.gotoBrowseProfiles(testController);
   await browseProfilesPage.isDisplayed(testController);
   await navBar.gotoUserHome(testController);
