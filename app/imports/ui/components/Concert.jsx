@@ -49,7 +49,7 @@ const Concert = ({ concert }) => {
         </div>
         {Meteor.user() && Meteor.user().emails[0].address === concert.owner ? (
           <Card.Footer>
-            <Link id="edit-concert-button" to={`/edit-concert/${concert._id}`}>Edit</Link>
+            <Link id="edit-concert-button" to={`/edit-concert/${concert._id}`}>Edit or Remove</Link>
           </Card.Footer>
         ) : (
           <Card.Body>
