@@ -1,5 +1,4 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Button, Card } from 'react-bootstrap';
