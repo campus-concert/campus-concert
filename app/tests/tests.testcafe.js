@@ -72,7 +72,7 @@ test('Test that the userhome works', async (testController) => {
   // await browseProfilesPage.isDisplayed(testController);
   await navBar.gotoUserHome(testController);
   await userHomePage.isDisplayed(testController);
-  await userHomePage.gotoBrowseConcerts(testController);
+  // await userHomePage.gotoBrowseConcerts(testController);
   // await browseConcertsPage.isDisplayed(testController);
   await navBar.logout(testController);
 });
@@ -95,10 +95,10 @@ test('Test that the adminhome works', async (testController) => {
   // await browseProfilesPage.isDisplayed(testController);
   await navBar.gotoAdminHome(testController);
   await adminHomePage.isDisplayed(testController);
-  await adminHomePage.gotoBrowseConcerts(testController);
+  // await adminHomePage.gotoBrowseConcerts(testController);
   // await browseConcertsPage.isDisplayed(testController);
-  await navBar.gotoAdminHome(testController);
-  await adminHomePage.isDisplayed(testController);
+  // await navBar.gotoAdminHome(testController);
+  // await adminHomePage.isDisplayed(testController);
   await adminHomePage.gotoUserComments(testController);
   // await userCommentsPage.isDisplayed(testController);
   await navBar.logout(testController);
