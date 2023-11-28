@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, SelectField, SubmitField, LongTextField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SelectField, SubmitField, LongTextField, HiddenField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
-import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Navigate } from 'react-router-dom';
+import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Concerts } from '../../api/concert/Concert';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const bridge = new SimpleSchema2Bridge(Concerts.schema);
 
-/* Renders the AddStuff page for adding a document. */
 const CreateConcert = () => {
-
   const [redirectToReferer, setRedirectToRef] = useState(false);
 
   const { ready } = useTracker(() => {
@@ -23,27 +21,49 @@ const CreateConcert = () => {
       ready: rdy,
     };
   });
-  // On submit, insert the data.
   const submit = (data) => {
-    const { concertName, concertDescription, concertContact, date, time, concertLocation, instrumentsNeeded, genres } = data;
+    const {
+      concertName,
+      concertDescription,
+      contact,
+      concertLocation,
+      date,
+      time,
+      instrumentsNeeded,
+      genres,
+    } = data;
+
     Concerts.collection.insert(
-      { concertName, concertDescription, concertContact, date, time, concertLocation, instrumentsNeeded, genres },
+      {
+        concertName,
+        concertDescription,
+        contact,
+        concertLocation,
+        date,
+        time,
+        instrumentsNeeded,
+        genres,
+        owner: Meteor.user().emails[0].address,
+      },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
         } else {
-          swal('Success', 'Concert created successfully', 'success');
-          setRedirectToRef(true);
+          swal({
+            title: 'Success',
+            text: 'Concert created successfully',
+            icon: 'success',
+            button: 'OK',
+          }).then(() => setRedirectToRef(true));
         }
       },
     );
   };
 
-  // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
-
   if (redirectToReferer) {
-    return <Navigate to="/userhome" />;
+    // Redirect to the desired page after successful submission
+    return <Navigate to="/my-concerts" />;
   }
 
   return ready ? (
@@ -51,51 +71,62 @@ const CreateConcert = () => {
       <Row className="justify-content-center">
         <Col xs={10}>
           <Card className="p-4 mb-4"> {/* Underlay title with a white box */}
-            <Col className="text-center"><h2>Create a Concert</h2></Col>
+            <Col className="text-center"><h2>Create Concert</h2></Col>
             <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
               <Card>
                 <Card.Body>
                   <Row>
                     <Col>
-                      <TextField name="concertName" showInlineError />
-                    </Col>
-                    <Col>
-                      <TextField name="concertContact" placeholder="Please enter a 10-digit phone number including the area code" showInlineError />
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <LongTextField name="concertDescription" showInlineError />
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <TextField name="date" placeholder="mm/dd/year" showInlineError />
-                    </Col>
-                    <Col>
-                      <TextField name="time" placeholder="hour:min am/pm" showInlineError />
-                    </Col>
-                    <Col>
-                      <TextField name="concertLocation" placeholder="Enter where the concert will be held" showInlineError />
+                      <TextField id="concert-name" name="concertName" showInlineError />
                     </Col>
                   </Row>
                   <Row>
                     <Col>
                       <SelectField
+                        id="concert-instruments"
                         name="instrumentsNeeded"
-                        placeholder="Choose instruments needed for the performance"
+                        placeholder="Choose instrument(s) needed"
                         showInlineError
                       />
                     </Col>
                     <Col>
                       <SelectField
+                        id="concert-genres"
                         name="genres"
-                        placeholder="Choose genres"
+                        placeholder="Choose genre(s)"
                         showInlineError
                       />
                     </Col>
                   </Row>
-                  <SubmitField value="Submit" />
+                  <Row>
+                    <Col>
+                      <TextField
+                        id="concert-date"
+                        name="date"
+                        placeholder="Enter date (e.g., Feb 2, 2024)"
+                        showInlineError
+                      />
+                    </Col>
+                    <Col>
+                      <TextField
+                        id="concert-time"
+                        name="time"
+                        placeholder="Enter time (e.g., 12:00 PM)"
+                        showInlineError
+                      />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <TextField id="concert-location" name="concertLocation" showInlineError />
+                    </Col>
+                    <Col>
+                      <TextField id="concert-contact" name="contact" placeholder="Phone number, email, or social media handle" showInlineError />
+                    </Col>
+                  </Row>
+                  <LongTextField id="concert-description" name="concertDescription" showInlineError />
+                  <SubmitField id="concert-submit" value="Submit" />
+                  <HiddenField name="owner" value={Meteor.user().emails[0].address} />
                   <ErrorsField />
                 </Card.Body>
               </Card>

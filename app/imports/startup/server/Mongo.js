@@ -29,15 +29,14 @@ if (Profiles.collection.find().count() === 0) {
   }
 }
 
-const addConcert = (concertName, concertDescription, concertContact, concertLocation, date, time, instrumentsNeeded, genres) => {
-  console.log(`  Adding: ${concertName} (${concertContact})`);
-  Concerts.collection.insert({ concertName, concertDescription, concertContact, concertLocation, date, time, instrumentsNeeded, genres });
+const addConcert = (concert) => {
+  console.log(`  Adding: ${concert.concertName} (${concert.owner})`);
+  Concerts.collection.insert(concert);
 };
 
 if (Concerts.collection.find().count() === 0) {
-  if (Meteor.settings.defaultAccounts) {
+  if (Meteor.settings.defaultConcerts) {
     console.log('Creating default concerts.');
-    // eslint-disable-next-line max-len
-    Meteor.settings.defaultAccounts.forEach(({ concertName, concertDescription, concertContact, concertLocation, date, time, instrumentsNeeded, genres }) => addConcert(concertName, concertDescription, concertContact, concertLocation, date, time, instrumentsNeeded, genres));
+    Meteor.settings.defaultConcerts.forEach(concert => addConcert(concert));
   }
 }

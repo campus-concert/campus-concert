@@ -1,155 +1,83 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Card, Image, Button } from 'react-bootstrap';
-import { Youtube, Spotify, Cloud } from 'react-bootstrap-icons';
+import { Button, Card } from 'react-bootstrap';
 
-const Concert = ({ profile, own = false }) => {
+const Concert = ({ concert }) => {
 
-  if (!profile) {
+  if (!concert) {
     return <div>No Concert found</div>;
   }
 
-  return own ? (
-    <Card className="d-flex flex-column">
+  return (
+    <Card className="d-flex flex-column h-100">
       <Card.Header className="bg-dark text-white text-center position-relative">
-        <Image src={profile.image} roundedCircle width={200} className="mt-3" />
-        <div className="d-flex justify-content-end p-3 w-100 position-absolute top-0 end-0">
-          <a
-            href={profile.youtubeLink || '#'} // Use the actual YouTube link from the profile
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white me-3"
-          >
-            <Youtube size={25} />
-          </a>
-          <a
-            href={profile.spotifyLink || '#'} // Use the actual Spotify link from the profile
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white me-3"
-          >
-            <Spotify size={25} />
-          </a>
-          <a
-            href={profile.soundcloudLink || '#'} // Use the actual SoundCloud link from the profile
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white"
-          >
-            <Cloud size={25} />
-          </a>
-        </div>
-        <Card.Title className="my-2">{profile.owner}</Card.Title>
+        <Card.Title className="my-2">{concert.concertName}</Card.Title>
       </Card.Header>
       <Card.Body className="flex-grow-1">
         <div className="d-flex flex-column">
           <div className="mb-2">
-            <Card.Text><h5>Instruments:</h5>{profile.instruments.join(', ')}</Card.Text>
+            <Card.Text>
+              <h5>Instruments Needed:</h5>{concert.instrumentsNeeded.join(', ')}
+            </Card.Text>
           </div>
           <div className="mb-2">
-            <Card.Text><h5>Musical Tastes:</h5>{profile.tastes.join(', ')}</Card.Text>
+            <Card.Text>
+              <h5>Musical Genres:</h5>{concert.genres.join(', ')}
+            </Card.Text>
           </div>
           <div className="mb-2">
-            <Card.Text><h5>Location:</h5>{profile.location}</Card.Text>
+            <Card.Text>
+              <h5>Date:</h5>{concert.date}
+            </Card.Text>
           </div>
           <div className="mb-2">
-            <Card.Text><h5>Date:</h5>{profile.date}</Card.Text>
+            <Card.Text>
+              <h5>Time:</h5>{concert.time}
+            </Card.Text>
           </div>
           <div className="mb-2">
-            <Card.Text><h5>Time:</h5>{profile.time}</Card.Text>
+            <Card.Text>
+              <h5>Location:</h5>{concert.concertLocation}
+            </Card.Text>
           </div>
           <div className="mb-2">
-            <Card.Text><h5>Contact:</h5>{profile.contact}</Card.Text>
+            <Card.Text><h5>Contact:</h5>{concert.contact}</Card.Text>
           </div>
-          <Card.Text className="my-2"><h5>Description:</h5>{profile.description}</Card.Text>
+          <Card.Text id="concert-description" className="my-2"><h5>Description:</h5>{concert.concertDescription}</Card.Text>
         </div>
-      </Card.Body>
-      <Card.Footer>
-        <Link to={`/edit/${profile._id}`}>Edit</Link>
-      </Card.Footer>
-    </Card>
-  ) : (
-    <Card className="d-flex flex-column">
-      <Card.Header className="bg-dark text-white text-center position-relative">
-        <Image src={profile.image} roundedCircle width={200} className="mt-3" />
-        <div className="d-flex justify-content-end p-3 w-100 position-absolute top-0 end-0">
-          <a
-            href={profile.youtubeLink || '#'} // Use the actual YouTube link from the profile
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white me-3"
-          >
-            <Youtube size={25} />
-          </a>
-          <a
-            href={profile.spotifyLink || '#'} // Use the actual Spotify link from the profile
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white me-3"
-          >
-            <Spotify size={25} />
-          </a>
-          <a
-            href={profile.soundcloudLink || '#'} // Use the actual SoundCloud link from the profile
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white"
-          >
-            <Cloud size={25} />
-          </a>
-        </div>
-        <Card.Title className="my-2">{profile.owner}</Card.Title>
-      </Card.Header>
-      <Card.Body className="flex-grow-1">
-        <div className="d-flex flex-column">
-          <div className="mb-2">
-            <Card.Text><h5>Instruments:</h5>{profile.instruments.join(', ')}</Card.Text>
-          </div>
-          <div className="mb-2">
-            <Card.Text><h5>Musical Tastes:</h5>{profile.tastes.join(', ')}</Card.Text>
-          </div>
-          <div className="mb-2">
-            <Card.Text><h5>Location:</h5>{profile.location}</Card.Text>
-          </div>
-          <div className="mb-2">
-            <Card.Text><h5>Date:</h5>{profile.date}</Card.Text>
-          </div>
-          <div className="mb-2">
-            <Card.Text><h5>Time:</h5>{profile.time}</Card.Text>
-          </div>
-          <div className="mb-2">
-            <Card.Text><h5>Contact:</h5>{profile.contact}</Card.Text>
-          </div>
-          <Card.Text className="my-2"><h5>Description:</h5>{profile.description}</Card.Text>
-        </div>
-        <Link to={`/message/${profile._id}`}>
-          <Button variant="primary" size="md" className="mt-3">
-            Message
-          </Button>
-        </Link>
+        {Meteor.user() && Meteor.user().emails[0].address === concert.owner ? (
+          <Card.Footer>
+            <Link id="edit-concert-button" to={`/edit-concert/${concert._id}`}>Edit or Remove</Link>
+          </Card.Footer>
+        ) : (
+          <Card.Body>
+            <Link to={`/comment/${concert._id}`}>
+              <Button variant="primary" size="md" className="mt-3">
+                Comment
+              </Button>
+            </Link>
+          </Card.Body>
+        )}
       </Card.Body>
     </Card>
   );
 };
 
 Concert.propTypes = {
-  profile: PropTypes.shape({
-    owner: PropTypes.string,
-    contact: PropTypes.string,
+  concert: PropTypes.shape({
+    concertName: PropTypes.string,
     date: PropTypes.string,
     time: PropTypes.string,
-    image: PropTypes.string,
-    description: PropTypes.string,
-    location: PropTypes.string,
-    instruments: PropTypes.arrayOf(PropTypes.string),
-    tastes: PropTypes.arrayOf(PropTypes.string),
-    youtubeLink: PropTypes.string,
-    spotifyLink: PropTypes.string,
-    soundcloudLink: PropTypes.string,
+    instrumentsNeeded: PropTypes.arrayOf(PropTypes.string),
+    genres: PropTypes.arrayOf(PropTypes.string),
+    concertLocation: PropTypes.string,
+    concertDescription: PropTypes.string,
+    contact: PropTypes.string,
+    owner: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
-  own: PropTypes.bool.isRequired,
 };
 
 export default Concert;

@@ -15,15 +15,7 @@
       "contact": "admin@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
-      "soundcloudLink": "https://soundcloud.com/",
-      "concertName": "Test Concert",
-      "date": "Feb 2, 2024",
-      "time": "2 am",
-      "concertLocation": "Ala Wai Canal",
-      "instrumentsNeeded": "guitar",
-      "genres": "hip-hop",
-      "concertDescription": "test description",
-      "concertContact": "8085555555"
+      "soundcloudLink": "https://soundcloud.com/"
     },
     {
       "email": "john@foo.com",
@@ -42,15 +34,7 @@
       "contact": "john@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
-      "soundcloudLink": "https://soundcloud.com/",
-      "concertName": "Test Concert",
-      "date": "Feb 2, 2024",
-      "time": "2 am",
-      "concertLocation": "Ala Wai Canal",
-      "instrumentsNeeded": "guitar",
-      "genres": "hip-hop",
-      "concertDescription": "test description",
-      "concertContact": "8085555555"
+      "soundcloudLink": "https://soundcloud.com/"
     },
     {
       "email": "philip@foo.com",
@@ -66,15 +50,7 @@
       "contact": "philip@foo.com",
       "youtubeLink": "https://www.youtube.com/user/philipmjohnson",
       "spotifyLink": "https://open.spotify.com/user/123456789",
-      "soundcloudLink": "https://soundcloud.com/philipmjohnson",
-      "concertName": "Test Concert",
-      "date": "Feb 2, 2024",
-      "time": "2 am",
-      "concertLocation": "Ala Wai Canal",
-      "instrumentsNeeded": "guitar",
-      "genres": "hip-hop",
-      "concertDescription": "test description",
-      "concertContact": "8085555555"
+      "soundcloudLink": "https://soundcloud.com/philipmjohnson"
     },
     {
       "email": "henri@foo.com",
@@ -93,15 +69,7 @@
       "contact": "henri@foo.com",
       "youtubeLink": "https://www.youtube.com/user/henri.casanova",
       "spotifyLink": "https://open.spotify.com/user/987654321",
-      "soundcloudLink": "https://soundcloud.com/henricasanova",
-      "concertName": "Test Concert",
-      "date": "Feb 2, 2024",
-      "time": "2 am",
-      "concertLocation": "Ala Wai Canal",
-      "instrumentsNeeded": "guitar",
-      "genres": "hip-hop",
-      "concertDescription": "test description",
-      "concertContact": "8085555555"
+      "soundcloudLink": "https://soundcloud.com/henricasanova"
     },
     {
       "email": "kim@foo.com",
@@ -120,104 +88,49 @@
       "contact": "kim@foo.com",
       "youtubeLink": "https://www.youtube.com/user/kimbinsted",
       "spotifyLink": "https://open.spotify.com/user/1122334455",
-      "soundcloudLink": "https://soundcloud.com/kimbinsted",
-      "concertName": "Test Concert",
-      "date": "Feb 2, 2024",
-      "time": "2 am",
-      "concertLocation": "Ala Wai Canal",
-      "instrumentsNeeded": "guitar",
-      "genres": "hip-hop",
-      "concertDescription": "test description",
-      "concertContact": "8085555555"
+      "soundcloudLink": "https://soundcloud.com/kimbinsted"
     }
   ],
 
-  "defaultConcerts":[
+  "defaultConcerts": [
     {
-      "email": "admin@foo.com",
-      "password": "changeme",
-      "role": "admin",
-      "owner" : "Admin Foo",
-      "image": "https://github.com/philipmjohnson.png",
-      "description": "Admin Foo is a fictional administrator",
-      "instruments": "guitar",
-      "tastes": "pop",
-      "location": "Kailua",
-      "date": "2023-12-23",
-      "time": "7:00pm - 9:00pm HST",
-      "contact": "admin@foo.com",
-      "youtubeLink": "https://www.youtube.com/",
-      "spotifyLink": "https://open.spotify.com/",
-      "soundcloudLink": "https://soundcloud.com/"
+      "concertName": "Canal Chaos Concert",
+      "date": "Feb 2, 2024",
+      "time": "02:15 AM",
+      "concertLocation": "Ala Wai Canal",
+      "instrumentsNeeded": "guitar",
+      "genres": "hip-hop",
+      "concertDescription": "This is a description.",
+      "contact": "8085555555",
+      "owner": "admin@foo.com"
     },
     {
-      "email": "john@foo.com",
-      "password": "changeme",
-      "owner": "John Foo",
-      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/kim_binsted-square-300x300.jpg",
-      "description": "John Foo is a fictional user.",
-      "instruments": [
-        "flute",
-        "piano"
-      ],
-      "tastes": "jazz",
-      "location": "Pearl City",
-      "contact": "john@foo.com",
-      "youtubeLink": "https://www.youtube.com/",
-      "spotifyLink": "https://open.spotify.com/",
-      "soundcloudLink": "https://soundcloud.com/"
-    },
-    {
-      "email": "philip@foo.com",
-      "password": "changeme",
-      "owner": "Philip Johnson",
-      "image": "https://github.com/philipmjohnson.png",
-      "description": "I am a Professor of Information and Computer Sciences at the University of Hawaii, Director of the Collaborative Software Development Laboratory, and the CEO of OpenPowerQuality.com.",
-      "instruments": "guitar",
-      "tastes": "pop",
-      "location": "Kailua",
-      "date": "2023-11-30",
-      "time": "6:00pm - 8:00pm HST",
-      "contact": "philip@foo.com",
-      "youtubeLink": "https://www.youtube.com/user/philipmjohnson",
-      "spotifyLink": "https://open.spotify.com/user/123456789",
-      "soundcloudLink": "https://soundcloud.com/philipmjohnson"
-    },
-    {
-      "email": "henri@foo.com",
-      "password": "changeme",
-      "owner": "Henri Casanova",
-      "image": "https://avatars0.githubusercontent.com/u/7494478?s=460&v=4",
-      "description": "I am originally from France. I maintain a list of reports from my surf sessions. I have proof that I ran the Hana relay with an actual Team.",
-      "instruments": [
+      "concertName": "The Mathematical Melodies",
+      "date": "Feb 3, 2024",
+      "time": "02:30 AM",
+      "concertLocation": "KELLER 302",
+      "instrumentsNeeded": [
         "trumpet",
         "flute"
       ],
-      "tastes": "hip-hop",
-      "location": "Honolulu",
-      "date": "2023-12-18",
-      "time": "7:00pm - 9:00pm HST",
-      "contact": "henri@foo.com",
-      "youtubeLink": "https://www.youtube.com/user/henri.casanova",
-      "spotifyLink": "https://open.spotify.com/user/987654321",
-      "soundcloudLink": "https://soundcloud.com/henricasanova"
+      "genres": "jazz",
+      "concertDescription": "This is a description.",
+      "contact": "8085555555",
+      "owner": "john@foo.com"
     },
     {
-      "email": "kim@foo.com",
-      "password": "changeme",
-      "owner": "Kim Binsted",
-      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/kim_binsted-square-300x300.jpg",
-      "description": "Kim Binsted received her BSc in Physics at McGill (1991), and her PhD in Artificial Intelligence from the University of Edinburgh (1996). Her thesis topic was the computational modeling and generation of punning riddles, and her program, JAPE (Joke Analysis and Production Engine), generated puns such as \"What do you call a Martian who drinks beer? An ale-ien!\".",
-      "instruments": [
-        "flute",
-        "piano"
+      "concertName": "Bookish Beats",
+      "date": "Feb 4, 2024",
+      "time": "02:45 AM",
+      "concertLocation": "Hamilton Library",
+      "instrumentsNeeded": "guitar",
+      "genres": [
+        "jazz",
+        "pop"
       ],
-      "tastes": "jazz",
-      "location": "Pearl City",
-      "contact": "kim@foo.com",
-      "youtubeLink": "https://www.youtube.com/user/kimbinsted",
-      "spotifyLink": "https://open.spotify.com/user/1122334455",
-      "soundcloudLink": "https://soundcloud.com/kimbinsted"
+      "concertDescription": "This is a description.",
+      "contact": "8085555555",
+      "owner": "john@foo.com"
     }
   ],
 
