@@ -7,6 +7,7 @@ import { editProfilePage } from './editprofile.page';
 import { userHomePage } from './userhome.page';
 import { adminHomePage } from './adminhome.page';
 import { adminBrowseProfilesPage } from './adminBrowseProfiles.page';
+import { browseProfilesPage } from './browseProfiles.page';
 
 /* global fixture:false, test:false */
 
@@ -27,6 +28,30 @@ test('Test that signin and signout work', async (testController) => {
   await navBar.isLoggedIn(testController, credentials.username);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
+});
+
+test('Test that browse profiles work', async (testController) => {
+  // Check non-admin profile browse profiles
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.isLoggedIn(testController, credentials.username);
+  await navBar.gotoBrowseProfiles(testController);
+  await browseProfilesPage.isDisplayed(testController);
+  await browseProfilesPage.hasViewDetails(testController);
+  await browseProfilesPage.gotoViewDetails(testController);
+  await browseProfilesPage.hasMessage(testController);
+  await browseProfilesPage.gotoMessage(testController);
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
+  // Check admin profile browse profiles
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(testController, adminCredentials.username);
+  await adminHomePage.isDisplayed(testController);
+  await adminHomePage.gotoEditProfiles(testController);
+  await adminBrowseProfilesPage.gotoViewDetails(testController);
+  await adminBrowseProfilesPage.gotoEditProfile(testController);
+  await editProfilePage.isDisplayed(testController);
 });
 
 test('Test that the navbar works', async (testController) => {
