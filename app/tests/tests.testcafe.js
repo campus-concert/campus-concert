@@ -8,6 +8,7 @@ import { userHomePage } from './userhome.page';
 import { adminHomePage } from './adminhome.page';
 import { adminBrowseProfilesPage } from './adminBrowseProfiles.page';
 import { browseProfilesPage } from './browseProfiles.page';
+import { browseConcertsPage } from './browseconcerts.page';
 
 /* global fixture:false, test:false */
 
@@ -41,6 +42,7 @@ test('Test that browse profiles work', async (testController) => {
   await browseProfilesPage.gotoViewDetails(testController);
   await browseProfilesPage.hasMessage(testController);
   await browseProfilesPage.gotoMessage(testController);
+  await browseConcertsPage.isDisplayed(testController);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
   // Check admin profile browse profiles
