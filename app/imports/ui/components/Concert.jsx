@@ -1,10 +1,9 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Button, Card } from 'react-bootstrap';
 
-const Concert = ({ concert }) => {
+const Concert = ({ concert, edit = false }) => {
 
   if (!concert) {
     return <div>No Concert found</div>;
@@ -47,9 +46,9 @@ const Concert = ({ concert }) => {
           </div>
           <Card.Text id="concert-description" className="my-2"><h5>Description:</h5>{concert.concertDescription}</Card.Text>
         </div>
-        {Meteor.user() && Meteor.user().emails[0].address === concert.owner ? (
+        {edit ? (
           <Card.Footer>
-            <Link id="edit-concert-button" to={`/edit-concert/${concert._id}`}>Edit</Link>
+            <Link id="edit-concert-button" to={`/edit-concert/${concert._id}`}>Edit or Remove</Link>
           </Card.Footer>
         ) : (
           <Card.Body>
@@ -78,6 +77,7 @@ Concert.propTypes = {
     owner: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
+  edit: PropTypes.bool.isRequired,
 };
 
 export default Concert;

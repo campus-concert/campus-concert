@@ -64,7 +64,6 @@ const Profile = ({ profile, edit = false }) => {
       </Card.Body>
       <Card.Footer>
         {edit ? (
-
           <Link id="edit-profile-button" to={`/edit/${profile._id}`}>Edit</Link>
         ) : (
           <Link id="message" to={`/message/${profile._id}`}>

@@ -13,15 +13,19 @@ class UserHomePage {
 
   async showsButtons(testController) {
     const buttonCount = Selector('#userhome-button').count;
-    await testController.expect(buttonCount).eql(4);
+    await testController.expect(buttonCount).eql(5);
   }
 
   async gotoUserProfile(testController) {
     await testController.click('#view-profile');
   }
 
-  async gotoCreateEditConcert(testController) {
-    await testController.click('#create-edit-concert');
+  async gotoCreateConcert(testController) {
+    await testController.click('#create-concert');
+  }
+
+  async gotoMyConcerts(testController) {
+    await testController.click('#edit-concert');
   }
 
   async gotoBrowseProfiles(testController) {

@@ -95,8 +95,11 @@ test('Test that the userhome works', async (testController) => {
   await userProfilePage.isDisplayed(testController);
   await navBar.gotoUserHome(testController);
   await userHomePage.isDisplayed(testController);
-  await userHomePage.gotoCreateEditConcert(testController);
+  await userHomePage.gotoCreateConcert(testController);
+  await navBar.gotoUserHome(testController);
+  await userHomePage.isDisplayed(testController);
   // await createConcertPage.isDisplayed(testController);
+  await userHomePage.gotoMyConcerts(testController);
   await navBar.gotoUserHome(testController);
   await userHomePage.isDisplayed(testController);
   await userHomePage.gotoBrowseProfiles(testController);

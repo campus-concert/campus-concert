@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const ConcertBasic = ({ concert, showDetailsLink }) => (
+const ConcertBasic = ({ concert, admin }) => (
   <Card className="d-flex flex-column h-100">
     <Card.Header className="bg-dark text-white text-center position-relative">
       <Card.Title className="my-2">{concert.concertName} </Card.Title>
@@ -25,15 +25,21 @@ const ConcertBasic = ({ concert, showDetailsLink }) => (
         <div className="mb-2">
           <Card.Text><h5>Location:</h5>{concert.concertLocation}</Card.Text>
         </div>
-        {showDetailsLink && (
-          <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center">
+          {admin ? (
+            <Link to={`/userconcert/admin/${concert._id}`}>
+              <Button variant="primary" size="md">
+                View Details
+              </Button>
+            </Link>
+          ) : (
             <Link to={`/userconcert/${concert._id}`}>
               <Button variant="primary" size="md">
                 View Details
               </Button>
             </Link>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </Card.Body>
   </Card>
@@ -49,11 +55,11 @@ ConcertBasic.propTypes = {
     concertLocation: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
-  showDetailsLink: PropTypes.bool,
+  admin: PropTypes.bool,
 };
 
 ConcertBasic.defaultProps = {
-  showDetailsLink: false,
+  admin: false,
 };
 
 export default ConcertBasic;

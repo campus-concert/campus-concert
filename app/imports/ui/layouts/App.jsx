@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import UserProfile from '../pages/UserProfile';
 import UserConcert from '../pages/UserConcert';
+import MyConcerts from '../pages/MyConcerts';
 import UserHome from '../pages/UserHome';
 import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
@@ -24,6 +25,8 @@ import ListCommentsAdmin from '../pages/ListCommentsAdmin';
 import BrowseConcerts from '../pages/BrowseConcerts';
 import AdminBrowseProfiles from '../pages/AdminBrowseProfiles';
 import CreateConcert from '../pages/CreateConcert';
+import EditConcert from '../pages/EditConcert';
+import AdminBrowseConcerts from '../pages/AdminBrowseConcerts';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -46,15 +49,19 @@ const App = () => {
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
           <Route path="/browse-all-profiles" element={<ProtectedRoute><BrowseProfiles /></ProtectedRoute>} />
           <Route path="/browse-all-concerts" element={<ProtectedRoute><BrowseConcerts /></ProtectedRoute>} />
+          <Route path="/my-concerts" element={<ProtectedRoute><MyConcerts /></ProtectedRoute>} />
           <Route path="/userprofile/:userId" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
-          <Route path="/createconcert" element={<ProtectedRoute><CreateConcert /></ProtectedRoute>} />
           <Route path="/userhome" element={<ProtectedRoute><UserHome /></ProtectedRoute>} />
           <Route path="/userprofile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
+          <Route path="/create-concert" element={<ProtectedRoute><CreateConcert /></ProtectedRoute>} />
           <Route path="/userconcert/:userId" element={<ProtectedRoute><UserConcert /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
+          <Route path="/edit-concert/:_id" element={<ProtectedRoute><EditConcert /></ProtectedRoute>} />
           <Route path="/adminhome" element={<AdminProtectedRoute ready={ready}><AdminHome /></AdminProtectedRoute>} />
           <Route path="/userprofile/:admin/:userId" element={<AdminProtectedRoute ready={ready}><UserProfile /></AdminProtectedRoute>} />
+          <Route path="/userconcert/:admin/:userId" element={<AdminProtectedRoute ready={ready}><UserConcert /></AdminProtectedRoute>} />
           <Route path="/admin-browse-profiles" element={<AdminProtectedRoute ready={ready}><AdminBrowseProfiles /></AdminProtectedRoute>} />
+          <Route path="/admin-browse-concerts" element={<AdminProtectedRoute ready={ready}><AdminBrowseConcerts /></AdminProtectedRoute>} />
           <Route path="/admin-comments" element={<AdminProtectedRoute ready={ready}><ListCommentsAdmin /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />

@@ -6,30 +6,33 @@ import { Concerts } from '../../api/concert/Concert';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ConcertBasic from '../components/ConcertBasic';
 
-const BrowseConcerts = () => {
+const MyConcerts = () => {
+  const userId = Meteor.userId();
 
-  const { ready, concerts } = useTracker(() => {
+  const { ready, userConcerts } = useTracker(() => {
     const subscription = Meteor.subscribe(Concerts.userPublicationName);
     const rdy = subscription.ready();
-    const concertItems = Concerts.collection.find({}).fetch();
+
+    // Only fetch concerts owned by the logged-in user
+    const userConcertItems = Concerts.collection.find({ owner: Meteor.user()?.emails[0].address }).fetch();
     return {
-      concerts: concertItems,
+      userConcerts: userConcertItems,
       ready: rdy,
     };
-  }, []);
+  }, [userId]); // Make sure to include userId in the dependency array
 
   return ready ? (
     <Container className="py-3">
       <Row className="justify-content-center">
         <Col>
-          <Card className="p-4 mb-4"> {/* Stylish box added here */}
+          <Card className="p-4 mb-4">
             <Col className="text-center">
-              <h2>Browse Concerts</h2>
+              <h2>My Concerts</h2>
             </Col>
             <Row xs={1} md={2} lg={3} className="g-4">
-              {concerts.map((concert, index) => (
-                <Col key={index}>
-                  <ConcertBasic concert={concert} showDetailsLink />
+              {userConcerts.map((concert) => (
+                <Col key={concert._id}>
+                  <ConcertBasic concert={concert} />
                 </Col>
               ))}
             </Row>
@@ -40,4 +43,4 @@ const BrowseConcerts = () => {
   ) : <LoadingSpinner />;
 };
 
-export default BrowseConcerts;
+export default MyConcerts;
