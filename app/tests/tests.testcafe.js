@@ -42,6 +42,7 @@ test('Test that browse profiles work', async (testController) => {
   await browseProfilesPage.gotoViewDetails(testController);
   await browseProfilesPage.hasMessage(testController);
   await browseProfilesPage.gotoMessage(testController);
+  await navBar.gotoBrowseConcerts(testController);
   await browseConcertsPage.isDisplayed(testController);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
