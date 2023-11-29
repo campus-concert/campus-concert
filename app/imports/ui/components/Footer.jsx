@@ -13,7 +13,7 @@ const Footer = () => (
             <li><Link to="/userhome">Home</Link></li>
             <li><Link to="/browse-all-profiles">Browse Profiles</Link></li>
             <li><Link to="*">Create a Concert</Link></li>
-            <li><Link to="*">Browse Concerts</Link></li>
+            <li><Link to="/browse-all-concerts">Browse Concerts</Link></li>
           </ul>
         </Col>
         <Col className="text-left">

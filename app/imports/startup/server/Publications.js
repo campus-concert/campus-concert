@@ -3,12 +3,17 @@ import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { Profiles } from '../../api/profile/Profile';
 import { Comments } from '../../api/comment/Comment';
+import { Concerts } from '../../api/concert/Concert';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
 Meteor.publish(Profiles.userPublicationName, function () {
+  return Profiles.collection.find();
+});
+
+Meteor.publish(Concerts.userPublicationName, function () {
   return (
-    Profiles.collection.find()
+    Concerts.collection.find()
   );
 });
 
@@ -31,8 +36,12 @@ Meteor.publish(Comments.userPublicationName, function () {
 // Admin-level publication.
 // If logged in and with admin role, then publish all documents from all users. Otherwise, publish nothing.
 Meteor.publish(Profiles.adminPublicationName, function () {
+  return Profiles.collection.find();
+});
+
+Meteor.publish(Concerts.adminPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Profiles.collection.find();
+    return Concerts.collection.find();
   }
   return this.ready();
 });

@@ -54,7 +54,7 @@ const CreateProfile = () => {
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
 
   return ready ? (
-    <Container className="py-3">
+    <Container id="edit-profile-page" className="py-3">
       <Row className="justify-content-center">
         <Col xs={10}>
           <Card className="p-4 mb-4"> {/* Underlay title with a white box */}
@@ -64,29 +64,31 @@ const CreateProfile = () => {
                 <Card.Body>
                   <Row>
                     <Col>
-                      <TextField name="firstName" showInlineError />
+                      <TextField id="edit-profile-first-name" name="firstName" showInlineError />
                     </Col>
                     <Col>
-                      <TextField name="lastName" showInlineError />
+                      <TextField id="edit-profile-last-name" name="lastName" showInlineError />
                     </Col>
                   </Row>
                   <Row>
                     <Col>
-                      <TextField name="image" placeholder="Please insert URL" showInlineError />
+                      <TextField id="edit-profile-image" name="image" placeholder="Please insert URL" showInlineError />
                     </Col>
                     <Col>
                       <TextField
+                        id="edit-profile-contact"
                         name="contact"
                         value={Meteor.user().username}
                         showInlineError
                       />
                     </Col>
                   </Row>
-                  <LongTextField name="description" showInlineError />
-                  <TextField name="goals" showInlineError />
+                  <LongTextField id="edit-profile-description" name="description" showInlineError />
+                  <TextField id="edit-profile-goal" name="goals" showInlineError />
                   <Row>
                     <Col>
                       <SelectField
+                        id="edit-profile-location"
                         name="location"
                         placeholder="Choose location"
                         showInlineError
@@ -94,7 +96,7 @@ const CreateProfile = () => {
                     </Col>
                     <Col>
                       <SelectField
-                        // TODO make this possible to add several instruments
+                        id="edit-profile-instruments"
                         name="instruments"
                         placeholder="Choose instrument"
                         showInlineError
@@ -102,14 +104,14 @@ const CreateProfile = () => {
                     </Col>
                     <Col>
                       <SelectField
-                        // TODO make it possible to add several tastes
+                        id="edit-profile-tastes"
                         name="tastes"
                         placeholder="Choose taste"
                         showInlineError
                       />
                     </Col>
                   </Row>
-                  <SubmitField value="Submit" />
+                  <SubmitField id="edit-profile-submit" value="Submit" />
                   <ErrorsField />
                 </Card.Body>
               </Card>

@@ -92,6 +92,48 @@
     }
   ],
 
+  "defaultConcerts": [
+    {
+      "concertName": "Canal Chaos Concert",
+      "date": "Feb 2, 2024",
+      "time": "02:15 AM",
+      "concertLocation": "Ala Wai Canal",
+      "instrumentsNeeded": "guitar",
+      "genres": "hip-hop",
+      "concertDescription": "This is a description.",
+      "contact": "8085555555",
+      "owner": "admin@foo.com"
+    },
+    {
+      "concertName": "The Mathematical Melodies",
+      "date": "Feb 3, 2024",
+      "time": "02:30 AM",
+      "concertLocation": "KELLER 302",
+      "instrumentsNeeded": [
+        "trumpet",
+        "flute"
+      ],
+      "genres": "jazz",
+      "concertDescription": "This is a description.",
+      "contact": "8085555555",
+      "owner": "john@foo.com"
+    },
+    {
+      "concertName": "Bookish Beats",
+      "date": "Feb 4, 2024",
+      "time": "02:45 AM",
+      "concertLocation": "Hamilton Library",
+      "instrumentsNeeded": "guitar",
+      "genres": [
+        "jazz",
+        "pop"
+      ],
+      "concertDescription": "This is a description.",
+      "contact": "8085555555",
+      "owner": "john@foo.com"
+    }
+  ],
+
   "defaultData": [
     {
       "name": "Basket",
