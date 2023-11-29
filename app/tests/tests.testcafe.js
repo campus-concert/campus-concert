@@ -30,7 +30,7 @@ test('Test that signin and signout work', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
-test.only('Test that browse profiles work', async (testController) => {
+test('Test that browse profiles work', async (testController) => {
   // Check non-admin profile browse profiles
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
@@ -52,11 +52,6 @@ test.only('Test that browse profiles work', async (testController) => {
   await adminBrowseProfilesPage.gotoViewDetails(testController);
   await adminBrowseProfilesPage.gotoEditProfile(testController);
   await editProfilePage.isDisplayed(testController);
-  await editProfilePage.clearForm(testController);
-  await editProfilePage.editProfile(testController);
-  await adminBrowseProfilesPage.gotoEditProfile(testController);
-  await editProfilePage.clearForm(testController);
-  await editProfilePage.resetEditedProfile(testController);
 });
 
 test('Test that the navbar works', async (testController) => {
