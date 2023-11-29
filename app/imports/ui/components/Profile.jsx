@@ -67,7 +67,7 @@ const Profile = ({ profile, edit = false }) => {
 
           <Link id="edit-profile-button" to={`/edit/${profile._id}`}>Edit</Link>
         ) : (
-          <Link to={`/message/${profile._id}`}>
+          <Link id="message" to={`/message/${profile._id}`}>
             <Button variant="primary" size="md" className="mt-3">
               Message
             </Button>

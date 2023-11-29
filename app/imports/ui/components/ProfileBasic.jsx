@@ -26,13 +26,13 @@ const ProfileBasic = ({ profile, admin }) => (
         </div>
         <div className="d-flex justify-content-center">
           {admin ? (
-            <Link to={`/userprofile/admin/${profile._id}`}>
+            <Link id="admin-view-details" to={`/userprofile/admin/${profile._id}`}>
               <Button variant="primary" size="md">
                 View Details
               </Button>
             </Link>
           ) : (
-            <Link to={`/userprofile/${profile._id}`}>
+            <Link id="view-details" to={`/userprofile/${profile._id}`}>
               <Button variant="primary" size="md">
                 View Details
               </Button>
