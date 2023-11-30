@@ -11,26 +11,26 @@ const UserProfile = () => {
   const { userId } = useParams();
   const { admin } = useParams();
   // eslint-disable-next-line prefer-const
-  let { ready, userProfile } = useTracker(() => {
+  let { ready, userProfile, editMode } = useTracker(() => {
     const subscription = Meteor.subscribe(Profiles.userPublicationName);
     const rdy = subscription.ready();
-    const userProf = Profiles.collection.findOne({ _id: userId });
+    let userProf = Profiles.collection.findOne({ _id: userId });
+    let edit = false;
+    if (!userId && Meteor.user() && rdy) {
+      userProf = Profiles.collection.findOne({ contact: Meteor.user().username });
+      edit = true;
+    }
+    if (admin) {
+      edit = true;
+    }
     return {
       userProfile: userProf,
       ready: rdy,
+      editMode: edit,
     };
   });
 
   const pageTitle = userProfile ? `${userProfile.firstName} ${userProfile.lastName}'s Profile` : 'User Profile';
-  let edit = false;
-
-  if (!userId && Meteor.user()) {
-    userProfile = Profiles.collection.findOne({ contact: Meteor.user().username });
-    edit = true;
-  }
-  if (admin) {
-    edit = true;
-  }
 
   return ready ? (
     <Container id="user-profile-page" className="py-3">
@@ -40,7 +40,7 @@ const UserProfile = () => {
             <Col className="text-center">
               <h2>{pageTitle}</h2>
             </Col>
-            <Profile profile={userProfile} edit={edit} />
+            <Profile profile={userProfile} edit={editMode} />
           </Card>
         </Col>
       </Row>

@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
-import { Stuffs } from '../../api/stuff/Stuff';
 import { Profiles } from '../../api/profile/Profile';
 import { Comments } from '../../api/comment/Comment';
 import { Concerts } from '../../api/concert/Concert';
@@ -17,14 +16,6 @@ Meteor.publish(Concerts.userPublicationName, function () {
   );
 });
 
-Meteor.publish(Stuffs.userPublicationName, function () {
-  if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Stuffs.collection.find({ owner: username });
-  }
-  return this.ready();
-});
-
 Meteor.publish(Comments.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
@@ -36,19 +27,23 @@ Meteor.publish(Comments.userPublicationName, function () {
 // Admin-level publication.
 // If logged in and with admin role, then publish all documents from all users. Otherwise, publish nothing.
 Meteor.publish(Profiles.adminPublicationName, function () {
-  return Profiles.collection.find();
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return Profiles.collection.find();
+  }
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Profiles.collection.find({ contact: username });
+  }
+  return this.ready();
 });
 
 Meteor.publish(Concerts.adminPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return Concerts.collection.find();
   }
-  return this.ready();
-});
-
-Meteor.publish(Stuffs.adminPublicationName, function () {
-  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Stuffs.collection.find();
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Concerts.collection.find({ owner: username });
   }
   return this.ready();
 });
