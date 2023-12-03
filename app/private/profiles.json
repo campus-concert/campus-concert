@@ -366,8 +366,122 @@
       ],
       "tastes": "hip-hop",
       "location": "Honolulu",
-      "goals": "help orginize concerts",
+      "goals": "help organize concerts",
       "contact": "robin@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "mia@foo.com",
+      "password": "changeme",
+      "firstName": "Mia",
+      "lastName": "Mason",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Mia!",
+      "instruments": [
+        "piano",
+        "guitar",
+        "trumpet",
+        "flute"
+      ],
+      "tastes": "hip-hop",
+      "location": "Honolulu",
+      "goals": "challenge myself",
+      "contact": "mia@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "amy@foo.com",
+      "password": "changeme",
+      "firstName": "Amy",
+      "lastName": "Anderson",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Amy!",
+      "instruments": [
+        "piano",
+        "flute"
+      ],
+      "tastes": "rock",
+      "location": "Honolulu",
+      "goals": "hang out with people",
+      "contact": "amy@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "jenny@foo.com",
+      "password": "changeme",
+      "firstName": "Jenny",
+      "lastName": "Jason",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Jenny!",
+      "instruments": [
+        "piano",
+        "guitar"
+      ],
+      "tastes": "rock",
+      "location": "Honolulu",
+      "goals": "become Jenny from the block",
+      "contact": "jenny@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "tam@foo.com",
+      "password": "changeme",
+      "firstName": "Tam",
+      "lastName": "Tang",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Tam!",
+      "instruments": [
+        "flute"
+      ],
+      "tastes": "jazz",
+      "location": "Pearl City",
+      "goals": "meet the musical campus community",
+      "contact": "tam@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "logan@foo.com",
+      "password": "changeme",
+      "firstName": "Logan",
+      "lastName": "Loomers",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Logan!",
+      "instruments": [
+        "piano",
+        "flute"
+      ],
+      "tastes": "rock",
+      "location": "Pearl City",
+      "goals": "learn how to read sheet music",
+      "contact": "logan@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "kyle@foo.com",
+      "password": "changeme",
+      "firstName": "Kyle",
+      "lastName": "Keegan",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Kyle!",
+      "instruments": [
+        "piano"
+      ],
+      "tastes": "jazz",
+      "location": "Honolulu",
+      "goals": "become better at improvising",
+      "contact": "kyle@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
