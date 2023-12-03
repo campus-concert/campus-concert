@@ -1,0 +1,376 @@
+{
+  "profiles": [
+    {
+      "email": "admin@foo.com",
+      "password": "changeme",
+      "role": "admin",
+      "firstName": "Admin",
+      "lastName": "Foo",
+      "image": "https://github.com/philipmjohnson.png",
+      "description": "Admin Foo is a fictional administrator",
+      "instruments": "guitar",
+      "tastes": "pop",
+      "location": "Kailua",
+      "goals": "Rule the world",
+      "contact": "admin@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "john@foo.com",
+      "password": "changeme",
+      "firstName": "John",
+      "lastName": "Foo",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/kim_binsted-square-300x300.jpg",
+      "description": "John Foo is a fictional user.",
+      "instruments": [
+        "flute",
+        "piano"
+      ],
+      "tastes": "jazz",
+      "location": "Pearl City",
+      "goals": "Survive college",
+      "contact": "john@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "philip@foo.com",
+      "password": "changeme",
+      "firstName": "Philip",
+      "lastName": "Johnson",
+      "image": "https://github.com/philipmjohnson.png",
+      "description": "I am a Professor of Information and Computer Sciences at the University of Hawaii, Director of the Collaborative Software Development Laboratory, and the CEO of OpenPowerQuality.com.",
+      "instruments": "guitar",
+      "tastes": "pop",
+      "location": "Kailua",
+      "goals": "learn music theory",
+      "contact": "philip@foo.com",
+      "youtubeLink": "https://www.youtube.com/user/philipmjohnson",
+      "spotifyLink": "https://open.spotify.com/user/123456789",
+      "soundcloudLink": "https://soundcloud.com/philipmjohnson"
+    },
+    {
+      "email": "henri@foo.com",
+      "password": "changeme",
+      "firstName": "Henri",
+      "lastName": "Casanova",
+      "image": "https://avatars0.githubusercontent.com/u/7494478?s=460&v=4",
+      "description": "I am originally from France. I maintain a list of reports from my surf sessions. I have proof that I ran the Hana relay with an actual Team.",
+      "instruments": [
+        "trumpet",
+        "flute"
+      ],
+      "tastes": "hip-hop",
+      "location": "Honolulu",
+      "goals": "learn music theory",
+      "contact": "henri@foo.com",
+      "youtubeLink": "https://www.youtube.com/user/henri.casanova",
+      "spotifyLink": "https://open.spotify.com/user/987654321",
+      "soundcloudLink": "https://soundcloud.com/henricasanova"
+    },
+    {
+      "email": "kim@foo.com",
+      "password": "changeme",
+      "firstName": "Kim",
+      "lastName": "Binsted",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/kim_binsted-square-300x300.jpg",
+      "description": "Kim Binsted received her BSc in Physics at McGill (1991), and her PhD in Artificial Intelligence from the University of Edinburgh (1996). Her thesis topic was the computational modeling and generation of punning riddles, and her program, JAPE (Joke Analysis and Production Engine), generated puns such as \"What do you call a Martian who drinks beer? An ale-ien!\".",
+      "instruments": [
+        "flute",
+        "piano"
+      ],
+      "tastes": "jazz",
+      "location": "Pearl City",
+      "goals": "learn music theory",
+      "contact": "kim@foo.com",
+      "youtubeLink": "https://www.youtube.com/user/kimbinsted",
+      "spotifyLink": "https://open.spotify.com/user/1122334455",
+      "soundcloudLink": "https://soundcloud.com/kimbinsted"
+    },
+    {
+      "email": "carl@foo.com",
+      "password": "changeme",
+      "firstName": "Carl",
+      "lastName": "Chang",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Carl!",
+      "instruments": [
+        "trumpet",
+        "flute"
+      ],
+      "tastes": "pop",
+      "location": "Honolulu",
+      "goals": "get new friends",
+      "contact": "carl@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "nick@foo.com",
+      "password": "changeme",
+      "firstName": "Nick",
+      "lastName": "Fajardo",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Nick!",
+      "instruments": [
+        "trumpet",
+        "flute",
+        "piano"
+      ],
+      "tastes": "rock",
+      "location": "Honolulu",
+      "goals": "learn new things",
+      "contact": "nick@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "chris@foo.com",
+      "password": "changeme",
+      "firstName": "Chris",
+      "lastName": "Chun",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Chris!",
+      "instruments": [
+        "guitar",
+        "flute"
+      ],
+      "tastes": "pop",
+      "location": "Honolulu",
+      "goals": "showing my skills",
+      "contact": "chris@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "peter@foo.com",
+      "password": "changeme",
+      "firstName": "Peter",
+      "lastName": "Potter",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Peter!",
+      "instruments": [
+        "trumpet",
+        "flute"
+      ],
+      "tastes": "pop",
+      "location": "Honolulu",
+      "goals": "create a band",
+      "contact": "peter@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "nori@foo.com",
+      "password": "changeme",
+      "firstName": "Nori",
+      "lastName": "Nakamoto",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Nori!",
+      "instruments": [
+        "trumpet"
+      ],
+      "tastes": "jazz",
+      "location": "Honolulu",
+      "goals": "jam with people",
+      "contact": "nori@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "jonathan@foo.com",
+      "password": "changeme",
+      "firstName": "Jonathan",
+      "lastName": "Johanson",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Jonathan!",
+      "instruments": [
+        "flute"
+      ],
+      "tastes": "jazz",
+      "location": "Honolulu",
+      "goals": "feel the vibe",
+      "contact": "jonathan@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "austin@foo.com",
+      "password": "changeme",
+      "firstName": "Austin",
+      "lastName": "Akre",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Austin!",
+      "instruments": [
+        "guitar",
+        "piano"
+      ],
+      "tastes": "rock",
+      "location": "Pearl City",
+      "goals": "earn money from music",
+      "contact": "austin@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "adam@foo.com",
+      "password": "changeme",
+      "firstName": "Adam",
+      "lastName": "Aldridge",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Adam!",
+      "instruments": [
+        "flute"
+      ],
+      "tastes": "hip-hop",
+      "location": "Honolulu",
+      "goals": "show flute to the world",
+      "contact": "adam@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "mary@foo.com",
+      "password": "changeme",
+      "firstName": "Mary",
+      "lastName": "Morgan",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Mary!",
+      "instruments": [
+        "flute"
+      ],
+      "tastes": "jazz",
+      "location": "Honolulu",
+      "goals": "become a lead vocalist",
+      "contact": "mary@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "joann@foo.com",
+      "password": "changeme",
+      "firstName": "Joann",
+      "lastName": "Jensen",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Joann!",
+      "instruments": [
+        "trumpet",
+        "guitar"
+      ],
+      "tastes": "rock",
+      "location": "Honolulu",
+      "goals": "try out playing drums",
+      "contact": "joann@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "monica@foo.com",
+      "password": "changeme",
+      "firstName": "Monica",
+      "lastName": "Min",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Monica!",
+      "instruments": [
+        "piano",
+        "flute"
+      ],
+      "tastes": "rock",
+      "location": "Honolulu",
+      "goals": "spread joy",
+      "contact": "monica@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "tiffany@foo.com",
+      "password": "changeme",
+      "firstName": "Tiffany",
+      "lastName": "Tang",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Tiffany!",
+      "instruments": [
+        "trumpet"
+      ],
+      "tastes": "jazz",
+      "location": "Honolulu",
+      "goals": "have a reason to come to campus",
+      "contact": "tiffany@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "clara@foo.com",
+      "password": "changeme",
+      "firstName": "Clara",
+      "lastName": "Chang",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Clara!",
+      "instruments": [
+        "trumpet",
+        "flute"
+      ],
+      "tastes": "pop",
+      "location": "Honolulu",
+      "goals": "learn notes",
+      "contact": "clara@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "keely@foo.com",
+      "password": "changeme",
+      "firstName": "Keely",
+      "lastName": "Kawamura",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Keely!",
+      "instruments": [
+        "flute"
+      ],
+      "tastes": "hip-hop",
+      "location": "Honolulu",
+      "goals": "teach people how to play the flute",
+      "contact": "keely@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "robin@foo.com",
+      "password": "changeme",
+      "firstName": "Robin",
+      "lastName": "Rogers",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Robin!",
+      "instruments": [
+        "piano",
+        "guitar",
+        "trumpet",
+        "flute"
+      ],
+      "tastes": "hip-hop",
+      "location": "Honolulu",
+      "goals": "help orginize concerts",
+      "contact": "robin@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    }
+  ]
+}
