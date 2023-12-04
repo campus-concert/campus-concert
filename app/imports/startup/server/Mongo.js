@@ -59,7 +59,7 @@ if ((Meteor.settings.loadAssetsFile) && (Meteor.users.find().count() === 0)) {
   profilesData.profiles.map(({ email, password, role }) => createUser(email, password, role));
   console.log('========================');
   // Adding profiles from profile assets
-  profilesData.profiles.map(({ firstName, lastName, image, description, contact, location, goals, instruments, tastes }) => addProfile(firstName, lastName, image, description, contact, location, goals, instruments, tastes));
+  profilesData.profiles.map(({ firstName, lastName, image, description, email, location, goals, instruments, tastes }) => addProfile(firstName, lastName, image, description, email, location, goals, instruments, tastes));
   console.log('========================');
   // Adding concert assets
   const concertsFileName = 'concerts.json';

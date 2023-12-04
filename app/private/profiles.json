@@ -12,7 +12,6 @@
       "tastes": "pop",
       "location": "Kailua",
       "goals": "Rule the world",
-      "contact": "admin@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
@@ -31,7 +30,6 @@
       "tastes": "jazz",
       "location": "Pearl City",
       "goals": "Survive college",
-      "contact": "john@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
@@ -47,7 +45,6 @@
       "tastes": "pop",
       "location": "Kailua",
       "goals": "learn music theory",
-      "contact": "philip@foo.com",
       "youtubeLink": "https://www.youtube.com/user/philipmjohnson",
       "spotifyLink": "https://open.spotify.com/user/123456789",
       "soundcloudLink": "https://soundcloud.com/philipmjohnson"
@@ -66,7 +63,6 @@
       "tastes": "hip-hop",
       "location": "Honolulu",
       "goals": "learn music theory",
-      "contact": "henri@foo.com",
       "youtubeLink": "https://www.youtube.com/user/henri.casanova",
       "spotifyLink": "https://open.spotify.com/user/987654321",
       "soundcloudLink": "https://soundcloud.com/henricasanova"
@@ -85,7 +81,6 @@
       "tastes": "jazz",
       "location": "Pearl City",
       "goals": "learn music theory",
-      "contact": "kim@foo.com",
       "youtubeLink": "https://www.youtube.com/user/kimbinsted",
       "spotifyLink": "https://open.spotify.com/user/1122334455",
       "soundcloudLink": "https://soundcloud.com/kimbinsted"
@@ -104,7 +99,6 @@
       "tastes": "pop",
       "location": "Honolulu",
       "goals": "get new friends",
-      "contact": "carl@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
@@ -124,7 +118,6 @@
       "tastes": "rock",
       "location": "Honolulu",
       "goals": "learn new things",
-      "contact": "nick@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
@@ -143,7 +136,6 @@
       "tastes": "pop",
       "location": "Honolulu",
       "goals": "showing my skills",
-      "contact": "chris@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
@@ -162,7 +154,6 @@
       "tastes": "pop",
       "location": "Honolulu",
       "goals": "create a band",
-      "contact": "peter@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
@@ -180,7 +171,6 @@
       "tastes": "jazz",
       "location": "Honolulu",
       "goals": "jam with people",
-      "contact": "nori@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
@@ -198,7 +188,6 @@
       "tastes": "jazz",
       "location": "Honolulu",
       "goals": "feel the vibe",
-      "contact": "jonathan@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
@@ -217,7 +206,6 @@
       "tastes": "rock",
       "location": "Pearl City",
       "goals": "earn money from music",
-      "contact": "austin@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
@@ -235,7 +223,6 @@
       "tastes": "hip-hop",
       "location": "Honolulu",
       "goals": "show flute to the world",
-      "contact": "adam@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
@@ -253,7 +240,6 @@
       "tastes": "jazz",
       "location": "Honolulu",
       "goals": "become a lead vocalist",
-      "contact": "mary@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
@@ -272,7 +258,6 @@
       "tastes": "rock",
       "location": "Honolulu",
       "goals": "try out playing drums",
-      "contact": "joann@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
@@ -291,7 +276,6 @@
       "tastes": "rock",
       "location": "Honolulu",
       "goals": "spread joy",
-      "contact": "monica@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
@@ -309,7 +293,6 @@
       "tastes": "jazz",
       "location": "Honolulu",
       "goals": "have a reason to come to campus",
-      "contact": "tiffany@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
@@ -328,7 +311,6 @@
       "tastes": "pop",
       "location": "Honolulu",
       "goals": "learn notes",
-      "contact": "clara@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
@@ -346,7 +328,6 @@
       "tastes": "hip-hop",
       "location": "Honolulu",
       "goals": "teach people how to play the flute",
-      "contact": "keely@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
@@ -367,7 +348,6 @@
       "tastes": "hip-hop",
       "location": "Honolulu",
       "goals": "help organize concerts",
-      "contact": "robin@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
@@ -388,7 +368,6 @@
       "tastes": "hip-hop",
       "location": "Honolulu",
       "goals": "challenge myself",
-      "contact": "mia@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
@@ -407,7 +386,6 @@
       "tastes": "rock",
       "location": "Honolulu",
       "goals": "hang out with people",
-      "contact": "amy@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
@@ -426,7 +404,6 @@
       "tastes": "rock",
       "location": "Honolulu",
       "goals": "become Jenny from the block",
-      "contact": "jenny@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
@@ -444,7 +421,6 @@
       "tastes": "jazz",
       "location": "Pearl City",
       "goals": "meet the musical campus community",
-      "contact": "tam@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
@@ -463,7 +439,6 @@
       "tastes": "rock",
       "location": "Pearl City",
       "goals": "learn how to read sheet music",
-      "contact": "logan@foo.com",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
@@ -481,7 +456,69 @@
       "tastes": "jazz",
       "location": "Honolulu",
       "goals": "become better at improvising",
-      "contact": "kyle@foo.com",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "trevor@foo.com",
+      "password": "changeme",
+      "firstName": "Trevor",
+      "lastName": "Tang",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Trevor!",
+      "instruments": [
+        "piano",
+        "guitar"
+      ],
+      "tastes": "rock",
+      "location": "Pearl City",
+      "goals": "rock up UH",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "david@foo.com",
+      "password": "changeme",
+      "firstName": "David",
+      "lastName": "Davis",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is David!",
+      "instruments": ["guitar", "piano"],
+      "tastes": "hip-hop",
+      "location": "Kailua",
+      "goals": "create a hip-hop collective",
+      "youtubeLink": "https://www.youtube.com/user/",
+      "spotifyLink": "https://open.spotify.com/artist/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "catherine@foo.com",
+      "password": "changeme",
+      "firstName": "Catherine",
+      "lastName": "Carter",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Catherine!",
+      "instruments": ["trumpet", "flute"],
+      "tastes": "pop",
+      "location": "Honolulu",
+      "goals": "start a jazz fusion group",
+      "youtubeLink": "https://www.youtube.com/",
+      "spotifyLink": "https://open.spotify.com/",
+      "soundcloudLink": "https://soundcloud.com/"
+    },
+    {
+      "email": "quentin@foo.com",
+      "password": "changeme",
+      "firstName": "Quentin",
+      "lastName": "Quinn",
+      "image": "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg",
+      "description": "Hi, my name is Quentin!",
+      "instruments": ["trumpet", "flute"],
+      "tastes": "rock",
+      "location": "Kailua",
+      "goals": "start a rock band",
       "youtubeLink": "https://www.youtube.com/",
       "spotifyLink": "https://open.spotify.com/",
       "soundcloudLink": "https://soundcloud.com/"
