@@ -4,6 +4,23 @@ import { Profiles } from '../../api/profile/Profile';
 import { Comments } from '../../api/comment/Comment';
 import { Concerts } from '../../api/concert/Concert';
 
+// Bookmarked publications.
+Meteor.publish(Concerts.bookmarkedPublicationName, function () {
+  if (!this.userId) {
+    return this.ready();
+  }
+  // Query for this user's bookmarked concerts
+  const bookmarkedConcerts = Concerts.collection.find(
+    { 'bookmarks.userId': this.userId, 'bookmarks.state': true },
+  )
+  // Extract the concertId's from the bookmarked concerts
+  const concertIds = bookmarkedConcerts.map(concert => concert._id);
+  // Publish
+  return Concerts.collection.find(
+    { _id: { $in: concertIds } }
+  );
+});
+
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
 Meteor.publish(Profiles.userPublicationName, function () {

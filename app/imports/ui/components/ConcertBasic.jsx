@@ -2,11 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { StarFill, Star } from 'react-bootstrap-icons';
 
-const ConcertBasic = ({ concert, admin }) => (
+const ConcertBasic = ({ concert, admin }) => {
+  const toggleBookmark = () => {
+    const newBookmarkState = !concert.bookmarks || !concert.bookmarks.some(e => e.userId === Meteor.userId() && e.state);
+    console.log(newBookmarkState);
+    Meteor.call('bookmarkConcert', concert._id, newBookmarkState, (error) => {
+      if (error) {
+        console.error(error);
+      }
+    });
+  }
+  return (
   <Card className="d-flex flex-column h-100">
     <Card.Header className="bg-dark text-white text-center position-relative">
       <Card.Title className="my-2">{concert.concertName} </Card.Title>
+      <Button
+          variant={concert.bookmarks && concert.bookmarks.some(e => e.userId === Meteor.userId() && e.state) ? 'success' : 'outline-secondary'}
+          size="sm"
+          className="position-absolute top-0 end-0 m-2"
+          onClick={toggleBookmark}
+        >
+          {concert.bookmark ? <StarFill /> : <Star />}
+        </Button>
     </Card.Header>
     <Card.Body className="flex-grow-1">
       <div className="d-flex flex-column">
@@ -43,7 +62,8 @@ const ConcertBasic = ({ concert, admin }) => (
       </div>
     </Card.Body>
   </Card>
-);
+  );
+};
 
 ConcertBasic.propTypes = {
   concert: PropTypes.shape({
@@ -54,6 +74,7 @@ ConcertBasic.propTypes = {
     genres: PropTypes.arrayOf(PropTypes.string),
     concertLocation: PropTypes.string,
     _id: PropTypes.string,
+    bookmark: PropTypes.object,
   }).isRequired,
   admin: PropTypes.bool,
 };
