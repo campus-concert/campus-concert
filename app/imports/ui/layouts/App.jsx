@@ -58,8 +58,8 @@ const App = () => {
           <Route path="/edit/:_id" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
           <Route path="/edit-concert/:_id" element={<ProtectedRoute><EditConcert /></ProtectedRoute>} />
           <Route path="/adminhome" element={<AdminProtectedRoute ready={ready}><AdminHome /></AdminProtectedRoute>} />
-          <Route path="/userprofile/:admin/:userId" element={<AdminProtectedRoute ready={ready}><UserProfile /></AdminProtectedRoute>} />
-          <Route path="/userconcert/:admin/:userId" element={<AdminProtectedRoute ready={ready}><UserConcert /></AdminProtectedRoute>} />
+          <Route path="/userprofile/:admin/:userId" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
+          <Route path="/userconcert/:admin/:userId" element={<ProtectedRoute><UserConcert /></ProtectedRoute>} />
           <Route path="/admin-browse-profiles" element={<AdminProtectedRoute ready={ready}><AdminBrowseProfiles /></AdminProtectedRoute>} />
           <Route path="/admin-browse-concerts" element={<AdminProtectedRoute ready={ready}><AdminBrowseConcerts /></AdminProtectedRoute>} />
           <Route path="/admin-comments" element={<AdminProtectedRoute ready={ready}><ListCommentsAdmin /></AdminProtectedRoute>} />
