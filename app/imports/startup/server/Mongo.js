@@ -55,6 +55,7 @@ if ((Meteor.settings.loadAssetsFile) && (Meteor.users.find().count() === 0)) {
   // Adding users from profile assets
   const profilesFileName = 'profiles.json';
   console.log(`Loading data from private/${profilesFileName}`);
+  // eslint-disable-next-line no-undef
   const profilesData = JSON.parse(Assets.getText(profilesFileName));
   profilesData.profiles.map(({ email, password, role }) => createUser(email, password, role));
   console.log('========================');
@@ -64,6 +65,7 @@ if ((Meteor.settings.loadAssetsFile) && (Meteor.users.find().count() === 0)) {
   // Adding concert assets
   const concertsFileName = 'concerts.json';
   console.log(`Loading data from private/${concertsFileName}`);
+  // eslint-disable-next-line no-undef
   const concertsData = JSON.parse(Assets.getText(concertsFileName));
   concertsData.concerts.map(concert => addConcert(concert));
 }
