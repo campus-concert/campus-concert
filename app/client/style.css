@@ -3,8 +3,8 @@
 
 /* Set up some CSS variables to theme the application. */
 :root {
-  --matr-navbar-bg: #ECECEC;
-  --matr-navbar-bg-rgb: 236, 236, 236;
+  --matr-navbar-bg: #fff;
+  --matr-navbar-bg-rgb: 0, 75, 35;
   --matr-landing-text-color: white;
 }
 
@@ -14,9 +14,10 @@
 
 body {
   --bs-light-rgb: var(--matr-navbar-bg-rgb);
-  background: fixed center url("/images/manoa.jpeg");
-  background-size : cover;
+  background: fixed center url("/images/leaves.jpeg");
+  background-size : contain;
 }
+
 
 /* Set the alert background on the signin and signup pages. */
 #signin-page .alert-light, #signup-page .alert-light {
@@ -60,4 +61,42 @@ footer a:hover {
   background: #eee;
 }
 
+/* Nav bar styling */
+#user-profile-nav, #my-concerts-nav, #add-concert-nav, #browse-profiles-nav, #browse-concerts-nav, #admin-home{
+  color: white;
+}
+
+.nav-link-margin {
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  display: inline-block;
+  padding: 15px 20px;
+  position: relative;
+  font-size: 5px;
+}
+
+.nav-link-margin::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  display: block;
+  background: none repeat scroll 0 0 transparent;
+  height: 2px;
+  width: 0;
+  background: #fff;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  color: black;
+}
+
+.nav-link-margin:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* footer styling */
+ul li:hover{
+  text-decoration: underline;
+}
 

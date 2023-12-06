@@ -21,7 +21,7 @@ const EditConcert = () => {
 
   const { doc, ready } = useTracker(() => {
     // Get access to Stuff documents.
-    const subscription = Meteor.subscribe(Concerts.userPublicationName);
+    const subscription = Meteor.subscribe(Concerts.adminPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the document
@@ -102,66 +102,73 @@ const EditConcert = () => {
         <Col xs={10}>
           <Card className="p-4 mb-4"> {/* Underlay title with a white box */}
             <Col className="text-center"><h2>Edit Concert</h2></Col>
-            <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
-              <Card>
-                <Card.Body>
-                  <Row>
-                    <Col>
-                      <TextField id="edit-concert-name" name="concertName" showInlineError />
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <SelectField
-                        id="edit-concert-instruments"
-                        name="instrumentsNeeded"
-                        placeholder="Choose instrument(s) needed"
-                        showInlineError
-                      />
-                    </Col>
-                    <Col>
-                      <SelectField
-                        id="edit-concert-genres"
-                        name="genres"
-                        placeholder="Choose genre(s)"
-                        showInlineError
-                      />
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <TextField id="edit-concert-date" name="date" showInlineError />
-                    </Col>
-                    <Col>
-                      <TextField id="edit-concert-time" name="time" showInlineError />
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <TextField id="edit-concert-location" name="concertLocation" showInlineError />
-                    </Col>
-                    <Col>
-                      <TextField
-                        id="edit-concert-contact"
-                        name="contact"
-                        value={Meteor.user().username}
-                        showInlineError
-                      />
-                    </Col>
-                  </Row>
-                  <LongTextField id="edit-concert-description" name="concertDescription" showInlineError />
-                  <SubmitField id="edit-concert-submit" value="Submit" />
-                  <ErrorsField />
-                </Card.Body>
-              </Card>
-            </AutoForm>
-            <Row className="mt-3">
-              <Col className="text-center">
-                <button type="button" className="btn btn-danger" onClick={removeConcert}>
-                  Delete Concert
-                </button>
-              </Col>
-            </Row>
+            { doc ? (
+              <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
+                <Card>
+                  <Card.Body>
+                    <Row>
+                      <Col>
+                        <TextField id="edit-concert-name" name="concertName" showInlineError />
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col>
+                        <SelectField
+                          id="edit-concert-instruments"
+                          name="instrumentsNeeded"
+                          placeholder="Choose instrument(s) needed"
+                          showInlineError
+                        />
+                      </Col>
+                      <Col>
+                        <SelectField
+                          id="edit-concert-genres"
+                          name="genres"
+                          placeholder="Choose genre(s)"
+                          showInlineError
+                        />
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col>
+                        <TextField id="edit-concert-date" name="date" showInlineError />
+                      </Col>
+                      <Col>
+                        <TextField id="edit-concert-time" name="time" showInlineError />
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col>
+                        <TextField id="edit-concert-location" name="concertLocation" showInlineError />
+                      </Col>
+                      <Col>
+                        <TextField
+                          id="edit-concert-contact"
+                          name="contact"
+                          value={Meteor.user().username}
+                          showInlineError
+                          disabled
+                        />
+                      </Col>
+                    </Row>
+                    <LongTextField id="edit-concert-description" name="concertDescription" showInlineError />
+                    <SubmitField id="edit-concert-submit" value="Submit" />
+                    <ErrorsField />
+                  </Card.Body>
+                </Card>
+              </AutoForm>
+            ) : (
+              <p>Sorry, you´re not authorized to edit this concert.</p>
+            )}
+            { doc ? (
+              <Row className="mt-3">
+                <Col className="text-center">
+                  <button type="button" className="btn btn-danger" onClick={removeConcert}>
+                    Delete Concert
+                  </button>
+                </Col>
+              </Row>
+            ) : ''}
           </Card>
         </Col>
       </Row>

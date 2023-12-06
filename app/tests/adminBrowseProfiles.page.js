@@ -11,6 +11,14 @@ class AdminBrowseProfilesPage {
     await testController.expect(this.pageSelector.exists).ok();
   }
 
+  async gotoViewDetails(testController) {
+    await testController.click('#admin-view-details');
+  }
+
+  async gotoEditProfile(testController) {
+    await testController.click('#edit-profile-button');
+  }
+
 }
 
 export const adminBrowseProfilesPage = new AdminBrowseProfilesPage();

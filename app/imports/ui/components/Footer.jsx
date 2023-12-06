@@ -4,24 +4,24 @@ import { Link } from 'react-router-dom';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 const Footer = () => (
-  <footer className="mt-auto py-3 bg-light">
+  <footer className="mt-auto py-3 bg-light text-white">
     <Container>
       <Row>
         <Col className="text-left">
           <h5>Campus Concert</h5>
           <ul className="list-unstyled">
-            <li><Link to="/userhome">Home</Link></li>
-            <li><Link to="/browse-all-profiles">Browse Profiles</Link></li>
-            <li><Link to="*">Create a Concert</Link></li>
-            <li><Link to="/browse-all-concerts">Browse Concerts</Link></li>
+            <li><Link className="text-white" to="/userhome">Home</Link></li>
+            <li><Link className="text-white" to="/browse-all-profiles">Browse Profiles</Link></li>
+            <li><Link className="text-white" to="*">Create a Concert</Link></li>
+            <li><Link className="text-white" to="/browse-all-concerts">Browse Concerts</Link></li>
           </ul>
         </Col>
         <Col className="text-left">
           <h5>Musical Tastes</h5>
           <ul className="list-unstyled">
-            <li><Link to="*">Jazz</Link></li>
-            <li><Link to="*">Rock</Link></li>
-            <li><Link to="*">Pop</Link></li>
+            <li><Link className="text-white" to="*">Jazz</Link></li>
+            <li><Link className="text-white" to="*">Rock</Link></li>
+            <li><Link className="text-white" to="*">Pop</Link></li>
           </ul>
         </Col>
         <Col className="text-left">

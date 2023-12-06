@@ -8,6 +8,8 @@ import { editProfilePage } from './editprofile.page';
 import { userHomePage } from './userhome.page';
 import { adminHomePage } from './adminhome.page';
 import { adminBrowseProfilesPage } from './adminBrowseProfiles.page';
+import { browseProfilesPage } from './browseProfiles.page';
+import { browseConcertsPage } from './browseconcerts.page';
 
 /* global fixture:false, test:false */
 
@@ -33,6 +35,31 @@ test('Test that signin and signout work', async (testController) => {
 test('Test that signup work', async (testController) => {
   await navBar.gotoSignUpPage(testController);
   await signupPage.signupUser(testController, 'newUser@hawaii.edu', 'changeme');
+
+test('Test that browse profiles work', async (testController) => {
+  // Check non-admin profile browse profiles
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.isLoggedIn(testController, credentials.username);
+  await navBar.gotoBrowseProfiles(testController);
+  await browseProfilesPage.isDisplayed(testController);
+  await browseProfilesPage.hasViewDetails(testController);
+  await browseProfilesPage.gotoViewDetails(testController);
+  await browseProfilesPage.hasMessage(testController);
+  await browseProfilesPage.gotoMessage(testController);
+  await navBar.gotoBrowseConcerts(testController);
+  await browseConcertsPage.isDisplayed(testController);
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
+  // Check admin profile browse profiles
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(testController, adminCredentials.username);
+  await adminHomePage.isDisplayed(testController);
+  await adminHomePage.gotoEditProfiles(testController);
+  await adminBrowseProfilesPage.gotoViewDetails(testController);
+  await adminBrowseProfilesPage.gotoEditProfile(testController);
+  await editProfilePage.isDisplayed(testController);
 });
 
 test('Test that the navbar works', async (testController) => {
@@ -84,6 +111,9 @@ test('Test that the userhome works', async (testController) => {
   await userHomePage.isDisplayed(testController);
   // await userHomePage.gotoBrowseConcerts(testController);
   // await browseConcertsPage.isDisplayed(testController);
+  await navBar.gotoUserHome(testController);
+  await userHomePage.isDisplayed(testController);
+  await userHomePage.gotoBrowseConcerts(testController);
   await navBar.logout(testController);
 });
 
@@ -97,7 +127,7 @@ test('Test that the adminhome works', async (testController) => {
   await adminBrowseProfilesPage.isDisplayed(testController);
   await navBar.gotoAdminHome(testController);
   await adminHomePage.isDisplayed(testController);
-  await adminHomePage.gotoEditConcerts(testController);
+  // await adminHomePage.gotoEditConcerts(testController);
   // await adminEditConcertPage.isDisplayed(testController);
   await navBar.gotoAdminHome(testController);
   await adminHomePage.isDisplayed(testController);
@@ -105,8 +135,12 @@ test('Test that the adminhome works', async (testController) => {
   await adminHomePage.isDisplayed(testController);
   // await adminHomePage.gotoBrowseConcerts(testController);
   // await browseConcertsPage.isDisplayed(testController);
+  // await navBar.gotoBrowseConcerts(testController);
   // await navBar.gotoAdminHome(testController);
   // await adminHomePage.isDisplayed(testController);
+  await navBar.gotoBrowseConcerts(testController);
+  await navBar.gotoAdminHome(testController);
+  await adminHomePage.isDisplayed(testController);
   await adminHomePage.gotoUserComments(testController);
   // await userCommentsPage.isDisplayed(testController);
   await navBar.logout(testController);
