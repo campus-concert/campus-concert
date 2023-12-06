@@ -19,7 +19,7 @@ const NavBar = () => {
     <Navbar id="navbar" bg="light" expand="lg">
       <Container>
         <Navbar.Brand id="home-nav" as={NavLink} to="/" className="d-flex align-items-center">
-          <Image src="/images/logo-1.png" className="rounded" width="55px"alt="Logo" />
+          <Image src="/images/logo-1.png" className="rounded" width="55px" alt="Logo" />
           <span className="ms-2 h2 text-white">Campus Concerts</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -79,7 +79,7 @@ const NavBar = () => {
                 as={NavLink}
                 id="admin-home"
                 to="/adminhome"
-                className="nav-link-margin"
+                className="nav-link-margin text-center"
                 style={{ borderBottom: isCurrentTab('/adminhome') && '2px solid #007bff', marginBottom: '-2px' }}
               >
                 Admin

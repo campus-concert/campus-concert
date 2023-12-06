@@ -62,7 +62,7 @@ footer a:hover {
 }
 
 /* Nav bar styling */
-#user-profile-nav, #my-concerts-nav, #add-concert-nav, #browse-profiles-nav, #browse-concerts-nav{
+#user-profile-nav, #my-concerts-nav, #add-concert-nav, #browse-profiles-nav, #browse-concerts-nav, #admin-home{
   color: white;
 }
 
@@ -70,7 +70,7 @@ footer a:hover {
   color: #fff;
   text-transform: uppercase;
   text-decoration: none;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.03em;
   display: inline-block;
   padding: 15px 20px;
   position: relative;
