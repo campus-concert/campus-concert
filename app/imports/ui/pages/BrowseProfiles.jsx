@@ -52,10 +52,6 @@ const BrowseProfiles = () => {
     setFilteredProfiles(filtering);
   };
 
-  const applyFilters = () => {
-    filterProfiles();
-  };
-
   return ready ? (
     <Container id="browse-profiles-page" className="py-3">
       <Row className="justify-content-center">
@@ -138,18 +134,22 @@ const BrowseProfiles = () => {
                 </Dropdown>
               </Col>
               <Col>
-                <Button onClick={applyFilters} variant="secondary">
+                <Button onClick={filterProfiles} variant="secondary">
                   Apply Filters
                 </Button>
               </Col>
             </Row>
-            <Row xs={1} md={2} lg={3} className="g-4">
-              {filteredProfiles.map((profile, index) => (
-                <Col key={index}>
-                  <ProfileBasic profile={profile} />
-                </Col>
-              ))}
-            </Row>
+            {(filteredProfiles.length === 0) ?
+              <h2>No profile match this filtering</h2>
+              : (
+                <Row xs={1} md={2} lg={3} className="g-4">
+                  {filteredProfiles.map((profile, index) => (
+                    <Col key={index}>
+                      <ProfileBasic profile={profile} />
+                    </Col>
+                  ))}
+                </Row>
+              )}
           </Card>
         </Col>
       </Row>
