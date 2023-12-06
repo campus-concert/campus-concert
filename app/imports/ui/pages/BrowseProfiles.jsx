@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Col, Container, Row, Card, Dropdown } from 'react-bootstrap';
+import { Col, Container, Row, Card, Dropdown, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Profiles } from '../../api/profile/Profile';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -25,12 +25,9 @@ const BrowseProfiles = () => {
   }, []);
 
   const filterLocation = (list) => {
-    console.log('Filtering by location: ', locationFilter);
     if (locationFilter === 'All locations') {
-      console.log('Inside if statement');
       return list;
     }
-    console.log('Outside if statement');
     return list.filter((profile) => (profile.location === locationFilter));
   };
 
@@ -53,11 +50,9 @@ const BrowseProfiles = () => {
     filtering = filterInstruments(filtering);
     filtering = filterTastes(filtering);
     setFilteredProfiles(filtering);
-    console.log('Done filtering. Profiles are now: ', filtering);
   };
 
-  const updateLocationFilter = (location) => {
-    setLocationFilter(location);
+  const applyFilters = () => {
     filterProfiles();
   };
 
@@ -71,26 +66,81 @@ const BrowseProfiles = () => {
             </Col>
             <Row>
               <Col>
-                <h4>Filter by Location:</h4>
+                <h5>Filter by Location:</h5>
                 <Dropdown>
                   <Dropdown.Toggle variant="primary" id="dropdown-location">
                     {locationFilter}
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item onClick={() => updateLocationFilter('All locations')}>
+                    <Dropdown.Item onClick={() => setLocationFilter('All locations')}>
                       All locations
                     </Dropdown.Item>
-                    <Dropdown.Item onClick={() => updateLocationFilter('Honolulu')}>
+                    <Dropdown.Item onClick={() => setLocationFilter('Honolulu')}>
                       Honolulu
                     </Dropdown.Item>
-                    <Dropdown.Item onClick={() => updateLocationFilter('Pearl City')}>
+                    <Dropdown.Item onClick={() => setLocationFilter('Pearl City')}>
                       Pearl City
                     </Dropdown.Item>
-                    <Dropdown.Item onClick={() => updateLocationFilter('Kailua')}>
+                    <Dropdown.Item onClick={() => setLocationFilter('Kailua')}>
                       Kailua
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
+              </Col>
+              <Col>
+                <h5>Filter by instrument:</h5>
+                <Dropdown>
+                  <Dropdown.Toggle variant="primary" id="dropdown-location">
+                    {instrumentFilter}
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => setInstrumentFilter('All instruments')}>
+                      All instruments
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => setInstrumentFilter('guitar')}>
+                      Guitar
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => setInstrumentFilter('flute')}>
+                      Flute
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => setInstrumentFilter('piano')}>
+                      Piano
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => setInstrumentFilter('trumpet')}>
+                      Trumpet
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Col>
+              <Col>
+                <h5>Filter by tastes:</h5>
+                <Dropdown>
+                  <Dropdown.Toggle variant="primary" id="dropdown-location">
+                    {tasteFilter}
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => setTasteFilter('All tastes')}>
+                      All tastes
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => setTasteFilter('rock')}>
+                      Rock
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => setTasteFilter('pop')}>
+                      Pop
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => setTasteFilter('hip-hop')}>
+                      Hip-hop
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => setTasteFilter('jazz')}>
+                      Jazz
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Col>
+              <Col>
+                <Button onClick={applyFilters} variant="secondary">
+                  Apply Filters
+                </Button>
               </Col>
             </Row>
             <Row xs={1} md={2} lg={3} className="g-4">
