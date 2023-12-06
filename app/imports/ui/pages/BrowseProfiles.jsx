@@ -24,34 +24,34 @@ const BrowseProfiles = () => {
     };
   }, []);
 
-  const filterLocation = () => {
+  const filterLocation = (list) => {
     console.log('Filtering by location: ', locationFilter);
     if (locationFilter === 'All locations') {
-      console.log('Outside if statement');
-      return profiles;
+      console.log('Inside if statement');
+      return list;
     }
-    console.log('Inside if statement');
-    return profiles.filter((profile) => (profile.location === locationFilter));
+    console.log('Outside if statement');
+    return list.filter((profile) => (profile.location === locationFilter));
   };
 
-  const filterInstruments = () => {
+  const filterInstruments = (list) => {
     if (instrumentFilter !== 'All instruments') {
-      return profiles.filter((profile) => (profile.instruments.includes(instrumentFilter)));
+      return list.filter((profile) => (profile.instruments.includes(instrumentFilter)));
     }
-    return profiles;
+    return list;
   };
 
-  const filterTastes = () => {
+  const filterTastes = (list) => {
     if (tasteFilter !== 'All tastes') {
-      return profiles.filter((profile) => (profile.tastes.includes(tasteFilter)));
+      return list.filter((profile) => (profile.tastes.includes(tasteFilter)));
     }
-    return profiles;
+    return list;
   };
 
   const filterProfiles = () => {
-    let filtering = filterLocation();
-    filtering = filterInstruments();
-    filtering = filterTastes();
+    let filtering = filterLocation(profiles);
+    filtering = filterInstruments(filtering);
+    filtering = filterTastes(filtering);
     setFilteredProfiles(filtering);
     console.log('Done filtering. Profiles are now: ', filtering);
   };
