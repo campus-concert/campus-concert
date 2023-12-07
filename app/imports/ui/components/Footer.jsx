@@ -14,6 +14,10 @@ const Footer = () => (
             <li><Link className="text-white" to="/browse-all-profiles">Browse Profiles</Link></li>
             <li><Link className="text-white" to="*">Create a Concert</Link></li>
             <li><Link className="text-white" to="/browse-all-concerts">Browse Concerts</Link></li>
+            <li><Link to="/userhome">Home</Link></li>
+            <li><Link to="/browse-all-profiles">Browse Profiles</Link></li>
+            <li><Link to="/create-concert">Create a Concert</Link></li>
+            <li><Link to="/browse-all-concerts">Browse Concerts</Link></li>
           </ul>
         </Col>
         <Col className="text-left">
@@ -22,6 +26,11 @@ const Footer = () => (
             <li><Link className="text-white" to="*">Jazz</Link></li>
             <li><Link className="text-white" to="*">Rock</Link></li>
             <li><Link className="text-white" to="*">Pop</Link></li>
+            <li><Link to="*">Jazz</Link></li>
+            <li><Link to="*">Rock</Link></li>
+            <li><Link to="*">Pop</Link></li>
+            <li><Link to="*">Reggae</Link></li>
+            <li><Link to="*">Classical</Link></li>
           </ul>
         </Col>
         <Col className="text-left">

@@ -22,6 +22,7 @@ class ConcertsCollection {
       },
       'instrumentsNeeded.$': {
         type: String,
+
         allowedValues: [
           'accordion', 'banjo', 'bass guitar', 'bassoon', 'cello', 'clarinet', 'congas', 'drum kit',
           'electric keyboard', 'flute', 'guitar', 'harmonica', 'harp', 'mandolin', 'oboe', 'piano', 'saxophone',
