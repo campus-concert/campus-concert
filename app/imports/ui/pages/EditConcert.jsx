@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, SelectField, SubmitField, LongTextField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SelectField, SubmitField, LongTextField, TextField, DateField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -32,8 +32,15 @@ const EditConcert = () => {
     };
   }, [_id]);
   // On submit, insert the data.
+
+  const currentDate = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60 * 1000);
   const submit = (data) => {
-    const { concertName, concertDescription, contact, concertLocation, date, time, instrumentsNeeded, genres } = data;
+    const { concertName, concertDescription, contact, concertLocation, date, instrumentsNeeded, genres } = data;
+
+    if (date < currentDate) {
+      swal('Error', 'Please select a future date for the concert.', 'error');
+      return;
+    }
     Concerts.collection.update(
       _id,
       {
@@ -43,7 +50,6 @@ const EditConcert = () => {
           contact,
           concertLocation,
           date,
-          time,
           instrumentsNeeded,
           genres,
         },
@@ -131,10 +137,7 @@ const EditConcert = () => {
                     </Row>
                     <Row>
                       <Col>
-                        <TextField id="edit-concert-date" name="date" showInlineError />
-                      </Col>
-                      <Col>
-                        <TextField id="edit-concert-time" name="time" showInlineError />
+                        <DateField id="edit-concert-date" name="date" showInlineError />
                       </Col>
                     </Row>
                     <Row>

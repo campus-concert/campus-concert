@@ -21,6 +21,7 @@ const CreateConcert = () => {
       ready: rdy,
     };
   });
+  const currentDate = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60 * 1000);
   const submit = (data) => {
     const {
       concertName,
@@ -32,6 +33,11 @@ const CreateConcert = () => {
       instrumentsNeeded,
       genres,
     } = data;
+
+    if (date < currentDate) {
+      swal('Error', 'Please select a future date for the concert.', 'error');
+      return;
+    }
 
     Concerts.collection.insert(
       {
