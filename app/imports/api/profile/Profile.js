@@ -3,6 +3,25 @@ import SimpleSchema from 'simpl-schema';
 
 class ProfilesCollection {
   constructor() {
+    this.allowedLocations = [
+      'Aiea', 'Ewa Beach', 'Hale\'iwa', 'Hau\'ula', 'Hawaii Kai',
+      'Honolulu', 'Ka\'a\'awa', 'Kahala', 'Kahuku', 'Kailua',
+      'Kane\'ohe', 'Kapolei', 'La\'ie', 'Lanikai', 'Ma\'ili',
+      'Makaha', 'Manoa', 'Mililani', 'Nanakuli', 'Pearl City',
+      'Wahiawa', 'Waialua', 'Wai\'anae', 'Waikiki', 'Waimanalo',
+      'Waipahu',
+    ];
+    this.allowedInstruments = [
+      'accordion', 'banjo', 'bass guitar', 'bassoon', 'cello', 'clarinet', 'congas', 'drum kit', 'electric guitar',
+      'electric keyboard', 'flute', 'guitar', 'harmonica', 'harp', 'mandolin', 'oboe', 'piano', 'saxophone',
+      'snare drum', 'sitar', 'synthesizer', 'tambourine', 'timpani', 'trombone', 'trumpet', 'ukulele',
+      'viola', 'violin', 'vocals', 'xylophone',
+    ];
+    this.allowedTastes = [
+      'acoustic', 'alternative', 'ambient', 'blues', 'children\'s', 'classical', 'country',
+      'dance', 'electronic', 'experimental', 'folk', 'hip-hop', 'indie', 'industrial', 'jazz', 'latin',
+      'metal', 'pop', 'punk', 'rap', 'r&b', 'reggae', 'religious', 'rock', 'soul', 'world',
+    ];
     this.name = 'ProfilesCollection';
     this.collection = new Mongo.Collection(this.name);
     this.schema = new SimpleSchema({
@@ -14,14 +33,7 @@ class ProfilesCollection {
       goals: String,
       location: {
         type: String,
-        allowedValues: [
-          'Aiea', 'Ewa Beach', 'Hale\'iwa', 'Hau\'ula', 'Hawaii Kai',
-          'Honolulu', 'Ka\'a\'awa', 'Kahala', 'Kahuku', 'Kailua',
-          'Kane\'ohe', 'Kapolei', 'La\'ie', 'Lanikai', 'Ma\'ili',
-          'Makaha', 'Manoa', 'Mililani', 'Nanakuli', 'Pearl City',
-          'Wahiawa', 'Waialua', 'Wai\'anae', 'Waikiki', 'Waimanalo',
-          'Waipahu',
-        ],
+        allowedValues: this.allowedLocations,
       },
       instruments: {
         type: Array,
@@ -29,12 +41,7 @@ class ProfilesCollection {
       },
       'instruments.$': {
         type: String,
-        allowedValues: [
-          'accordion', 'banjo', 'bass guitar', 'bassoon', 'cello', 'clarinet', 'congas', 'drum kit', 'electric guitar',
-          'electric keyboard', 'flute', 'guitar', 'harmonica', 'harp', 'mandolin', 'oboe', 'piano', 'saxophone',
-          'snare drum', 'sitar', 'synthesizer', 'tambourine', 'timpani', 'trombone', 'trumpet', 'ukulele',
-          'viola', 'violin', 'vocals', 'xylophone',
-        ],
+        allowedValues: this.allowedInstruments,
       },
       tastes: {
         type: Array,
@@ -42,11 +49,7 @@ class ProfilesCollection {
       },
       'tastes.$': {
         type: String,
-        allowedValues: [
-          'acoustic', 'alternative', 'ambient', 'blues', 'children\'s', 'classical', 'country',
-          'dance', 'electronic', 'experimental', 'folk', 'hip-hop', 'indie', 'industrial', 'jazz', 'latin',
-          'metal', 'pop', 'punk', 'rap', 'r&b', 'reggae', 'religious', 'rock', 'soul', 'world',
-        ],
+        allowedValues: this.allowedTastes,
       },
       youtubeLink: { type: String, optional: true, defaultValue: '' },
       spotifyLink: { type: String, optional: true, defaultValue: '' },

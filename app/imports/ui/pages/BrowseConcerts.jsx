@@ -13,10 +13,14 @@ const BrowseConcerts = () => {
   const [tasteFilter, setTasteFilter] = useState('All tastes');
   const [filteredConcerts, setFilteredConcerts] = useState();
 
+  const months = ['Anytime', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const instruments = ['All instruments'].concat(Concerts.allowedInstruments);
+  const tastes = ['All tastes'].concat(Concerts.allowedGenres);
+
   const { ready, concerts } = useTracker(() => {
     const subscription = Meteor.subscribe(Concerts.userPublicationName);
     const rdy = subscription.ready();
-    const concertItems = Concerts.collection.find({}).fetch();
+    const concertItems = Concerts.collection.find({}).fetch().sort((a, b) => (a.date - b.date));
     setFilteredConcerts(concertItems);
     return {
       concerts: concertItems,
@@ -28,7 +32,7 @@ const BrowseConcerts = () => {
     if (monthFilter === 'Anytime') {
       return list;
     }
-    return list.filter((concert) => (concert.date.includes(monthFilter)));
+    return list.filter((concert) => (concert.date.getMonth() === months.indexOf(monthFilter) - 1));
   };
 
   const filterInstruments = (list) => {
@@ -64,102 +68,45 @@ const BrowseConcerts = () => {
               <Col>
                 <h5>Filter by month:</h5>
                 <Dropdown>
-                  <Dropdown.Toggle variant="primary" id="dropdown-location">
+                  <Dropdown.Toggle variant="primary" id="dropdown-month">
                     {monthFilter}
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item onClick={() => setMonthFilter('Anytime')}>
-                      Anytime
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setMonthFilter('Jan')}>
-                      Jan
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setMonthFilter('Feb')}>
-                      Feb
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setMonthFilter('Mar')}>
-                      Mar
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setMonthFilter('Apr')}>
-                      Apr
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setMonthFilter('May')}>
-                      May
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setMonthFilter('Jun')}>
-                      Jun
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setMonthFilter('Jul')}>
-                      Jul
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setMonthFilter('Aug')}>
-                      Aug
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setMonthFilter('Sep')}>
-                      Sep
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setMonthFilter('Oct')}>
-                      Oct
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setMonthFilter('Mar')}>
-                      Mar
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setMonthFilter('Nov')}>
-                      Nov
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setMonthFilter('Dec')}>
-                      Dec
-                    </Dropdown.Item>
+                    {months.map((month, index) => (
+                      <Dropdown.Item key={index} onClick={() => setMonthFilter(month)}>
+                        {month}
+                      </Dropdown.Item>
+                    ))}
                   </Dropdown.Menu>
                 </Dropdown>
               </Col>
               <Col>
                 <h5>Filter by instrument:</h5>
                 <Dropdown>
-                  <Dropdown.Toggle variant="primary" id="dropdown-location">
+                  <Dropdown.Toggle variant="primary" id="dropdown-instrument">
                     {instrumentFilter}
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item onClick={() => setInstrumentFilter('All instruments')}>
-                      All instruments
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setInstrumentFilter('guitar')}>
-                      Guitar
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setInstrumentFilter('flute')}>
-                      Flute
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setInstrumentFilter('piano')}>
-                      Piano
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setInstrumentFilter('trumpet')}>
-                      Trumpet
-                    </Dropdown.Item>
+                    {instruments.map((instrument, index) => (
+                      <Dropdown.Item key={index} onClick={() => setInstrumentFilter(instrument)}>
+                        {instrument}
+                      </Dropdown.Item>
+                    ))}
                   </Dropdown.Menu>
                 </Dropdown>
               </Col>
               <Col>
                 <h5>Filter by tastes:</h5>
                 <Dropdown>
-                  <Dropdown.Toggle variant="primary" id="dropdown-location">
+                  <Dropdown.Toggle variant="primary" id="dropdown-taste">
                     {tasteFilter}
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item onClick={() => setTasteFilter('All tastes')}>
-                      All tastes
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setTasteFilter('rock')}>
-                      Rock
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setTasteFilter('pop')}>
-                      Pop
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setTasteFilter('hip-hop')}>
-                      Hip-hop
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setTasteFilter('jazz')}>
-                      Jazz
-                    </Dropdown.Item>
+                    {tastes.map((taste, index) => (
+                      <Dropdown.Item key={index} onClick={() => setTasteFilter(taste)}>
+                        {taste}
+                      </Dropdown.Item>
+                    ))}
                   </Dropdown.Menu>
                 </Dropdown>
               </Col>

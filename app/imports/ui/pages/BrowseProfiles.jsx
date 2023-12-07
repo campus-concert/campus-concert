@@ -13,10 +13,14 @@ const BrowseProfiles = () => {
   const [tasteFilter, setTasteFilter] = useState('All tastes');
   const [filteredProfiles, setFilteredProfiles] = useState();
 
+  const locations = ['All locations'].concat(Profiles.allowedLocations);
+  const instruments = ['All instruments'].concat(Profiles.allowedInstruments);
+  const tastes = ['All tastes'].concat(Profiles.allowedTastes);
+
   const { ready, profiles } = useTracker(() => {
     const subscription = Meteor.subscribe(Profiles.userPublicationName);
     const rdy = subscription.ready();
-    const profileItems = Profiles.collection.find({}).fetch();
+    const profileItems = Profiles.collection.find({}).fetch().sort((a, b) => (a.firstName.localeCompare(b.firstName)));
     setFilteredProfiles(profileItems);
     return {
       profiles: profileItems,
@@ -68,18 +72,11 @@ const BrowseProfiles = () => {
                     {locationFilter}
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item onClick={() => setLocationFilter('All locations')}>
-                      All locations
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setLocationFilter('Honolulu')}>
-                      Honolulu
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setLocationFilter('Pearl City')}>
-                      Pearl City
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setLocationFilter('Kailua')}>
-                      Kailua
-                    </Dropdown.Item>
+                    {locations.map((location, index) => (
+                      <Dropdown.Item key={index} onClick={() => setLocationFilter(location)}>
+                        {location}
+                      </Dropdown.Item>
+                    ))}
                   </Dropdown.Menu>
                 </Dropdown>
               </Col>
@@ -90,21 +87,11 @@ const BrowseProfiles = () => {
                     {instrumentFilter}
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item onClick={() => setInstrumentFilter('All instruments')}>
-                      All instruments
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setInstrumentFilter('guitar')}>
-                      Guitar
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setInstrumentFilter('flute')}>
-                      Flute
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setInstrumentFilter('piano')}>
-                      Piano
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setInstrumentFilter('trumpet')}>
-                      Trumpet
-                    </Dropdown.Item>
+                    {instruments.map((instrument, index) => (
+                      <Dropdown.Item key={index} onClick={() => setInstrumentFilter(instrument)}>
+                        {instrument}
+                      </Dropdown.Item>
+                    ))}
                   </Dropdown.Menu>
                 </Dropdown>
               </Col>
@@ -115,21 +102,11 @@ const BrowseProfiles = () => {
                     {tasteFilter}
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item onClick={() => setTasteFilter('All tastes')}>
-                      All tastes
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setTasteFilter('rock')}>
-                      Rock
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setTasteFilter('pop')}>
-                      Pop
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setTasteFilter('hip-hop')}>
-                      Hip-hop
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setTasteFilter('jazz')}>
-                      Jazz
-                    </Dropdown.Item>
+                    {tastes.map((taste, index) => (
+                      <Dropdown.Item key={index} onClick={() => setTasteFilter(taste)}>
+                        {taste}
+                      </Dropdown.Item>
+                    ))}
                   </Dropdown.Menu>
                 </Dropdown>
               </Col>

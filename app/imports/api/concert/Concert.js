@@ -2,7 +2,19 @@ import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 
 class ConcertsCollection {
+
   constructor() {
+    this.allowedInstruments = [
+      'accordion', 'banjo', 'bass guitar', 'bassoon', 'cello', 'clarinet', 'congas', 'drum kit',
+      'electric keyboard', 'flute', 'guitar', 'harmonica', 'harp', 'mandolin', 'oboe', 'piano', 'saxophone',
+      'snare drum', 'sitar', 'synthesizer', 'tambourine', 'timpani', 'trombone', 'trumpet', 'ukulele',
+      'viola', 'violin', 'vocals', 'xylophone',
+    ];
+    this.allowedGenres = [
+      'acoustic', 'alternative', 'ambient', 'blues', 'children\'s', 'classical', 'country',
+      'dance', 'electronic', 'experimental', 'folk', 'hip-hop', 'industrial', 'jazz', 'latin',
+      'metal', 'pop', 'punk', 'rap', 'r&b', 'reggae', 'religious', 'rock', 'soul', 'world',
+    ];
     this.name = 'ConcertsCollection';
     this.collection = new Mongo.Collection(this.name);
     this.schema = new SimpleSchema({
@@ -22,12 +34,7 @@ class ConcertsCollection {
       },
       'instrumentsNeeded.$': {
         type: String,
-        allowedValues: [
-          'accordion', 'banjo', 'bass guitar', 'bassoon', 'cello', 'clarinet', 'congas', 'drum kit',
-          'electric keyboard', 'flute', 'guitar', 'harmonica', 'harp', 'mandolin', 'oboe', 'piano', 'saxophone',
-          'snare drum', 'sitar', 'synthesizer', 'tambourine', 'timpani', 'trombone', 'trumpet', 'ukulele',
-          'viola', 'violin', 'vocals', 'xylophone',
-        ],
+        allowedValues: this.allowedInstruments,
       },
       genres: {
         type: Array,
@@ -35,11 +42,7 @@ class ConcertsCollection {
       },
       'genres.$': {
         type: String,
-        allowedValues: [
-          'acoustic', 'alternative', 'ambient', 'blues', 'children\'s', 'classical', 'country',
-          'dance', 'electronic', 'experimental', 'folk', 'hip-hop', 'industrial', 'jazz', 'latin',
-          'metal', 'pop', 'punk', 'rap', 'r&b', 'reggae', 'religious', 'rock', 'soul', 'world',
-        ],
+        allowedValues: this.allowedGenres,
       },
     });
 
