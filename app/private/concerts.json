@@ -2,8 +2,8 @@
   "concerts": [
     {
       "concertName": "Canal Chaos Concert",
-      "date": "Feb 2, 2024",
-      "time": "02:15 AM",
+      "date": "2023-12-08T15:00:00.000Z",
+      "createdAt": "2023-12-02T15:00:00.000Z",
       "concertLocation": "Ala Wai Canal",
       "instrumentsNeeded": "guitar",
       "genres": "hip-hop",
@@ -13,8 +13,8 @@
     },
     {
       "concertName": "The Mathematical Melodies",
-      "date": "Feb 3, 2024",
-      "time": "02:30 AM",
+      "date": "2023-12-08T15:00:00.000Z",
+      "createdAt": "2023-12-02T15:00:00.000Z",
       "concertLocation": "KELLER 302",
       "instrumentsNeeded": [
         "trumpet",
@@ -27,8 +27,8 @@
     },
     {
       "concertName": "Bookish Beats",
-      "date": "Feb 4, 2024",
-      "time": "02:45 AM",
+      "date": "2023-12-08T15:00:00.000Z",
+      "createdAt": "2023-12-02T15:00:00.000Z",
       "concertLocation": "Hamilton Library",
       "instrumentsNeeded": "guitar",
       "genres": [

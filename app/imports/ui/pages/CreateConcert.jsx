@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, SelectField, SubmitField, LongTextField, HiddenField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SelectField, SubmitField, LongTextField, HiddenField, TextField, DateField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -28,7 +28,7 @@ const CreateConcert = () => {
       contact,
       concertLocation,
       date,
-      time,
+      createdAt,
       instrumentsNeeded,
       genres,
     } = data;
@@ -40,7 +40,7 @@ const CreateConcert = () => {
         contact,
         concertLocation,
         date,
-        time,
+        createdAt,
         instrumentsNeeded,
         genres,
         owner: Meteor.user().emails[0].address,
@@ -100,18 +100,9 @@ const CreateConcert = () => {
                   </Row>
                   <Row>
                     <Col>
-                      <TextField
+                      <DateField
                         id="concert-date"
                         name="date"
-                        placeholder="Enter date (e.g., Feb 2, 2024)"
-                        showInlineError
-                      />
-                    </Col>
-                    <Col>
-                      <TextField
-                        id="concert-time"
-                        name="time"
-                        placeholder="Enter time (e.g., 12:00 PM)"
                         showInlineError
                       />
                     </Col>
@@ -127,6 +118,7 @@ const CreateConcert = () => {
                   <LongTextField id="concert-description" name="concertDescription" showInlineError />
                   <SubmitField id="concert-submit" value="Submit" />
                   <HiddenField name="owner" value={Meteor.user().emails[0].address} />
+                  <HiddenField name="createdAt" value={new Date()} />
                   <ErrorsField />
                 </Card.Body>
               </Card>

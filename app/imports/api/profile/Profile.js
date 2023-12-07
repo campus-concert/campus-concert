@@ -14,7 +14,14 @@ class ProfilesCollection {
       goals: String,
       location: {
         type: String,
-        allowedValues: ['Honolulu', 'Pearl City', 'Kailua'],
+        allowedValues: [
+          'Aiea', 'Ewa Beach', 'Hale\'iwa', 'Hau\'ula', 'Hawaii Kai',
+          'Honolulu', 'Ka\'a\'awa', 'Kahala', 'Kahuku', 'Kailua',
+          'Kane\'ohe', 'Kapolei', 'La\'ie', 'Lanikai', 'Ma\'ili',
+          'Makaha', 'Manoa', 'Mililani', 'Nanakuli', 'Pearl City',
+          'Wahiawa', 'Waialua', 'Wai\'anae', 'Waikiki', 'Waimanalo',
+          'Waipahu',
+        ],
       },
       instruments: {
         type: Array,
@@ -22,7 +29,12 @@ class ProfilesCollection {
       },
       'instruments.$': {
         type: String,
-        allowedValues: ['piano', 'guitar', 'flute', 'trumpet'],
+        allowedValues: [
+          'accordion', 'banjo', 'bass guitar', 'bassoon', 'cello', 'clarinet', 'congas', 'drum kit', 'electric guitar',
+          'electric keyboard', 'flute', 'guitar', 'harmonica', 'harp', 'mandolin', 'oboe', 'piano', 'saxophone',
+          'snare drum', 'sitar', 'synthesizer', 'tambourine', 'timpani', 'trombone', 'trumpet', 'ukulele',
+          'viola', 'violin', 'vocals', 'xylophone',
+        ],
       },
       tastes: {
         type: Array,
@@ -30,7 +42,11 @@ class ProfilesCollection {
       },
       'tastes.$': {
         type: String,
-        allowedValues: ['pop', 'rock', 'hip-hop', 'jazz'],
+        allowedValues: [
+          'acoustic', 'alternative', 'ambient', 'blues', 'children\'s', 'classical', 'country',
+          'dance', 'electronic', 'experimental', 'folk', 'hip-hop', 'indie', 'industrial', 'jazz', 'latin',
+          'metal', 'pop', 'punk', 'rap', 'r&b', 'reggae', 'religious', 'rock', 'soul', 'world',
+        ],
       },
       youtubeLink: { type: String, optional: true, defaultValue: '' },
       spotifyLink: { type: String, optional: true, defaultValue: '' },
