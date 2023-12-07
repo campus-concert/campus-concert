@@ -102,6 +102,7 @@ const EditConcert = () => {
   }
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
 
+  const transform = (label) => ` ${label}`;
   return ready ? (
     <Container id="edit-concert-page" className="py-3">
       <Row className="justify-content-center">
@@ -119,19 +120,41 @@ const EditConcert = () => {
                     </Row>
                     <Row>
                       <Col>
+                        Instruments Needed
                         <SelectField
                           id="edit-concert-instruments"
                           name="instrumentsNeeded"
+                          multiple
                           placeholder="Choose instrument(s) needed"
+                          checkboxes
+                          transform={transform}
                           showInlineError
+                          style={{
+                            maxHeight: '120px',
+                            overflowY: 'scroll',
+                            border: '1px solid #ddd',
+                            borderRadius: '5px',
+                            padding: '8px',
+                          }}
                         />
                       </Col>
                       <Col>
+                        Genres
                         <SelectField
                           id="edit-concert-genres"
                           name="genres"
+                          multiple
                           placeholder="Choose genre(s)"
+                          checkboxes
+                          transform={transform}
                           showInlineError
+                          style={{
+                            maxHeight: '120px',
+                            overflowY: 'scroll',
+                            border: '1px solid #ddd',
+                            borderRadius: '5px',
+                            padding: '8px',
+                          }}
                         />
                       </Col>
                     </Row>
@@ -148,9 +171,8 @@ const EditConcert = () => {
                         <TextField
                           id="edit-concert-contact"
                           name="contact"
-                          value={Meteor.user().username}
+                          placeholder="Phone number, email, or social media handle"
                           showInlineError
-                          disabled
                         />
                       </Col>
                     </Row>
@@ -161,7 +183,7 @@ const EditConcert = () => {
                 </Card>
               </AutoForm>
             ) : (
-              <p>Sorry, you´re not authorized to edit this concert.</p>
+              <p>You do not have permission to edit this Concert, or it might not exist.</p>
             )}
             { doc ? (
               <Row className="mt-3">

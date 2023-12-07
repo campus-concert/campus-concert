@@ -25,6 +25,10 @@ body {
   color: black;
 }
 
+label[for="concert-instruments"], label[for="edit-concert-instruments"], label[for="instruments"], label[for="edit-instruments"], label[for="concert-genres"], label[for="edit-concert-genres"], label[for="tastes"], label[for="edit-tastes"] {
+  display: none;
+}
+
 /* Define custom styles */
 .gray-background {
   background-color: var(--matr-navbar-bg);

@@ -46,12 +46,13 @@ const CreateProfile = () => {
     return <Navigate to="/userhome" />;
   }
 
+  const transform = (label) => ` ${label}`;
   return ready ? (
     <Container className="py-3">
       <Row className="justify-content-center">
         <Col xs={10}>
           <Card className="p-4 mb-4"> {/* Underlay title with a white box */}
-            <Col className="text-center"><h2>Create User</h2></Col>
+            <Col className="text-center"><h2>Create Profile</h2></Col>
             <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
               <Card>
                 <Card.Body>
@@ -72,6 +73,7 @@ const CreateProfile = () => {
                         name="contact"
                         value={Meteor.user().username}
                         showInlineError
+                        disabled // for now, until there will be an owner field
                       />
                     </Col>
                   </Row>
@@ -86,17 +88,39 @@ const CreateProfile = () => {
                       />
                     </Col>
                     <Col>
+                      Instruments
                       <SelectField
+                        id="instruments"
                         name="instruments"
-                        placeholder="Choose instrument"
+                        multiple
+                        checkboxes
+                        transform={transform}
                         showInlineError
+                        style={{
+                          maxHeight: '120px',
+                          overflowY: 'scroll',
+                          border: '1px solid #ddd',
+                          borderRadius: '5px',
+                          padding: '8px',
+                        }}
                       />
                     </Col>
                     <Col>
+                      Tastes
                       <SelectField
+                        id="tastes"
                         name="tastes"
-                        placeholder="Choose taste"
+                        multiple
+                        checkboxes
+                        transform={transform}
                         showInlineError
+                        style={{
+                          maxHeight: '120px',
+                          overflowY: 'scroll',
+                          border: '1px solid #ddd',
+                          borderRadius: '5px',
+                          padding: '8px',
+                        }}
                       />
                     </Col>
                   </Row>

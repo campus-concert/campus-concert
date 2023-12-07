@@ -53,6 +53,7 @@ const EditProfile = () => {
   }
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
 
+  const transform = (label) => ` ${label}`;
   return ready ? (
     <Container id="edit-profile-page" className="py-3">
       <Row className="justify-content-center">
@@ -96,19 +97,39 @@ const EditProfile = () => {
                         />
                       </Col>
                       <Col>
+                        Instruments
                         <SelectField
-                          id="edit-profile-instruments"
+                          id="edit-instruments"
                           name="instruments"
-                          placeholder="Choose instrument"
+                          multiple
+                          checkboxes
+                          transform={transform}
                           showInlineError
+                          style={{
+                            maxHeight: '120px',
+                            overflowY: 'scroll',
+                            border: '1px solid #ddd',
+                            borderRadius: '5px',
+                            padding: '8px',
+                          }}
                         />
                       </Col>
                       <Col>
+                        Tastes
                         <SelectField
-                          id="edit-profile-tastes"
+                          id="edit-tastes"
                           name="tastes"
-                          placeholder="Choose taste"
+                          multiple
+                          checkboxes
+                          transform={transform}
                           showInlineError
+                          style={{
+                            maxHeight: '120px',
+                            overflowY: 'scroll',
+                            border: '1px solid #ddd',
+                            borderRadius: '5px',
+                            padding: '8px',
+                          }}
                         />
                       </Col>
                     </Row>
@@ -118,7 +139,7 @@ const EditProfile = () => {
                 </Card>
               </AutoForm>
             ) : (
-              <div>Sorry, you are not authorized to edit this user.</div>
+              <div>You do not have permission to edit this Profile.</div>
             )}
           </Card>
         </Col>

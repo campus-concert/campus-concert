@@ -72,8 +72,9 @@ const CreateConcert = () => {
     return <Navigate to="/my-concerts" />;
   }
 
+  const transform = (label) => ` ${label}`;
   return ready ? (
-    <Container id="edit-concert-page" className="py-3">
+    <Container id="create-concert-page" className="py-3">
       <Row className="justify-content-center">
         <Col xs={10}>
           <Card className="p-4 mb-4"> {/* Underlay title with a white box */}
@@ -88,19 +89,41 @@ const CreateConcert = () => {
                   </Row>
                   <Row>
                     <Col>
+                      Instruments Needed
                       <SelectField
                         id="concert-instruments"
                         name="instrumentsNeeded"
+                        multiple
                         placeholder="Choose instrument(s) needed"
+                        checkboxes
+                        transform={transform}
                         showInlineError
+                        style={{
+                          maxHeight: '120px',
+                          overflowY: 'scroll',
+                          border: '1px solid #ddd',
+                          borderRadius: '5px',
+                          padding: '8px',
+                        }}
                       />
                     </Col>
                     <Col>
+                      Genres
                       <SelectField
                         id="concert-genres"
                         name="genres"
+                        multiple
                         placeholder="Choose genre(s)"
+                        checkboxes
+                        transform={transform}
                         showInlineError
+                        style={{
+                          maxHeight: '120px',
+                          overflowY: 'scroll',
+                          border: '1px solid #ddd',
+                          borderRadius: '5px',
+                          padding: '8px',
+                        }}
                       />
                     </Col>
                   </Row>
@@ -110,6 +133,7 @@ const CreateConcert = () => {
                         id="concert-date"
                         name="date"
                         showInlineError
+                        label="Concert Date and Time"
                       />
                     </Col>
                   </Row>
