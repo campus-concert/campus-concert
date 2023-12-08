@@ -11,8 +11,14 @@ const BookmarkedConcerts = () => {
   const { ready, bookmarkedConcerts } = useTracker(() => {
     const subscription = Meteor.subscribe(Concerts.bookmarkedPublicationName);
     const rdy = subscription.ready();
-    const concertItems = Concerts.collection.find({}).fetch();
-    console.log(concertItems);
+    const concertItems = Concerts.collection.find({
+      bookmarks: {
+        $elemMatch: {
+          userId: Meteor.userId(),
+          state: true,
+        },
+      },
+    }).fetch();
     return {
       bookmarkedConcerts: concertItems,
       ready: rdy,

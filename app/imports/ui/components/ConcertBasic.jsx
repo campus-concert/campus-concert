@@ -7,7 +7,6 @@ import { StarFill, Star } from 'react-bootstrap-icons';
 const ConcertBasic = ({ concert, admin }) => {
   const toggleBookmark = () => {
     const newBookmarkState = !concert.bookmarks || !concert.bookmarks.some(e => e.userId === Meteor.userId() && e.state);
-    console.log(newBookmarkState);
     Meteor.call('bookmarkConcert', concert._id, newBookmarkState, (error) => {
       if (error) {
         console.error(error);
