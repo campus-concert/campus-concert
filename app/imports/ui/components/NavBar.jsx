@@ -20,7 +20,7 @@ const NavBar = () => {
       <Container>
         <Navbar.Brand id="home-nav" as={NavLink} to="/" className="d-flex align-items-center">
           <Image src="/images/logo-1.png" className="rounded" width="55px" alt="Logo" />
-          <span className="ms-2 h2 text-white">Campus Concerts</span>
+          <span className="ms-2 h2 text-white">Campus Concert</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

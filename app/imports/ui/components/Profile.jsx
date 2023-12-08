@@ -23,7 +23,7 @@ const Profile = ({ profile, edit = false }) => {
               target="_blank"
               rel="noopener noreferrer"
               className="me-3"
-              style={{ color: '#FF0000' }}
+              style={{ color: '#FF0000', order: 1 }}
             >
               <Youtube size={25} />
             </a>
@@ -34,7 +34,7 @@ const Profile = ({ profile, edit = false }) => {
               target="_blank"
               rel="noopener noreferrer"
               className="me-3"
-              style={{ color: '#1ED760' }}
+              style={{ color: '#1ED760', order: 2 }}
             >
               <Spotify size={25} />
             </a>
@@ -44,7 +44,8 @@ const Profile = ({ profile, edit = false }) => {
               href={profile.soundcloudLink}
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: '#ff7700' }}
+              className="me-3"
+              style={{ color: '#ff7700', order: 3 }}
             >
               <CloudFog2Fill size={25} />
             </a>

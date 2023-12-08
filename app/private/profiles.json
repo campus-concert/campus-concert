@@ -4,8 +4,8 @@
       "email": "admin@foo.com",
       "password": "changeme",
       "role": "admin",
-      "firstName": "The",
-      "lastName": "Admin",
+      "firstName": "Admin",
+      "lastName": ":)",
       "image": "https://media.moddb.com/cache/images/members/4/3083/3082063/thumb_620x2000/t-850-02-crop.jpg",
       "description": "Hey there, awesome users! This is your friendly neighborhood admin!",
       "instruments": [

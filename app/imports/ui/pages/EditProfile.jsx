@@ -31,12 +31,45 @@ const EditProfile = () => {
       ready: rdy,
     };
   }, [_id]);
+  const isValidUrl = (url) => {
+    const urlRegex = /^(https?:\/\/)?([\w.]+)\.([a-z]{2,6}\.?)(\/[\w]*)*\/?$/i;
+
+    const isValidProtocol = urlRegex.test(url);
+    const hasValidDomain = ['youtube.com', 'youtu.be', 'spotify.com', 'soundcloud.com'].some(domain => url.includes(domain));
+    return isValidProtocol && hasValidDomain && urlRegex.test(url) && (url.toLowerCase().startsWith('http://') || url.toLowerCase().startsWith('https://'));
+  };
+
+  const validateUrls = (data) => {
+    const { youtubeLink, spotifyLink, soundcloudLink } = data;
+    const errors = {};
+
+    if (youtubeLink && !isValidUrl(youtubeLink)) {
+      errors.youtubeLink = 'Invalid or unsupported YouTube URL';
+    }
+
+    if (spotifyLink && !isValidUrl(spotifyLink)) {
+      errors.spotifyLink = 'Invalid or unsupported Spotify URL';
+    }
+
+    if (soundcloudLink && !isValidUrl(soundcloudLink)) {
+      errors.soundcloudLink = 'Invalid or unsupported SoundCloud URL';
+    }
+
+    return errors;
+  };
   // On submit, insert the data.
   const submit = (data) => {
-    const { firstName, lastName, image, description, contact, location, goals, instruments, tastes } = data;
+    const validationErrors = validateUrls(data);
+
+    if (Object.keys(validationErrors).length > 0) {
+      swal('Validation Error', 'Please enter valid URLs with http or https protocols. (e.g. http://youtube.com)', 'error');
+      return;
+    }
+
+    const { firstName, lastName, image, description, contact, location, goals, instruments, tastes, youtubeLink, spotifyLink, soundcloudLink } = data;
     Profiles.collection.update(
       _id,
-      { $set: { firstName, lastName, image, description, contact, location, goals, instruments, tastes } },
+      { $set: { firstName, lastName, image, description, contact, location, goals, instruments, tastes, youtubeLink, spotifyLink, soundcloudLink } },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -85,17 +118,7 @@ const EditProfile = () => {
                         />
                       </Col>
                     </Row>
-                    <LongTextField id="edit-profile-description" name="description" showInlineError />
-                    <TextField id="edit-profile-goal" name="goals" showInlineError />
                     <Row>
-                      <Col>
-                        <SelectField
-                          id="edit-profile-location"
-                          name="location"
-                          placeholder="Choose location"
-                          showInlineError
-                        />
-                      </Col>
                       <Col>
                         Instruments
                         <SelectField
@@ -130,6 +153,44 @@ const EditProfile = () => {
                             borderRadius: '5px',
                             padding: '8px',
                           }}
+                        />
+                      </Col>
+                    </Row>
+                    <TextField id="edit-profile-goal" name="goals" showInlineError />
+                    <Row>
+                      <Col>
+                        <SelectField
+                          id="edit-profile-location"
+                          name="location"
+                          placeholder="Choose location"
+                          showInlineError
+                        />
+                      </Col>
+                    </Row>
+                    <LongTextField id="edit-profile-description" name="description" showInlineError />
+                    <Row>
+                      <Col>
+                        <TextField
+                          id="edit-profile-youtubeLink"
+                          name="youtubeLink"
+                          placeholder="Enter Youtube link (optional)"
+                          showInlineError
+                        />
+                      </Col>
+                      <Col>
+                        <TextField
+                          id="edit-profile-spotifyLink"
+                          name="spotifyLink"
+                          placeholder="Enter Spotify link (optional)"
+                          showInlineError
+                        />
+                      </Col>
+                      <Col>
+                        <TextField
+                          id="edit-profile-soundcloudLink"
+                          name="soundcloudLink"
+                          placeholder="Enter Soundcloud link (optional)"
+                          showInlineError
                         />
                       </Col>
                     </Row>

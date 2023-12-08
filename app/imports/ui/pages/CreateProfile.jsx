@@ -23,8 +23,40 @@ const CreateProfile = () => {
       ready: rdy,
     };
   });
+  const isValidUrl = (url) => {
+    const urlRegex = /^(https?:\/\/)?([\w.]+)\.([a-z]{2,6}\.?)(\/[\w]*)*\/?$/i;
+
+    const isValidProtocol = urlRegex.test(url);
+    const hasValidDomain = ['youtube.com', 'youtu.be', 'spotify.com', 'soundcloud.com'].some(domain => url.includes(domain));
+    return isValidProtocol && hasValidDomain && urlRegex.test(url) && (url.toLowerCase().startsWith('http://') || url.toLowerCase().startsWith('https://'));
+  };
+
+  const validateUrls = (data) => {
+    const { youtubeLink, spotifyLink, soundcloudLink } = data;
+    const errors = {};
+
+    if (youtubeLink && !isValidUrl(youtubeLink)) {
+      errors.youtubeLink = 'Invalid or unsupported YouTube URL';
+    }
+
+    if (spotifyLink && !isValidUrl(spotifyLink)) {
+      errors.spotifyLink = 'Invalid or unsupported Spotify URL';
+    }
+
+    if (soundcloudLink && !isValidUrl(soundcloudLink)) {
+      errors.soundcloudLink = 'Invalid or unsupported SoundCloud URL';
+    }
+
+    return errors;
+  };
   // On submit, insert the data.
   const submit = (data) => {
+    const validationErrors = validateUrls(data);
+
+    if (Object.keys(validationErrors).length > 0) {
+      swal('Validation Error', 'Please enter valid URLs with http or https protocols. (e.g. http://youtube.com)', 'error');
+      return;
+    }
     const {
       firstName,
       lastName,
@@ -83,6 +115,7 @@ const CreateProfile = () => {
                     </Col>
                     <Col>
                       <TextField
+                        id="profile-contact"
                         name="contact"
                         value={Meteor.user().username}
                         showInlineError
@@ -90,16 +123,7 @@ const CreateProfile = () => {
                       />
                     </Col>
                   </Row>
-                  <LongTextField name="description" showInlineError />
-                  <TextField name="goals" showInlineError />
                   <Row>
-                    <Col>
-                      <SelectField
-                        name="location"
-                        placeholder="Choose location"
-                        showInlineError
-                      />
-                    </Col>
                     <Col>
                       Instruments
                       <SelectField
@@ -137,7 +161,45 @@ const CreateProfile = () => {
                       />
                     </Col>
                   </Row>
-                  <SubmitField value="Submit" />
+                  <TextField id="profile-goal" name="goals" showInlineError />
+                  <Row>
+                    <Col>
+                      <SelectField
+                        id="profile-location"
+                        name="location"
+                        placeholder="Choose location"
+                        showInlineError
+                      />
+                    </Col>
+                  </Row>
+                  <LongTextField id="profile-description" name="description" showInlineError />
+                  <Row>
+                    <Col>
+                      <TextField
+                        id="profile-youtubeLink"
+                        name="youtubeLink"
+                        placeholder="Enter Youtube link (optional)"
+                        showInlineError
+                      />
+                    </Col>
+                    <Col>
+                      <TextField
+                        id="profile-spotifyLink"
+                        name="spotifyLink"
+                        placeholder="Enter Spotify link (optional)"
+                        showInlineError
+                      />
+                    </Col>
+                    <Col>
+                      <TextField
+                        id="profile-soundcloudLink"
+                        name="soundcloudLink"
+                        placeholder="Enter Soundcloud link (optional)"
+                        showInlineError
+                      />
+                    </Col>
+                  </Row>
+                  <SubmitField id="profile-submit" value="Submit" />
                   <ErrorsField />
                 </Card.Body>
               </Card>
