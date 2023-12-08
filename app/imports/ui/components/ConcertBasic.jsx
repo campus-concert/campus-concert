@@ -1,11 +1,12 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
 import { Calendar, Clock, GeoAlt } from 'react-bootstrap-icons';
 import { Profiles } from '../../api/profile/Profile';
+import { StarFill, Star } from 'react-bootstrap-icons';
 import LoadingSpinner from './LoadingSpinner';
 
 const timeDifference = (current, target) => {
@@ -46,7 +47,16 @@ const timeDifference = (current, target) => {
   return `${years} ${years === 1 ? 'year' : 'years'} ${isFuture ? 'away' : 'ago'}`;
 };
 
+
 const ConcertBasic = ({ concert, admin }) => {
+  const toggleBookmark = () => {
+    const newBookmarkState = !concert.bookmarks || !concert.bookmarks.some(e => e.userId === Meteor.userId() && e.state);
+    Meteor.call('bookmarkConcert', concert._id, newBookmarkState, (error) => {
+      if (error) {
+        console.error(error);
+      }
+    });
+  }
   const currentDate = new Date();
   const concertDate = new Date(concert.date.getTime() + 10 * 60 * 60 * 1000);
 
@@ -119,6 +129,14 @@ const ConcertBasic = ({ concert, admin }) => {
           <Card.Text className="mb-2" style={{ fontSize: '0.7rem' }}>
             Posted by {author} • {timeDifference(new Date(), concert.createdAt)}
           </Card.Text>
+          <Button
+          variant={concert.bookmarks && concert.bookmarks.some(e => e.userId === Meteor.userId() && e.state) ? 'success' : 'outline-secondary'}
+          size="sm"
+          className="position-absolute top-0 end-0 m-2"
+          onClick={toggleBookmark}
+        >
+          {concert.bookmark ? <StarFill /> : <Star />}
+        </Button>
         </Card.Header>
         <Card.Body className="flex-grow-1" style={{ overflow: 'hidden' }}>
           <div className="mb-2" style={{ overflow: 'hidden', whiteSpace: 'nowrap', marginBottom: '5px' }} ref={genresRef}>
@@ -216,6 +234,7 @@ ConcertBasic.propTypes = {
     concertLocation: PropTypes.string,
     owner: PropTypes.string,
     _id: PropTypes.string,
+    bookmark: PropTypes.object,
   }).isRequired,
   admin: PropTypes.bool,
 };
