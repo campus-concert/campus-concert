@@ -21,12 +21,10 @@ const UserConcert = () => {
     };
   });
 
-  const pageTitle = userConcert
-    ? `Posted by: ${userConcert.owner}`
-    : 'User Concert';
   let edit = false;
-  if (Meteor.user()) {
-    edit = userConcert.owner === Meteor.user().username;
+  if (!userId && Meteor.user()) {
+    userConcert = Concerts.collection.findOne({ concertContact: Meteor.user().username });
+    edit = true;
   }
   if (admin) {
     edit = true;
@@ -37,9 +35,6 @@ const UserConcert = () => {
       <Row className="justify-content-center">
         <Col md={7}>
           <Card className="p-4 mb-4"> {/* Stylish box added here */}
-            <Col className="text-center">
-              <h2>{pageTitle}</h2>
-            </Col>
             <Concert concert={userConcert} edit={edit} />
           </Card>
         </Col>

@@ -160,7 +160,12 @@ const EditConcert = () => {
                     </Row>
                     <Row>
                       <Col>
-                        <DateField id="edit-concert-date" name="date" showInlineError />
+                        <DateField
+                          id="edit-concert-date"
+                          name="date"
+                          showInlineError
+                          label="Concert Date and Time"
+                        />
                       </Col>
                     </Row>
                     <Row>

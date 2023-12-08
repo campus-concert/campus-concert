@@ -59,7 +59,7 @@ const EditProfile = () => {
       <Row className="justify-content-center">
         <Col xs={10}>
           <Card className="p-4 mb-4"> {/* Underlay title with a white box */}
-            <Col className="text-center"><h2>Edit User</h2></Col>
+            <Col className="text-center"><h2>Edit Profile</h2></Col>
             { doc ? (
               <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
                 <Card>

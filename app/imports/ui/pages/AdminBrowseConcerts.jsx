@@ -24,7 +24,7 @@ const AdminBrowseConcerts = () => {
         <Col>
           <Card className="p-4 mb-4"> {/* Stylish box added here */}
             <Col className="text-center">
-              <h2>Admin mode: Browse Concerts</h2>
+              <h2>Admin: Browse Concerts</h2>
             </Col>
             <Row xs={1} md={2} lg={3} className="g-4">
               {concerts.map((concert, index) => (

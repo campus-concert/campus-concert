@@ -19,9 +19,9 @@ const createUser = (email, password, role) => {
   }
 };
 
-const addProfile = (firstName, lastName, image, description, contact, location, goals, instruments, tastes) => {
+const addProfile = (firstName, lastName, image, description, contact, location, goals, instruments, tastes, youtubeLink, spotifyLink, soundcloudLink) => {
   console.log(`  Creating profile ${contact}`);
-  Profiles.collection.insert({ firstName, lastName, image, description, contact, location, goals, instruments, tastes });
+  Profiles.collection.insert({ firstName, lastName, image, description, contact, location, goals, instruments, tastes, youtubeLink, spotifyLink, soundcloudLink });
 };
 
 /** if (Profiles.collection.find().count() === 0) {
@@ -60,7 +60,8 @@ if ((Meteor.settings.loadAssetsFile) && (Meteor.users.find().count() === 0)) {
   profilesData.profiles.map(({ email, password, role }) => createUser(email, password, role));
   console.log('========================');
   // Adding profiles from profile assets
-  profilesData.profiles.map(({ firstName, lastName, image, description, email, location, goals, instruments, tastes }) => addProfile(firstName, lastName, image, description, email, location, goals, instruments, tastes));
+  // eslint-disable-next-line max-len
+  profilesData.profiles.map(({ firstName, lastName, image, description, email, location, goals, instruments, tastes, youtubeLink, spotifyLink, soundcloudLink }) => addProfile(firstName, lastName, image, description, email, location, goals, instruments, tastes, youtubeLink, spotifyLink, soundcloudLink));
   console.log('========================');
   // Adding concert assets
   const concertsFileName = 'concerts.json';

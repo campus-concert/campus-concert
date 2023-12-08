@@ -24,7 +24,7 @@ const AdminBrowseProfiles = () => {
         <Col>
           <Card className="p-4 mb-4"> {/* Stylish box added here */}
             <Col className="text-center">
-              <h2>Admin mode: Browse Profiles</h2>
+              <h2>Admin: Browse Profiles</h2>
             </Col>
             <Row xs={1} md={2} lg={3} className="g-4">
               {profiles.map((profile, index) => (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { Card } from 'react-bootstrap';
@@ -46,7 +46,7 @@ const timeDifference = (current, target) => {
   return `${years} ${years === 1 ? 'year' : 'years'} ${isFuture ? 'away' : 'ago'}`;
 };
 
-const ConcertBasic = ({ concert }) => {
+const ConcertBasic = ({ concert, admin }) => {
   const currentDate = new Date();
   const concertDate = new Date(concert.date.getTime() + 10 * 60 * 60 * 1000);
 
@@ -76,43 +76,85 @@ const ConcertBasic = ({ concert }) => {
     </span>
   ) : 'User Concert';
 
+  const genresRef = useRef(null);
+  const instrumentsNeededRef = useRef(null);
+  const [genresOverflowIndex, setGenresOverflowIndex] = useState(-1);
+  const [instrumentsNeededOverflowIndex, setInstrumentsNeededOverflowIndex] = useState(-1);
+
+  useEffect(() => {
+    const genresDiv = genresRef.current;
+    const instrumentsNeededDiv = instrumentsNeededRef.current;
+    const calculateOverflowIndex = (container) => {
+      const elements = container.querySelectorAll('.badge');
+      let totalWidth = 0;
+      let currentOverflowIndex = -1;
+
+      elements.forEach((element, index) => {
+        totalWidth += element.offsetWidth;
+
+        if (totalWidth > container.clientWidth && currentOverflowIndex === -1) {
+          currentOverflowIndex = index;
+        }
+      });
+
+      return currentOverflowIndex;
+    };
+
+    if (genresDiv) {
+      setGenresOverflowIndex(calculateOverflowIndex(genresDiv, concert.genres));
+    }
+
+    if (instrumentsNeededDiv) {
+      setInstrumentsNeededOverflowIndex(calculateOverflowIndex(instrumentsNeededDiv, concert.instrumentsNeeded));
+    }
+  }, [concert.genres, concert.instrumentsNeeded]);
+
   return ready ? (
-    <Link to={`/userconcert/${concert._id}`} className="card-link" style={{ textDecoration: 'none' }}>
-      <Card className="d-flex flex-column h-100">
-        <Card.Header className="bg-white position-relative">
+    <Link to={admin ? `/userconcert/admin/${concert._id}` : `/userconcert/${concert._id}`} className="card-link" style={{ textDecoration: 'none' }}>
+      <Card className="d-flex flex-column h-100" style={{ border: '1.5px solid #ccc', display: 'flex' }}>
+        <Card.Header className="position-relative">
           <div>
             <Card.Title className="d-flex mt-2" style={{ fontSize: '1.5rem' }}>{concert.concertName}</Card.Title>
           </div>
           <Card.Text className="mb-2" style={{ fontSize: '0.7rem' }}>
             Posted by {author} • {timeDifference(new Date(), concert.createdAt)}
           </Card.Text>
-          <div className="mb-2">
+        </Card.Header>
+        <Card.Body className="flex-grow-1" style={{ overflow: 'hidden' }}>
+          <div className="mb-2" style={{ overflow: 'hidden', whiteSpace: 'nowrap', marginBottom: '5px' }} ref={genresRef}>
+            <h6 style={{ fontSize: '1.1rem', marginBottom: '5px' }}>Genres</h6>
             {concert.genres && concert.genres.length > 0 && (
-              <div>
-                {concert.genres.slice(0, 3).map((genre, index) => (
-                  <span key={index} className="badge bg-secondary mx-1">{genre}</span>
+              <div style={{ display: 'inline', marginBottom: '-8px' }}>
+                {concert.genres.slice(0, genresOverflowIndex === -1 ? concert.genres.length : genresOverflowIndex - 1).map((genre, index) => (
+                  <span key={index} className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '16px' }}>{genre}</span>
                 ))}
-                {concert.genres.length > 3 && <span className="badge bg-secondary mx-1">...</span>}
-                <hr style={{ margin: '10px 0' }} />
-                <p style={{ fontSize: '0.8rem', color: '#777', display: 'inline' }}>Looking for: </p>
-                {concert.instrumentsNeeded && concert.instrumentsNeeded.length > 0 && (
-                  <div style={{ display: 'inline' }}>
-                    {concert.instrumentsNeeded.slice(0, 2).map((instrument, index) => (
-                      <span key={index} className="badge bg-secondary mx-1">{instrument}</span>
-                    ))}
-                    {concert.instrumentsNeeded.length > 2 && <span className="badge bg-secondary mx-1">...</span>}
-                  </div>
+                {genresOverflowIndex !== -1 && (
+                  <span className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '14px' }}>...</span>
                 )}
               </div>
             )}
           </div>
-        </Card.Header>
-        <Card.Body className="flex-grow-1" style={{ maxHeight: '175px', overflow: 'hidden' }}>
+          <div className="mb-2" style={{ overflow: 'hidden', whiteSpace: 'nowrap' }} ref={instrumentsNeededRef}>
+            <h6 style={{ fontSize: '1.1rem', marginBottom: '5px' }}>Instruments Needed</h6>
+            {concert.instrumentsNeeded && concert.instrumentsNeeded.length > 0 && (
+              <div style={{ display: 'inline', marginBottom: '-8px' }}>
+                {concert.instrumentsNeeded.slice(0, instrumentsNeededOverflowIndex === -1 ? concert.instrumentsNeeded.length : instrumentsNeededOverflowIndex - 1).map((instrument, index) => (
+                  <span key={index} className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '16px' }}>{instrument}</span>
+                ))}
+                {instrumentsNeededOverflowIndex !== -1 && (
+                  <span className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '14px' }}>...</span>
+                )}
+              </div>
+            )}
+          </div>
+          <hr style={{ margin: '5px 0' }} />
           <div className="d-flex flex-column">
-            <div className="mb-2">
+            <div className="mt-2 mb-2">
               <Card.Text>
                 <h6>
-                  <Calendar className="mr-2" />{' '}
+                  <span style={{ fontSize: '1em', paddingRight: '0.25em' }}>
+                    <Calendar />
+                  </span>{' '}
                   <span>
                     {concert.date.toLocaleDateString('en-US', {
                       timeZone: 'UTC',
@@ -128,19 +170,35 @@ const ConcertBasic = ({ concert }) => {
                 </h6>
               </Card.Text>
             </div>
-
             <div className="mb-2">
               <Card.Text>
                 <h6>
-                  <Clock />  {concert.date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' })}
+                  <span style={{ fontSize: '1em', paddingRight: '0.25em' }}>
+                    <Clock />
+                  </span>{' '}
+                  {concert.date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' })}
                 </h6>
               </Card.Text>
             </div>
-            <div className="mb-2">
-              <Card.Text><h6><GeoAlt />  {concert.concertLocation}</h6></Card.Text>
+            <div>
+              <Card.Text>
+                <h6>
+                  <span style={{ fontSize: '1em', paddingRight: '0.25em' }}>
+                    <GeoAlt />
+                  </span>{' '}
+                  {concert.concertLocation}
+                </h6>
+              </Card.Text>
             </div>
           </div>
         </Card.Body>
+        { (Meteor.user() && (admin || Meteor.user().emails[0].address === concert.owner)) && (
+          <div className="text-center" style={{ marginTop: 'auto', marginBottom: '10px' }}>
+            <Link id="edit-concert-button" to={`/edit-concert/${concert._id}`} className="btn btn-outline-primary btn-sm">
+              Edit or Remove
+            </Link>
+          </div>
+        )}
       </Card>
     </Link>
   ) : (
@@ -159,6 +217,11 @@ ConcertBasic.propTypes = {
     owner: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
+  admin: PropTypes.bool,
+};
+
+ConcertBasic.defaultProps = {
+  admin: false,
 };
 
 export default ConcertBasic;

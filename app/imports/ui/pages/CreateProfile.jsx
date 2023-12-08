@@ -25,9 +25,22 @@ const CreateProfile = () => {
   });
   // On submit, insert the data.
   const submit = (data) => {
-    const { firstName, lastName, image, description, contact, location, goals, instruments, tastes } = data;
+    const {
+      firstName,
+      lastName,
+      image,
+      description,
+      contact,
+      location,
+      goals,
+      instruments,
+      tastes,
+      youtubeLink,
+      spotifyLink,
+      soundcloudLink,
+    } = data;
     Profiles.collection.insert(
-      { firstName, lastName, image, description, contact, location, goals, instruments, tastes },
+      { firstName, lastName, image, description, contact, location, goals, instruments, tastes, youtubeLink, spotifyLink, soundcloudLink },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');

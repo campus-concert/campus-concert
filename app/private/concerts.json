@@ -8,7 +8,7 @@
       "instrumentsNeeded": "guitar",
       "genres": "hip-hop",
       "concertDescription": "This is a description.",
-      "contact": "8085555555",
+      "contact": "(808) 555-5555",
       "owner": "admin@foo.com"
     },
     {
@@ -22,7 +22,7 @@
       ],
       "genres": "jazz",
       "concertDescription": "This is a description.",
-      "contact": "8085555555",
+      "contact": "(808) 555-5555",
       "owner": "john@foo.com"
     },
     {
@@ -36,8 +36,179 @@
         "pop"
       ],
       "concertDescription": "This is a description.",
-      "contact": "8085555555",
+      "contact": "(808) 555-5555",
       "owner": "john@foo.com"
+    },
+    {
+      "concertName": "Starlight Serenade",
+      "date": "2023-12-10T18:30:00.000Z",
+      "createdAt": "2023-12-03T10:15:00.000Z",
+      "concertLocation": "Kennedy Theatre Courtyard",
+      "instrumentsNeeded": [
+        "violin",
+        "piano",
+        "cello",
+        "flute"
+      ],
+      "genres": [
+        "classical",
+        "ambient"
+      ],
+      "concertDescription": "An enchanting night under the stars with classical and ambient melodies.",
+      "contact": "contact@example.com",
+      "owner": "sebastian@foo.com"
+    },
+    {
+      "concertName": "Funky Fusion Fiesta",
+      "date": "2023-12-12T20:00:00.000Z",
+      "createdAt": "2023-12-04T12:45:00.000Z",
+      "concertLocation": "Campus Center Ballroom",
+      "instrumentsNeeded": [
+        "saxophone",
+        "electric keyboard",
+        "drum kit",
+        "bass guitar",
+        "trumpet"
+      ],
+      "genres": [
+        "jazz",
+        "electronic"
+      ],
+      "concertDescription": "Get ready to dance to a funky mix of jazz and electronic beats.",
+      "contact": "(808) 333-4444",
+      "owner": "leo@foo.com"
+    },
+    {
+      "concertName": "Garden Groove Gathering",
+      "date": "2023-12-15T17:30:00.000Z",
+      "createdAt": "2023-12-06T09:30:00.000Z",
+      "concertLocation": "Doris Duke Theatre Garden",
+      "instrumentsNeeded": [
+        "guitar",
+        "ukulele",
+        "vocals"
+      ],
+      "genres": [
+        "folk",
+        "world"
+      ],
+      "concertDescription": "A delightful evening of acoustic tunes in the serene garden setting.",
+      "contact": "lily@example.com",
+      "owner": "mia@foo.com"
+    },
+    {
+      "concertName": "Technotronic Harmony",
+      "date": "2023-12-18T21:00:00.000Z",
+      "createdAt": "2023-12-04T14:00:00.000Z",
+      "concertLocation": "POST 126",
+      "instrumentsNeeded": [
+        "synthesizer",
+        "drum kit",
+        "bass guitar",
+        "electric keyboard"
+      ],
+      "genres": [
+        "electronic",
+        "experimental"
+      ],
+      "concertDescription": "Immerse yourself in the cutting-edge sounds of electronic and experimental music.",
+      "contact": "sara@example.com",
+      "owner": "timothy@foo.com"
+    },
+    {
+      "concertName": "Soulful Serenade",
+      "date": "2023-12-20T19:30:00.000Z",
+      "createdAt": "2023-12-05T11:45:00.000Z",
+      "concertLocation": "Art Building Courtyard",
+      "instrumentsNeeded": [
+        "saxophone",
+        "trumpet",
+        "piano",
+        "vocals"
+      ],
+      "genres": [
+        "soul",
+        "blues"
+      ],
+      "concertDescription": "Let the soulful tunes and bluesy melodies captivate your heart.",
+      "contact": "(808) 555-6789",
+      "owner": "felix@foo.com"
+    },
+    {
+      "concertName": "Harmonic Hues",
+      "date": "2023-12-22T16:45:00.000Z",
+      "createdAt": "2023-12-06T16:30:00.000Z",
+      "concertLocation": "Hawai‘i Hall 208",
+      "instrumentsNeeded": [
+        "violin",
+        "flute",
+        "harp",
+        "oboe"
+      ],
+      "genres": [
+        "classical",
+        "ambient"
+      ],
+      "concertDescription": "A colorful blend of classical and ambient music in a vibrant acoustic space.",
+      "contact": "michael@example.com",
+      "owner": "sebastian@foo.com"
+    },
+    {
+      "concertName": "Rhythmic Rapture",
+      "date": "2023-12-25T20:15:00.000Z",
+      "createdAt": "2023-12-04T09:00:00.000Z",
+      "concertLocation": "Wong Auditorium",
+      "instrumentsNeeded": [
+        "drum kit",
+        "congas",
+        "bass guitar",
+        "trombone"
+      ],
+      "genres": [
+        "jazz",
+        "latin"
+      ],
+      "concertDescription": "Experience the magic of rhythmic jazz and Latin beats in a festive holiday setting.",
+      "contact": "david@example.com",
+      "owner": "andre@foo.com"
+    },
+    {
+      "concertName": "Ukulele Utopia",
+      "date": "2023-12-28T14:30:00.000Z",
+      "createdAt": "2023-12-06T12:00:00.000Z",
+      "concertLocation": "Bilger Hall 152",
+      "instrumentsNeeded": [
+        "ukulele",
+        "bass guitar",
+        "vocals",
+        "tambourine"
+      ],
+      "genres": [
+        "folk",
+        "world"
+      ],
+      "concertDescription": "Escape to a utopia of ukulele melodies and rhythmic world music.",
+      "contact": "olivia@example.com",
+      "owner": "kai@foo.com"
+    },
+    {
+      "concertName": "Mystical Melodies",
+      "date": "2023-12-30T19:00:00.000Z",
+      "createdAt": "2023-12-02T15:30:00.000Z",
+      "concertLocation": "Bachman Hall Lawn",
+      "instrumentsNeeded": [
+        "harp",
+        "flute",
+        "violin",
+        "synthesizer"
+      ],
+      "genres": [
+        "ambient",
+        "experimental"
+      ],
+      "concertDescription": "Embark on a journey through mystical ambient and experimental soundscapes.",
+      "contact": "nathan@example.com",
+      "owner": "elijah@foo.com"
     }
   ]
 }

@@ -1,8 +1,9 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Card, Image, Button } from 'react-bootstrap';
-import { Youtube, Spotify, Cloud } from 'react-bootstrap-icons';
+import { Youtube, Spotify, CloudFog2Fill } from 'react-bootstrap-icons';
 
 const Profile = ({ profile, edit = false }) => {
 
@@ -12,43 +13,69 @@ const Profile = ({ profile, edit = false }) => {
 
   return (
     <Card id="user-profile-card" className="d-flex flex-column">
-      <Card.Header className="bg-dark text-white text-center position-relative">
+      <Card.Header className="text-center position-relative">
         <Image src={profile.image} roundedCircle width={200} className="mt-3" />
+        <Card.Title id="profile-name" className="my-2" style={{ fontSize: '1.6rem' }}>{profile.firstName} {profile.lastName}</Card.Title>
         <div className="d-flex justify-content-end p-3 w-100 position-absolute top-0 end-0">
-          <a
-            href={profile.youtubeLink || '#'} // Use the actual YouTube link from the profile
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white me-3"
-          >
-            <Youtube size={25} />
-          </a>
-          <a
-            href={profile.spotifyLink || '#'} // Use the actual Spotify link from the profile
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white me-3"
-          >
-            <Spotify size={25} />
-          </a>
-          <a
-            href={profile.soundcloudLink || '#'} // Use the actual SoundCloud link from the profile
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white"
-          >
-            <Cloud size={25} />
-          </a>
+          {profile.youtubeLink && (
+            <a
+              href={profile.youtubeLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="me-3"
+              style={{ color: '#FF0000' }}
+            >
+              <Youtube size={25} />
+            </a>
+          )}
+          {profile.spotifyLink && (
+            <a
+              href={profile.spotifyLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="me-3"
+              style={{ color: '#1ED760' }}
+            >
+              <Spotify size={25} />
+            </a>
+          )}
+          {profile.soundcloudLink && (
+            <a
+              href={profile.soundcloudLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: '#ff7700' }}
+            >
+              <CloudFog2Fill size={25} />
+            </a>
+          )}
         </div>
-        <Card.Title id="profile-name" className="my-2">{profile.firstName} {profile.lastName}</Card.Title>
       </Card.Header>
       <Card.Body className="flex-grow-1">
         <div className="d-flex flex-column">
           <div className="mb-2">
-            <Card.Text id="profile-instruments"><h5>Instruments:</h5>{profile.instruments.join(', ')}</Card.Text>
+            <Card.Text id="profile-tastes">
+              <h5>Musical Tastes:</h5>
+              {profile.tastes && profile.tastes.length > 0 && (
+                <div>
+                  {profile.tastes.map((taste, index) => (
+                    <span key={index} className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '14px' }}>{taste}</span>
+                  ))}
+                </div>
+              )}
+            </Card.Text>
           </div>
           <div className="mb-2">
-            <Card.Text id="profile-tastes"><h5>Musical Tastes:</h5>{profile.tastes.join(', ')}</Card.Text>
+            <Card.Text id="profile-instruments">
+              <h5>Instruments:</h5>
+              {profile.instruments && profile.instruments.length > 0 && (
+                <div>
+                  {profile.instruments.map((instruments, index) => (
+                    <span key={index} className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '14px' }}>{instruments}</span>
+                  ))}
+                </div>
+              )}
+            </Card.Text>
           </div>
           <div className="mb-2">
             <Card.Text id="profile-location"><h5>Location:</h5>{profile.location}</Card.Text>
@@ -63,7 +90,7 @@ const Profile = ({ profile, edit = false }) => {
         </div>
       </Card.Body>
       <Card.Footer>
-        {edit ? (
+        {Meteor.user() && (edit || Meteor.user().emails[0].address === profile.contact) ? (
           <Link id="edit-profile-button" to={`/edit/${profile._id}`}>Edit</Link>
         ) : (
           <Link id="message" to={`/message/${profile._id}`}>

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Card, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
+import { useParams } from 'react-router';
 import { Profiles } from '../../api/profile/Profile';
 import LoadingSpinner from './LoadingSpinner';
 
@@ -53,18 +54,22 @@ const Concert = ({ concert }) => {
     return <div>No Concert found</div>;
   }
 
+  const { admin } = useParams();
+
   const { owner: profileEmail } = concert;
   // eslint-disable-next-line prefer-const
   let { ready, userProfile } = useTracker(() => {
     const subscription = Meteor.subscribe(Profiles.userPublicationName);
     const rdy = subscription.ready();
     const userProf = Profiles.collection.findOne({ contact: profileEmail });
+    console.log('isAdmin', admin);
     return {
       userProfile: userProf,
       ready: rdy,
     };
   });
 
+  console.log('isAdmin', admin);
   const author = userProfile ? (
     <span>
       {Meteor.user() && Meteor.user().emails[0].address === concert.owner ? (
@@ -80,7 +85,7 @@ const Concert = ({ concert }) => {
   ) : 'User Concert';
 
   return ready ? (
-    <Card className="d-flex flex-column h-100">
+    <Card className="d-flex flex-column h-100 style={{ border: '1.5px solid #ccc' }}">
       <Card.Header className="text-center position-relative">
         <Card.Title className="mt-2" style={{ fontSize: '1.5rem' }}>{concert.concertName}</Card.Title>
         <span className="time-difference-wrapper">
@@ -110,11 +115,11 @@ const Concert = ({ concert }) => {
         <div className="d-flex flex-column">
           <div className="mb-2">
             <Card.Text>
-              <h5>Instruments Needed:</h5>
-              {concert.instrumentsNeeded && concert.instrumentsNeeded.length > 0 && (
+              <h5>Musical Genres:</h5>
+              {concert.genres && concert.genres.length > 0 && (
                 <div>
-                  {concert.instrumentsNeeded.map((instrumentsNeeded, index) => (
-                    <span key={index} className="badge bg-secondary mx-1">{instrumentsNeeded}</span>
+                  {concert.genres.map((genre, index) => (
+                    <span key={index} className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '14px' }}>{genre}</span>
                   ))}
                 </div>
               )}
@@ -122,11 +127,11 @@ const Concert = ({ concert }) => {
           </div>
           <div className="mb-2">
             <Card.Text>
-              <h5>Musical Genres:</h5>
-              {concert.genres && concert.genres.length > 0 && (
+              <h5>Instruments Needed:</h5>
+              {concert.instrumentsNeeded && concert.instrumentsNeeded.length > 0 && (
                 <div>
-                  {concert.genres.map((genre, index) => (
-                    <span key={index} className="badge bg-secondary mx-1">{genre}</span>
+                  {concert.instrumentsNeeded.map((instrumentsNeeded, index) => (
+                    <span key={index} className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '14px' }}>{instrumentsNeeded}</span>
                   ))}
                 </div>
               )}
@@ -166,18 +171,11 @@ const Concert = ({ concert }) => {
           <Card.Text id="concert-description" className="my-2"><h5>Description:</h5>{concert.concertDescription}</Card.Text>
         </div>
       </Card.Body>
-      {Meteor.user() && Meteor.user().emails[0].address === concert.owner ? (
+      { (Meteor.user() && (admin || Meteor.user().emails[0].address === concert.owner)) && (
         <Card.Footer>
           <Link id="edit-concert-button" to={`/edit-concert/${concert._id}`}>Edit or Remove</Link>
         </Card.Footer>
-      ) : null}
-      {/*  : ( */}
-      {/*  <Link to={`/comment/${concert._id}`}> */}
-      {/*    <Button variant="primary" size="md" className="mt-3"> */}
-      {/*      Comment */}
-      {/*    </Button> */}
-      {/*  </Link> */}
-      {/* )} */}
+      )}
     </Card>
   ) : (
     <LoadingSpinner />
