@@ -133,7 +133,10 @@ const ConcertBasic = ({ concert, admin }) => {
           variant={concert.bookmarks && concert.bookmarks.some(e => e.userId === Meteor.userId() && e.state) ? 'success' : 'outline-secondary'}
           size="sm"
           className="position-absolute top-0 end-0 m-2"
-          onClick={toggleBookmark}
+          onClick={(e) => {
+            toggleBookmark();
+            e.preventDefault();   // dont take the redirection link
+          }}
         >
           {concert.bookmark ? <StarFill /> : <Star />}
         </Button>
