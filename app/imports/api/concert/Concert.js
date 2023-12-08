@@ -1,4 +1,5 @@
 import { Mongo } from 'meteor/mongo';
+import { array } from 'prop-types';
 import SimpleSchema from 'simpl-schema';
 
 class ConcertsCollection {
@@ -44,11 +45,28 @@ class ConcertsCollection {
         type: String,
         allowedValues: this.allowedGenres,
       },
+      bookmarks: {
+        type: Array,
+        optional: true,
+        defaultValue: [],
+      },
+      'bookmarks.$': {
+        type: Object,
+        blackbox: true,
+        optional: true,
+      },
+      'bookmarks.$.userId': {
+        type: String,
+      },
+      'bookmarks.$.state': {
+        type: Boolean,
+      },
     });
 
     this.collection.attachSchema(this.schema);
     this.userPublicationName = `${this.name}.publication.user`;
     this.adminPublicationName = `${this.name}.publication.admin`;
+    this.bookmarkedPublicationName = `${this.name}.publication.bookmarked`;
   }
 }
 

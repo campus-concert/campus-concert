@@ -27,6 +27,7 @@ import AdminBrowseProfiles from '../pages/AdminBrowseProfiles';
 import CreateConcert from '../pages/CreateConcert';
 import EditConcert from '../pages/EditConcert';
 import AdminBrowseConcerts from '../pages/AdminBrowseConcerts';
+import BookmarkedConcerts from '../pages/BookmarkedConcerts';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -50,6 +51,7 @@ const App = () => {
           <Route path="/browse-all-profiles" element={<ProtectedRoute><BrowseProfiles /></ProtectedRoute>} />
           <Route path="/browse-all-concerts" element={<ProtectedRoute><BrowseConcerts /></ProtectedRoute>} />
           <Route path="/my-concerts" element={<ProtectedRoute><MyConcerts /></ProtectedRoute>} />
+          <Route path="/bookmarked-concerts" element={<ProtectedRoute><BookmarkedConcerts /></ProtectedRoute>} />
           <Route path="/userprofile/:userId" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
           <Route path="/userhome" element={<ProtectedRoute><UserHome /></ProtectedRoute>} />
           <Route path="/userprofile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
