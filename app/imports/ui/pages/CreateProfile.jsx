@@ -54,7 +54,7 @@ const CreateProfile = () => {
     const validationErrors = validateUrls(data);
 
     if (Object.keys(validationErrors).length > 0) {
-      swal('Validation Error', 'Please enter valid URLs with http or https protocols. (e.g. http://youtube.com)', 'error');
+      swal('Validation Error', 'Enter URLs with \'http://\' or \'https://\' protocols.\n\nOnly use supported domains: \'youtube.com\', \'spotify.com\', \'soundcloud.com\'.', 'error');
       return;
     }
     const {

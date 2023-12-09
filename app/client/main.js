@@ -5,4 +5,4 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // Override the default bootstrap styles.
 import './style.css';
 // Import defined meteor methods
-import './meteor';
+// import './meteor';

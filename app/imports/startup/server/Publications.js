@@ -9,15 +9,18 @@ Meteor.publish(Concerts.bookmarkedPublicationName, function () {
   if (!this.userId) {
     return this.ready();
   }
+
   // Query for this user's bookmarked concerts
   const bookmarkedConcerts = Concerts.collection.find(
     { 'bookmarks.userId': this.userId, 'bookmarks.state': true },
-  )
+  );
+
   // Extract the concertId's from the bookmarked concerts
   const concertIds = bookmarkedConcerts.map(concert => concert._id);
-  // Publish
+
+  // Publish the bookmarked concerts
   return Concerts.collection.find(
-    { _id: { $in: concertIds } }
+    { _id: { $in: concertIds } },
   );
 });
 
