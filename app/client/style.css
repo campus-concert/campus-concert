@@ -75,7 +75,7 @@ footer a:hover {
 }
 
 /* Nav bar styling */
-#user-profile-nav, #my-concerts-nav, #add-concert-nav, #browse-profiles-nav, #browse-concerts-nav, #admin-home{
+#concerts-dropdown-nav, #browse-profiles-nav, #admin-dropdown-nav, #navbar-current-user {
   color: white;
 }
 

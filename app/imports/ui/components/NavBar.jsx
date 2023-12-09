@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Roles } from 'meteor/alanning:roles';
 import { Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { BoxArrowRight, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
@@ -10,10 +10,6 @@ const NavBar = () => {
   const { currentUser } = useTracker(() => ({
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
-
-  const location = useLocation();
-
-  const isCurrentTab = (path) => location.pathname === path;
 
   return (
     <Navbar id="navbar" bg="light" expand="lg">
@@ -27,63 +23,77 @@ const NavBar = () => {
           <Nav className="me-auto">
             {currentUser ? (
               <>
-                <Nav.Link
-                  as={NavLink}
-                  id="user-profile-nav"
-                  to="/userprofile"
-                  className="nav-link-margin"
-                  style={{ borderBottom: isCurrentTab('/userprofile') && '2px solid #007bff', marginBottom: '-2px' }}
-                >
-                  My Profile
-                </Nav.Link>
-                <Nav.Link
-                  as={NavLink}
-                  id="my-concerts-nav"
-                  to="/my-concerts"
-                  className="nav-link-margin"
-                  style={{ borderBottom: isCurrentTab('/my-concerts') && '2px solid #007bff', marginBottom: '-2px' }}
-                >
-                  My Concerts
-                </Nav.Link>
-                <Nav.Link
-                  as={NavLink}
-                  id="add-concert-nav"
-                  to="/create-concert"
-                  className="nav-link-margin"
-                  style={{ borderBottom: isCurrentTab('/create-concert') && '2px solid #007bff', marginBottom: '-2px' }}
-                >
-                  Create Concert
-                </Nav.Link>
+                <NavDropdown id="concerts-dropdown-nav" title="Concerts">
+                  <NavDropdown.Item
+                    id="browse-concerts-nav"
+                    as={NavLink}
+                    to="/browse-all-concerts"
+                  >
+                    Browse concerts
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    id="bookmarked-concerts-nav"
+                    as={NavLink}
+                    to="/bookmarked-concerts"
+                  >
+                    Bookmarked concerts
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    id="my-concerts-nav"
+                    as={NavLink}
+                    to="/my-concerts"
+                  >
+                    My concerts
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    id="add-concert-nav"
+                    as={NavLink}
+                    to="/create-concert"
+                  >
+                    Create concert
+                  </NavDropdown.Item>
+                </NavDropdown>
                 <Nav.Link
                   as={NavLink}
                   id="browse-profiles-nav"
                   to="/browse-all-profiles"
                   className="nav-link-margin"
-                  style={{ borderBottom: isCurrentTab('/browse-all-profiles') && '2px solid #007bff', marginBottom: '-2px' }}
                 >
                   Browse Profiles
-                </Nav.Link>
-                <Nav.Link
-                  as={NavLink}
-                  id="browse-concerts-nav"
-                  to="/browse-all-concerts"
-                  className="nav-link-margin"
-                  style={{ borderBottom: isCurrentTab('/browse-all-concerts') && '2px solid #007bff', marginBottom: '-2px' }}
-                >
-                  Browse Concerts
                 </Nav.Link>
               </>
             ) : ''}
             {Roles.userIsInRole(Meteor.userId(), 'admin') && (
-              <Nav.Link
-                as={NavLink}
-                id="admin-home"
-                to="/adminhome"
-                className="nav-link-margin text-center"
-                style={{ borderBottom: isCurrentTab('/adminhome') && '2px solid #007bff', marginBottom: '-2px' }}
-              >
-                Admin
-              </Nav.Link>
+              <NavDropdown id="admin-dropdown-nav" title="Admin">
+                <NavDropdown.Item
+                  id="admin-home-nav"
+                  as={NavLink}
+                  to="/adminhome"
+                >
+                  Admin page
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  id="admin-browse-profiles-nav"
+                  as={NavLink}
+                  to="/admin-browse-profiles"
+                >
+                  Edit profiles
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  id="admin-browse-concerts-nav"
+                  as={NavLink}
+                  to="/admin-browse-concerts"
+                >
+                  Edit concerts
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  id="admin-comments-nav"
+                  as={NavLink}
+                  to="/admin-comments"
+                >
+                  View user comments
+                </NavDropdown.Item>
+              </NavDropdown>
             )}
           </Nav>
           <Nav className="ms-auto">
@@ -98,6 +108,13 @@ const NavBar = () => {
               </NavDropdown>
             ) : (
               <NavDropdown id="navbar-current-user" title={currentUser}>
+                <NavDropdown.Item
+                  as={NavLink}
+                  id="user-profile-nav"
+                  to="/userprofile"
+                >
+                  <PersonFill /> User profile
+                </NavDropdown.Item>
                 <NavDropdown.Item id="navbar-sign-out" as={NavLink} to="/signout">
                   <BoxArrowRight /> Sign out
                 </NavDropdown.Item>
