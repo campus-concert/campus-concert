@@ -1,15 +1,19 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Roles } from 'meteor/alanning:roles';
 import { Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import { BoxArrowRight, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
+import { BoxArrowRight, PersonFill, PersonPlusFill, MusicNote, Star } from 'react-bootstrap-icons';
 
 const NavBar = () => {
   const { currentUser } = useTracker(() => ({
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
+
+  const location = useLocation();
+
+  const isCurrentTab = (path) => location.pathname === path;
 
   return (
     <Navbar id="navbar" bg="light" expand="lg">
@@ -23,44 +27,33 @@ const NavBar = () => {
           <Nav className="me-auto">
             {currentUser ? (
               <>
-                <NavDropdown id="concerts-dropdown-nav" title="Concerts">
-                  <NavDropdown.Item
-                    id="browse-concerts-nav"
-                    as={NavLink}
-                    to="/browse-all-concerts"
-                  >
-                    Browse concerts
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    id="bookmarked-concerts-nav"
-                    as={NavLink}
-                    to="/bookmarked-concerts"
-                  >
-                    Bookmarked concerts
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    id="my-concerts-nav"
-                    as={NavLink}
-                    to="/my-concerts"
-                  >
-                    My concerts
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    id="add-concert-nav"
-                    as={NavLink}
-                    to="/create-concert"
-                  >
-                    Create concert
-                  </NavDropdown.Item>
-                </NavDropdown>
                 <Nav.Link
                   as={NavLink}
                   id="browse-profiles-nav"
                   to="/browse-all-profiles"
                   className="nav-link-margin"
+                  style={{ borderBottom: isCurrentTab('/userprofile') && '2px solid #007bff', marginBottom: '-2px' }}
                 >
-                  Browse Profiles
+                  Profiles
                 </Nav.Link>
+                <NavLink
+                  id="browse-concerts-nav"
+                  as={NavLink}
+                  to="/browse-all-concerts"
+                  className="nav-link-margin"
+                  style={{ borderBottom: isCurrentTab('/userprofile') && '2px solid #007bff', marginBottom: '-2px' }}
+                >
+                  Concerts
+                </NavLink>
+                <NavLink
+                  id="create-concert-nav"
+                  as={NavLink}
+                  to="/create-concert"
+                  className="nav-link-margin"
+                  style={{ borderBottom: isCurrentTab('/userprofile') && '2px solid #007bff', marginBottom: '-2px' }}
+                >
+                  Create concert
+                </NavLink>
               </>
             ) : ''}
             {Roles.userIsInRole(Meteor.userId(), 'admin') && (
@@ -115,7 +108,25 @@ const NavBar = () => {
                 >
                   <PersonFill /> User profile
                 </NavDropdown.Item>
-                <NavDropdown.Item id="navbar-sign-out" as={NavLink} to="/signout">
+                <NavDropdown.Item
+                  id="bookmarked-concerts-nav"
+                  as={NavLink}
+                  to="/bookmarked-concerts"
+                >
+                  <Star /> Bookmarks
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  id="my-concerts-nav"
+                  as={NavLink}
+                  to="/my-concerts"
+                >
+                  <MusicNote /> My concerts
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  id="navbar-sign-out"
+                  as={NavLink}
+                  to="/signout"
+                >
                   <BoxArrowRight /> Sign out
                 </NavDropdown.Item>
               </NavDropdown>

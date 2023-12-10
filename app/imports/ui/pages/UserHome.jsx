@@ -23,12 +23,12 @@ const UserHome = () => (
         </Link>
       </Col>
 
-      {/* Create/Edit Concert Box */}
+      {/* My Concert Box */}
       <Col xs={10} sm={6} md={4} lg={3} className="mb-4">
         <Link to="/my-concerts" className="text-decoration-none">
           <div id="userhome-button" className="home-box text-center rounded p-4 border-thick text-black bg-white">
             <MusicNote size={60} className="box-icon mb-3" />
-            <h3 id="edit-concert" className="box-title">View My Concerts</h3>
+            <h3 id="my-concert" className="box-title">View My Concerts</h3>
           </div>
         </Link>
       </Col>
