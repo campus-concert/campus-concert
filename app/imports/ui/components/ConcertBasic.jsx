@@ -119,106 +119,108 @@ const ConcertBasic = ({ concert, admin }) => {
 
   return ready ? (
     <Link to={admin ? `/userconcert/admin/${concert._id}` : `/userconcert/${concert._id}`} className="card-link" style={{ textDecoration: 'none' }}>
-      <Card className="d-flex flex-column h-100" style={{ border: '1.5px solid #ccc', display: 'flex' }}>
-        <Card.Header className="bg-white position-relative">
-          <div>
-            <Card.Title className="d-flex mt-2 concert-title" style={{ fontSize: '1.5rem', overflow: 'hidden' }}>{concert.concertName}</Card.Title>
-          </div>
-          <Card.Text className="mb-2" style={{ fontSize: '0.7rem' }}>
-            Posted by {author} • {timeDifference(new Date(), concert.createdAt)}
-          </Card.Text>
-          <Button
-            variant={concert.bookmarks && concert.bookmarks.some(e => e.userId === Meteor.userId() && e.state) ? 'success' : 'outline-secondary'}
-            size="sm"
-            className="position-absolute top-0 end-0 m-2"
-            onClick={(e) => {
-              toggleBookmark();
-              e.preventDefault(); // dont take the redirection link
-            }}
-          >
-            {concert.bookmarks ? <StarFill /> : <Star />}
-          </Button>
-        </Card.Header>
-        <Card.Body className="flex-grow-1" style={{ overflow: 'hidden' }}>
-          <div className="mb-2" style={{ overflow: 'hidden', whiteSpace: 'nowrap', marginBottom: '5px', marginTop: '-6px' }} ref={genresRef}>
-            <h6 style={{ fontSize: '1rem', marginBottom: '5px' }}>Genres</h6>
-            {concert.genres && concert.genres.length > 0 && (
-              <div style={{ display: 'inline', marginBottom: '-8px' }}>
-                {concert.genres.slice(0, genresOverflowIndex === -1 ? concert.genres.length : genresOverflowIndex - 1).map((genre, index) => (
-                  <span key={index} className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '14px' }}>{genre}</span>
-                ))}
-                {genresOverflowIndex !== -1 && (
-                  <span className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '12px' }}>...</span>
-                )}
-              </div>
-            )}
-          </div>
-          <div className="mb-2" style={{ overflow: 'hidden', whiteSpace: 'nowrap' }} ref={instrumentsNeededRef}>
-            <h6 style={{ fontSize: '1rem', marginBottom: '5px' }}>Instruments Needed</h6>
-            {concert.instrumentsNeeded && concert.instrumentsNeeded.length > 0 && (
-              <div style={{ display: 'inline', marginBottom: '-8px' }}>
-                {concert.instrumentsNeeded.slice(0, instrumentsNeededOverflowIndex === -1 ? concert.instrumentsNeeded.length : instrumentsNeededOverflowIndex - 1).map((instrument, index) => (
-                  <span key={index} className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '14px' }}>{instrument}</span>
-                ))}
-                {instrumentsNeededOverflowIndex !== -1 && (
-                  <span className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '12px' }}>...</span>
-                )}
-              </div>
-            )}
-          </div>
-          <hr style={{ margin: '12px 0' }} />
-          <div className="d-flex flex-column">
-            <div className="mt-1 mb-2">
-              <Card.Text>
-                <h6>
-                  <span style={{ fontSize: '1em', paddingRight: '0.25em' }}>
-                    <Calendar />
-                  </span>{' '}
-                  <span>
-                    {concert.date.toLocaleDateString('en-US', {
-                      timeZone: 'UTC',
-                      weekday: 'long',
-                      month: 'short',
-                      day: 'numeric',
-                      year: 'numeric',
-                    }).replace(',', '')}
-                  </span>{' '}
-                  <span style={{ fontSize: '0.8rem', color: concertDate < currentDate ? 'coral' : '#999' }}>
-                    ({timeDifference(currentDate, concertDate)})
-                  </span>
-                </h6>
-              </Card.Text>
-            </div>
-            <div className="mb-2">
-              <Card.Text>
-                <h6>
-                  <span style={{ fontSize: '1em', paddingRight: '0.25em' }}>
-                    <Clock />
-                  </span>{' '}
-                  {concert.date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' })}
-                </h6>
-              </Card.Text>
-            </div>
+      <div className="d-flex flex-column h-100" style={{ boxShadow: '0px 0px 5px 0px rgba(0, 0, 0, 0.4)', borderRadius: '10px', display: 'flex' }}>
+        <Card className="d-flex flex-column h-100" style={{ border: '1.5px solid #ccc', display: 'flex' }}>
+          <Card.Header className="bg-white position-relative">
             <div>
-              <Card.Text>
-                <h6>
-                  <span style={{ fontSize: '1em', paddingRight: '0.25em' }}>
-                    <GeoAlt />
-                  </span>{' '}
-                  {concert.concertLocation}
-                </h6>
-              </Card.Text>
+              <Card.Title className="d-flex mt-2 concert-title" style={{ fontSize: '1.5rem', overflow: 'hidden' }}>{concert.concertName}</Card.Title>
             </div>
-          </div>
-        </Card.Body>
-        { (Meteor.user() && (admin || Meteor.user().emails[0].address === concert.owner)) && (
-          <div className="text-center" style={{ marginTop: 'auto', marginBottom: '10px' }}>
-            <Link id="edit-concert-button" to={`/edit-concert/${concert._id}`} className="btn btn-outline-primary btn-sm">
-              Edit or Remove
-            </Link>
-          </div>
-        )}
-      </Card>
+            <Card.Text className="mb-2" style={{ fontSize: '0.7rem' }}>
+              Posted by {author} • {timeDifference(new Date(), concert.createdAt)}
+            </Card.Text>
+            <Button
+              variant={concert.bookmarks && concert.bookmarks.some(e => e.userId === Meteor.userId() && e.state) ? 'success' : 'outline-secondary'}
+              size="sm"
+              className="position-absolute top-0 end-0 m-2"
+              onClick={(e) => {
+                toggleBookmark();
+                e.preventDefault(); // dont take the redirection link
+              }}
+            >
+              {concert.bookmarks ? <StarFill /> : <Star />}
+            </Button>
+          </Card.Header>
+          <Card.Body className="flex-grow-1" style={{ overflow: 'hidden' }}>
+            <div className="mb-2" style={{ overflow: 'hidden', whiteSpace: 'nowrap', marginBottom: '5px', marginTop: '-6px' }} ref={genresRef}>
+              <h6 style={{ fontSize: '1rem', marginBottom: '5px' }}>Genres</h6>
+              {concert.genres && concert.genres.length > 0 && (
+                <div style={{ display: 'inline', marginBottom: '-8px' }}>
+                  {concert.genres.slice(0, genresOverflowIndex === -1 ? concert.genres.length : genresOverflowIndex - 1).map((genre, index) => (
+                    <span key={index} className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '14px' }}>{genre}</span>
+                  ))}
+                  {genresOverflowIndex !== -1 && (
+                    <span className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '12px' }}>...</span>
+                  )}
+                </div>
+              )}
+            </div>
+            <div className="mb-2" style={{ overflow: 'hidden', whiteSpace: 'nowrap' }} ref={instrumentsNeededRef}>
+              <h6 style={{ fontSize: '1rem', marginBottom: '5px' }}>Instruments Needed</h6>
+              {concert.instrumentsNeeded && concert.instrumentsNeeded.length > 0 && (
+                <div style={{ display: 'inline', marginBottom: '-8px' }}>
+                  {concert.instrumentsNeeded.slice(0, instrumentsNeededOverflowIndex === -1 ? concert.instrumentsNeeded.length : instrumentsNeededOverflowIndex - 1).map((instrument, index) => (
+                    <span key={index} className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '14px' }}>{instrument}</span>
+                  ))}
+                  {instrumentsNeededOverflowIndex !== -1 && (
+                    <span className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '12px' }}>...</span>
+                  )}
+                </div>
+              )}
+            </div>
+            <hr style={{ margin: '12px 0' }} />
+            <div className="d-flex flex-column">
+              <div className="mt-1 mb-2">
+                <Card.Text>
+                  <h6>
+                    <span style={{ fontSize: '1em', paddingRight: '0.25em' }}>
+                      <Calendar />
+                    </span>{' '}
+                    <span>
+                      {concert.date.toLocaleDateString('en-US', {
+                        timeZone: 'UTC',
+                        weekday: 'long',
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric',
+                      }).replace(',', '')}
+                    </span>{' '}
+                    <span style={{ fontSize: '0.8rem', color: concertDate < currentDate ? 'coral' : '#999' }}>
+                      ({timeDifference(currentDate, concertDate)})
+                    </span>
+                  </h6>
+                </Card.Text>
+              </div>
+              <div className="mb-2">
+                <Card.Text>
+                  <h6>
+                    <span style={{ fontSize: '1em', paddingRight: '0.25em' }}>
+                      <Clock />
+                    </span>{' '}
+                    {concert.date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' })}
+                  </h6>
+                </Card.Text>
+              </div>
+              <div>
+                <Card.Text>
+                  <h6>
+                    <span style={{ fontSize: '1em', paddingRight: '0.25em' }}>
+                      <GeoAlt />
+                    </span>{' '}
+                    {concert.concertLocation}
+                  </h6>
+                </Card.Text>
+              </div>
+            </div>
+          </Card.Body>
+          { (Meteor.user() && (admin || Meteor.user().emails[0].address === concert.owner)) && (
+            <div className="text-center" style={{ marginTop: 'auto', marginBottom: '10px' }}>
+              <Link id="edit-concert-button" to={`/edit-concert/${concert._id}`} className="btn btn-outline-primary btn-sm">
+                Edit or Remove
+              </Link>
+            </div>
+          )}
+        </Card>
+      </div>
     </Link>
   ) : (
     <LoadingSpinner />

@@ -110,7 +110,7 @@ const Concert = ({ concert }) => {
                   month: 'short',
                   day: 'numeric',
                   year: 'numeric',
-                })}, {concert.createdAt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', timeZone: 'Pacific/Honolulu' })}
+                })}, {concert.createdAt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
               </Tooltip>
             )}
           >
