@@ -2,7 +2,7 @@
   "concerts": [
     {
       "concertName": "Canal Chaos Concert",
-      "date": "2023-12-08T15:00:00.000Z",
+      "date": "2024-04-08T15:00:00.000Z",
       "createdAt": "2023-12-02T15:00:00.000Z",
       "concertLocation": "Ala Wai Canal",
       "instrumentsNeeded": "guitar",
@@ -13,9 +13,9 @@
     },
     {
       "concertName": "The Mathematical Melodies",
-      "date": "2023-12-08T15:00:00.000Z",
+      "date": "2024-03-08T15:00:00.000Z",
       "createdAt": "2023-12-02T15:00:00.000Z",
-      "concertLocation": "KELLER 302",
+      "concertLocation": "Keller 302",
       "instrumentsNeeded": [
         "trumpet",
         "flute"
@@ -27,12 +27,12 @@
     },
     {
       "concertName": "Bookish Beats",
-      "date": "2023-12-08T15:00:00.000Z",
+      "date": "2024-01-08T15:00:00.000Z",
       "createdAt": "2023-12-02T15:00:00.000Z",
       "concertLocation": "Hamilton Library",
       "instrumentsNeeded": "guitar",
       "genres": [
-        "jazz",
+        "country",
         "pop"
       ],
       "concertDescription": "This is a description.",
@@ -41,7 +41,7 @@
     },
     {
       "concertName": "Starlight Serenade",
-      "date": "2023-12-10T18:30:00.000Z",
+      "date": "2024-03-10T18:30:00.000Z",
       "createdAt": "2023-12-03T10:15:00.000Z",
       "concertLocation": "Kennedy Theatre Courtyard",
       "instrumentsNeeded": [
@@ -71,10 +71,10 @@
         "trumpet"
       ],
       "genres": [
-        "jazz",
+        "dance",
         "electronic"
       ],
-      "concertDescription": "Get ready to dance to a funky mix of jazz and electronic beats.",
+      "concertDescription": "Get ready to dance to a funky mix of electronic beats.",
       "contact": "(808) 333-4444",
       "owner": "leo@foo.com"
     },
@@ -176,7 +176,7 @@
       "concertName": "Ukulele Utopia",
       "date": "2023-12-28T14:30:00.000Z",
       "createdAt": "2023-12-06T12:00:00.000Z",
-      "concertLocation": "Bilger Hall 152",
+      "concertLocation": "Hawaiian Studies Lawn",
       "instrumentsNeeded": [
         "ukulele",
         "bass guitar",
@@ -209,6 +209,149 @@
       "concertDescription": "Embark on a journey through mystical ambient and experimental soundscapes.",
       "contact": "nathan@example.com",
       "owner": "elijah@foo.com"
+    },
+    {
+      "concertName": "Reed Rhapsody",
+      "date": "2023-12-12T18:00:00.000Z",
+      "createdAt": "2023-12-07T09:00:00.000Z",
+      "concertLocation": "Music Building Courtyard",
+      "instrumentsNeeded": ["clarinet", "oboe", "saxophone"],
+      "genres": ["classical", "children's"],
+      "concertDescription": "A delightful evening celebrating the enchanting sounds of reed instruments.",
+      "contact": "(808) 111-2222",
+      "owner": "ethan@foo.com"
+    },
+    {
+      "concertName": "Saxy Smoothness",
+      "date": "2023-12-14T19:30:00.000Z",
+      "createdAt": "2023-12-06T10:30:00.000Z",
+      "concertLocation": "Orvis Auditorium",
+      "instrumentsNeeded": ["saxophone"],
+      "genres": ["dance", "r&b"],
+      "concertDescription": "Indulge in the smooth and soulful tunes of the saxophone, blending liveliness and R&B in perfect harmony.",
+      "contact": "(808) 333-4444",
+      "owner": "leo@foo.com"
+    },
+    {
+      "concertName": "Harp Harmony",
+      "date": "2023-12-16T17:00:00.000Z",
+      "createdAt": "2023-12-04T11:45:00.000Z",
+      "concertLocation": "Hemingway Hall Lawn",
+      "instrumentsNeeded": ["harp"],
+      "genres": ["folk", "ambient"],
+      "concertDescription": "Join Mia and other free-spirited harpists for an evening of ethereal melodies amidst the natural beauty.",
+      "contact": "mia@example.com",
+      "owner": "mia@foo.com"
+    },
+    {
+      "concertName": "String Serenity",
+      "date": "2024-01-18T20:15:00.000Z",
+      "createdAt": "2023-12-01T13:30:00.000Z",
+      "concertLocation": "Kennedy Theatre Courtyard",
+      "instrumentsNeeded": ["cello", "violin"],
+      "genres": ["ambient"],
+      "concertDescription": "Immerse yourself in the serene sounds of strings, blending classical and ambient tones under the stars.",
+      "contact": "sebastian@example.com",
+      "owner": "sebastian@foo.com"
+    },
+    {
+      "concertName": "Accordion Adventure",
+      "date": "2023-12-22T18:30:00.000Z",
+      "createdAt": "2023-12-03T16:45:00.000Z",
+      "concertLocation": "Bilger Hall 150",
+      "instrumentsNeeded": ["accordion"],
+      "genres": ["folk", "pop"],
+      "concertDescription": "Join in on an accordion adventure, exploring folk and pop tunes in a lively setting.",
+      "contact": "luca@example.com",
+      "owner": "luca@foo.com"
+    },
+    {
+      "concertName": "Xylo Extravaganza",
+      "date": "2023-12-24T19:00:00.000Z",
+      "createdAt": "2023-12-05T18:00:00.000Z",
+      "concertLocation": "Campus Center Ballroom",
+      "instrumentsNeeded": ["xylophone", "drum kit"],
+      "genres": ["classical", "experimental"],
+      "concertDescription": "Embark on a rhythmic journey with Logan's xylophone extravaganza, featuring classical and experimental beats.",
+      "contact": "(808) 555-5678",
+      "owner": "logan@foo.com"
+    },
+    {
+      "concertName": "Bassoon Bliss",
+      "date": "2023-12-26T20:30:00.000Z",
+      "createdAt": "2023-12-08T19:15:00.000Z",
+      "concertLocation": "Art Building Courtyard",
+      "instrumentsNeeded": ["bassoon"],
+      "genres": ["classical", "world"],
+      "concertDescription": "Timothy invites you to a night of bassoon bliss, exploring classical and world music in an artistic ambiance.",
+      "contact": "timothy@example.com",
+      "owner": "timothy@foo.com"
+    },
+    {
+      "concertName": "Aloha Acoustic Night",
+      "date": "2024-02-15T18:30:00.000Z",
+      "createdAt": "2023-12-03T12:00:00.000Z",
+      "concertLocation": "Campus Center Courtyard",
+      "instrumentsNeeded": ["vocals", "guitar"],
+      "genres": ["acoustic", "folk", "pop"],
+      "concertDescription": "Join Emily Anderson and I for a serene evening of soulful acoustic tunes.",
+      "contact": "(808) 555-5555",
+      "owner": "zara@foo.com"
+    },
+    {
+      "concertName": "Strings Serenade Spectacle",
+      "date": "2023-12-18T19:15:00.000Z",
+      "createdAt": "2023-12-09T14:30:00.000Z",
+      "concertLocation": "Orvis Auditorium",
+      "instrumentsNeeded": ["viola", "cello", "violin"],
+      "genres": ["classical"],
+      "concertDescription": "Here to showcase the elegance of strings in a captivating performance.",
+      "contact": "lisa@example.com",
+      "owner": "lisa@foo.com"
+    },
+    {
+      "concertName": "Synthwave Symphony Showcase",
+      "date": "2024-02-12T22:00:00.000Z",
+      "createdAt": "2023-12-06T19:30:00.000Z",
+      "concertLocation": "Music Building Courtyard",
+      "instrumentsNeeded": ["synthesizer", "violin"],
+      "genres": ["electronic", "industrial"],
+      "concertDescription": "Collaborate in an experimental fusion of synthwave and classical elements in the Music Building Courtyard!",
+      "contact": "(808) 678-1555",
+      "owner": "sasha@foo.com"
+    },
+    {
+      "concertName": "Sitar Soundscapes Soiree",
+      "date": "2023-12-17T20:30:00.000Z",
+      "createdAt": "2023-12-05T16:45:00.000Z",
+      "concertLocation": "East-West Center Gardens",
+      "instrumentsNeeded": "sitar",
+      "genres": ["world", "ambient"],
+      "concertDescription": "Jasmin Nguyen takes you on a cultural journey through mesmerizing sitar melodies.",
+      "contact": "(808) 555-5555",
+      "owner": "jasmin@foo.com"
+    },
+    {
+      "concertName": "Bass Beats Bash",
+      "date": "2024-01-16T21:15:00.000Z",
+      "createdAt": "2023-12-03T21:30:00.000Z",
+      "concertLocation": "Campus Center Plaza",
+      "instrumentsNeeded": ["bass guitar", "drum kit"],
+      "genres": ["metal", "punk", "industrial"],
+      "concertDescription": "Behold the thunderous beats of the bass guitar to the heart of the Campus Center Plaza.",
+      "contact": "liam@example.com",
+      "owner": "liam@foo.com"
+    },
+    {
+      "concertName": "Piano & Flute Fusion",
+      "date": "2024-03-21T19:00:00.000Z",
+      "createdAt": "2023-12-04T18:00:00.000Z",
+      "concertLocation": "Art Building Auditorium",
+      "instrumentsNeeded": ["piano", "flute"],
+      "genres": ["jazz", "classical"],
+      "concertDescription": "Blending piano and flute in an artistic fusion, and creating a unique musical experience.",
+      "contact": "(808) 555-5555",
+      "owner": "amy@foo.com"
     }
   ]
 }
