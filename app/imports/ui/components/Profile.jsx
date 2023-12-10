@@ -2,16 +2,41 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Card, Image, Button } from 'react-bootstrap';
+import { Card, Badge, Image, Button } from 'react-bootstrap';
+import { useTracker } from 'meteor/react-meteor-data';
 import { Youtube, Spotify, CloudFog2Fill } from 'react-bootstrap-icons';
+import { Concerts } from '../../api/concert/Concert';
+import LoadingSpinner from './LoadingSpinner';
 
 const Profile = ({ profile, edit = false }) => {
+  const { contact: concertEmail } = profile;
+
+  const { ready, userConcerts } = useTracker(() => {
+    const subscription = Meteor.subscribe(Concerts.userPublicationName);
+    const rdy = subscription.ready();
+
+    // Only fetch concerts owned by the logged-in user
+    const userConcertItems = Concerts.collection.find({ owner: concertEmail }).fetch();
+    return {
+      userConcerts: userConcertItems,
+      ready: rdy,
+    };
+  });
 
   if (!profile) {
     return <div>No Profile found</div>;
   }
 
-  return (
+  const badgeColors = ['primary', 'primary-subtle', 'success', 'success-subtle', 'secondary', 'secondary-subtle',
+    'danger', 'danger-subtle', 'warning', 'warning-subtle', 'info', 'info-subtle', 'light', 'dark', 'dark-subtle'];
+
+  const getRandomColor = () => {
+    const randomIndex = Math.floor(Math.random() * badgeColors.length);
+    console.log('color: ', `bg-${badgeColors[randomIndex]}`);
+    return `bg-${badgeColors[randomIndex]}`;
+  };
+
+  return ready ? (
     <Card id="user-profile-card" className="d-flex flex-column">
       <Card.Header className="text-center position-relative">
         <Image src={profile.image} roundedCircle width={200} className="mt-3" />
@@ -90,6 +115,36 @@ const Profile = ({ profile, edit = false }) => {
           <Card.Text id="profile-description" className="my-2"><h5>Description:</h5>{profile.description}</Card.Text>
         </div>
       </Card.Body>
+      <Card.Footer className="bg-white">
+        <div className="mb-2">
+          <Card.Text id="profile-concerts">
+            <h5>Concerts Posted:</h5>
+            {userConcerts && userConcerts.length > 0 ? (
+              <div>
+                {userConcerts.map((concert) => {
+                  const badgeColor = getRandomColor(); // Generate a new color for each badge
+
+                  return (
+                    <div key={concert._id} className="mb-2">
+                      <Badge className={badgeColor}>
+                        <Link
+                          to={`/userconcert/${concert._id}`}
+                          className={`mx-1 my-1 fw-medium ${badgeColor.includes('subtle') ? 'text-dark' : 'text-white'}`}
+                          style={{ fontSize: '14px', textDecoration: 'none' }}
+                        >
+                          {concert.concertName}
+                        </Link>
+                      </Badge>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <p style={{ color: '#999' }}>No concerts posted.</p>
+            )}
+          </Card.Text>
+        </div>
+      </Card.Footer>
       <Card.Footer>
         {Meteor.user() && (edit || Meteor.user().emails[0].address === profile.contact) ? (
           <Link id="edit-profile-button" to={`/edit/${profile._id}`}>Edit</Link>
@@ -102,7 +157,7 @@ const Profile = ({ profile, edit = false }) => {
         )}
       </Card.Footer>
     </Card>
-  );
+  ) : <LoadingSpinner />;
 };
 
 Profile.propTypes = {
