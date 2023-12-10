@@ -166,9 +166,9 @@ const ConcertBasic = ({ concert, admin }) => {
               </div>
             )}
           </div>
-          <hr style={{ margin: '5px 0' }} />
+          <hr style={{ margin: '12px 0' }} />
           <div className="d-flex flex-column">
-            <div className="mt-2 mb-2">
+            <div className="mt-1 mb-2">
               <Card.Text>
                 <h6>
                   <span style={{ fontSize: '1em', paddingRight: '0.25em' }}>

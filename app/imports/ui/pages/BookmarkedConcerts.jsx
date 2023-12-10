@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Col, Container, Row, Card } from 'react-bootstrap';
+import { Col, Container, Row, Card, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Concerts } from '../../api/concert/Concert';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ConcertBasic from '../components/ConcertBasic';
 
 const BookmarkedConcerts = () => {
+  const itemsPerPage = 6;
+  const [visibleConcerts, setVisibleConcerts] = useState(itemsPerPage);
+
   const { ready, bookmarkedConcerts } = useTracker(() => {
     const subscription = Meteor.subscribe(Concerts.bookmarkedPublicationName);
     const rdy = subscription.ready();
@@ -24,6 +27,10 @@ const BookmarkedConcerts = () => {
     };
   }, []);
 
+  const loadMore = () => {
+    setVisibleConcerts((prev) => prev + itemsPerPage);
+  };
+
   return ready ? (
     <Container id="browse-all-concerts" className="py-3">
       <Row className="justify-content-center">
@@ -34,16 +41,21 @@ const BookmarkedConcerts = () => {
             </Col>
             {bookmarkedConcerts.length > 0 ? (
               <Row xs={1} md={2} lg={3} className="g-4">
-                {bookmarkedConcerts.map((concert, index) => (
+                {bookmarkedConcerts.slice(0, visibleConcerts).map((concert, index) => (
                   <Col key={index}>
                     <ConcertBasic concert={concert} showDetailsLink />
                   </Col>
                 ))}
               </Row>
             ) : (
-              <p className="mt-3">
-                You have no bookmarked Concerts.
-              </p>
+              <p className="mt-3">You have no bookmarked Concerts.</p>
+            )}
+            {visibleConcerts < bookmarkedConcerts.length && (
+              <Row className="justify-content-center mt-4">
+                <Button onClick={loadMore} variant="outline-primary" style={{ width: 'fit-content' }}>
+                  Load More
+                </Button>
+              </Row>
             )}
           </Card>
         </Col>

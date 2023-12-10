@@ -8,10 +8,10 @@ import ConcertBasic from '../components/ConcertBasic';
 
 const BrowseConcerts = () => {
 
-  const [monthFilter, setMonthFilter] = useState('Anytime'); // [1]
+  const [monthFilter, setMonthFilter] = useState('Anytime');
   const [instrumentFilter, setInstrumentFilter] = useState('All instruments');
   const [tasteFilter, setTasteFilter] = useState('All tastes');
-  const [filteredConcerts, setFilteredConcerts] = useState();
+  const [displayedConcerts, setDisplayedConcerts] = useState(6);
 
   const months = ['Anytime', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   const instruments = ['All instruments'].concat(Concerts.allowedInstruments);
@@ -21,40 +21,24 @@ const BrowseConcerts = () => {
     const subscription = Meteor.subscribe(Concerts.userPublicationName);
     const rdy = subscription.ready();
     const concertItems = Concerts.collection.find({}).fetch().sort((a, b) => (a.date - b.date));
-    setFilteredConcerts(concertItems);
     return {
       concerts: concertItems,
       ready: rdy,
     };
   }, []);
 
-  const filterMonth = (list) => {
-    if (monthFilter === 'Anytime') {
-      return list;
-    }
-    return list.filter((concert) => (concert.date.getMonth() === months.indexOf(monthFilter) - 1));
+  const filteredConcerts = concerts.filter((concert) => {
+    const monthCondition = monthFilter === 'Anytime' || concert.date.getMonth() === months.indexOf(monthFilter) - 1;
+    const instrumentCondition = instrumentFilter === 'All instruments' || concert.instrumentsNeeded.includes(instrumentFilter);
+    const tasteCondition = tasteFilter === 'All tastes' || concert.genres.includes(tasteFilter);
+    return monthCondition && instrumentCondition && tasteCondition;
+  });
+
+  const loadMore = () => {
+    setDisplayedConcerts((prevCount) => prevCount + 6);
   };
 
-  const filterInstruments = (list) => {
-    if (instrumentFilter !== 'All instruments') {
-      return list.filter((concert) => (concert.instrumentsNeeded.includes(instrumentFilter)));
-    }
-    return list;
-  };
-
-  const filterTastes = (list) => {
-    if (tasteFilter !== 'All tastes') {
-      return list.filter((concert) => (concert.genres.includes(tasteFilter)));
-    }
-    return list;
-  };
-
-  const filterConcerts = () => {
-    let filtering = filterMonth(concerts);
-    filtering = filterInstruments(filtering);
-    filtering = filterTastes(filtering);
-    setFilteredConcerts(filtering);
-  };
+  const visibleConcerts = filteredConcerts.slice(0, displayedConcerts);
 
   return ready ? (
     <Container id="browse-all-concerts" className="py-3">
@@ -111,7 +95,7 @@ const BrowseConcerts = () => {
                 </Dropdown>
               </Col>
               <Col>
-                <Button onClick={filterConcerts} variant="secondary">
+                <Button onClick={filteredConcerts} variant="secondary">
                   Apply Filters
                 </Button>
               </Col>
@@ -120,13 +104,20 @@ const BrowseConcerts = () => {
               <h2>No concerts match this filtering</h2>
               : (
                 <Row xs={1} md={2} lg={3} className="g-4">
-                  {filteredConcerts.map((concert, index) => (
+                  {visibleConcerts.map((concert, index) => (
                     <Col key={index}>
                       <ConcertBasic concert={concert} showDetailsLink />
                     </Col>
                   ))}
                 </Row>
               )}
+            {displayedConcerts < filteredConcerts.length && (
+              <Row className="justify-content-center mt-4">
+                <Button onClick={loadMore} variant="outline-primary" style={{ width: 'fit-content' }}>
+                  Load More
+                </Button>
+              </Row>
+            )}
           </Card>
         </Col>
       </Row>

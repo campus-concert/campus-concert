@@ -10,19 +10,21 @@ import LoadingSpinner from '../components/LoadingSpinner';
 const UserProfile = () => {
   const { userId } = useParams();
   const { admin } = useParams();
-  // eslint-disable-next-line prefer-const
-  let { ready, userProfile, editMode } = useTracker(() => {
+  const { ready, userProfile, editMode } = useTracker(() => {
     const subscription = Meteor.subscribe(Profiles.userPublicationName);
     const rdy = subscription.ready();
     let userProf = Profiles.collection.findOne({ _id: userId });
     let edit = false;
+
     if (!userId && Meteor.user() && rdy) {
       userProf = Profiles.collection.findOne({ contact: Meteor.user().username });
       edit = true;
     }
+
     if (admin) {
       edit = true;
     }
+
     return {
       userProfile: userProf,
       ready: rdy,
@@ -30,7 +32,16 @@ const UserProfile = () => {
     };
   });
 
-  const pageTitle = userProfile ? `${userProfile.firstName} ${userProfile.lastName}'s Profile` : 'User Profile';
+  let pageTitle;
+  if (!ready) {
+    pageTitle = <LoadingSpinner />;
+  } else if (!userId && Meteor.user()) {
+    pageTitle = 'My Profile';
+  } else if (userProfile) {
+    pageTitle = `${userProfile.firstName} ${userProfile.lastName}'s Profile`;
+  } else {
+    pageTitle = 'User Profile';
+  }
 
   return ready ? (
     <Container id="user-profile-page" className="py-3">
