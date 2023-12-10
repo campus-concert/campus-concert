@@ -7,7 +7,6 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import ConcertBasic from '../components/ConcertBasic';
 
 const BookmarkedConcerts = () => {
-
   const { ready, bookmarkedConcerts } = useTracker(() => {
     const subscription = Meteor.subscribe(Concerts.bookmarkedPublicationName);
     const rdy = subscription.ready();
@@ -29,22 +28,30 @@ const BookmarkedConcerts = () => {
     <Container id="browse-all-concerts" className="py-3">
       <Row className="justify-content-center">
         <Col>
-          <Card className="p-4 mb-4"> {/* Stylish box added here */}
+          <Card className="p-4 mb-4">
             <Col className="text-center">
               <h2>Bookmarked Concerts</h2>
             </Col>
-            <Row xs={1} md={2} lg={3} className="g-4">
-              {bookmarkedConcerts.map((concert, index) => (
-                <Col key={index}>
-                  <ConcertBasic concert={concert} showDetailsLink />
-                </Col>
-              ))}
-            </Row>
+            {bookmarkedConcerts.length > 0 ? (
+              <Row xs={1} md={2} lg={3} className="g-4">
+                {bookmarkedConcerts.map((concert, index) => (
+                  <Col key={index}>
+                    <ConcertBasic concert={concert} showDetailsLink />
+                  </Col>
+                ))}
+              </Row>
+            ) : (
+              <p className="mt-3">
+                You have no bookmarked Concerts.
+              </p>
+            )}
           </Card>
         </Col>
       </Row>
     </Container>
-  ) : <LoadingSpinner />;
+  ) : (
+    <LoadingSpinner />
+  );
 };
 
 export default BookmarkedConcerts;

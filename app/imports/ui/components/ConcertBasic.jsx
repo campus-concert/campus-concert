@@ -120,9 +120,9 @@ const ConcertBasic = ({ concert, admin }) => {
   return ready ? (
     <Link to={admin ? `/userconcert/admin/${concert._id}` : `/userconcert/${concert._id}`} className="card-link" style={{ textDecoration: 'none' }}>
       <Card className="d-flex flex-column h-100" style={{ border: '1.5px solid #ccc', display: 'flex' }}>
-        <Card.Header className="position-relative">
+        <Card.Header className="bg-white position-relative">
           <div>
-            <Card.Title className="d-flex mt-2" style={{ fontSize: '1.5rem' }}>{concert.concertName}</Card.Title>
+            <Card.Title className="d-flex mt-2 concert-title" style={{ fontSize: '1.5rem', overflow: 'hidden' }}>{concert.concertName}</Card.Title>
           </div>
           <Card.Text className="mb-2" style={{ fontSize: '0.7rem' }}>
             Posted by {author} • {timeDifference(new Date(), concert.createdAt)}
@@ -140,28 +140,28 @@ const ConcertBasic = ({ concert, admin }) => {
           </Button>
         </Card.Header>
         <Card.Body className="flex-grow-1" style={{ overflow: 'hidden' }}>
-          <div className="mb-2" style={{ overflow: 'hidden', whiteSpace: 'nowrap', marginBottom: '5px' }} ref={genresRef}>
-            <h6 style={{ fontSize: '1.1rem', marginBottom: '5px' }}>Genres</h6>
+          <div className="mb-2" style={{ overflow: 'hidden', whiteSpace: 'nowrap', marginBottom: '5px', marginTop: '-6px' }} ref={genresRef}>
+            <h6 style={{ fontSize: '1rem', marginBottom: '5px' }}>Genres</h6>
             {concert.genres && concert.genres.length > 0 && (
               <div style={{ display: 'inline', marginBottom: '-8px' }}>
                 {concert.genres.slice(0, genresOverflowIndex === -1 ? concert.genres.length : genresOverflowIndex - 1).map((genre, index) => (
-                  <span key={index} className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '16px' }}>{genre}</span>
+                  <span key={index} className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '14px' }}>{genre}</span>
                 ))}
                 {genresOverflowIndex !== -1 && (
-                  <span className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '14px' }}>...</span>
+                  <span className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '12px' }}>...</span>
                 )}
               </div>
             )}
           </div>
           <div className="mb-2" style={{ overflow: 'hidden', whiteSpace: 'nowrap' }} ref={instrumentsNeededRef}>
-            <h6 style={{ fontSize: '1.1rem', marginBottom: '5px' }}>Instruments Needed</h6>
+            <h6 style={{ fontSize: '1rem', marginBottom: '5px' }}>Instruments Needed</h6>
             {concert.instrumentsNeeded && concert.instrumentsNeeded.length > 0 && (
               <div style={{ display: 'inline', marginBottom: '-8px' }}>
                 {concert.instrumentsNeeded.slice(0, instrumentsNeededOverflowIndex === -1 ? concert.instrumentsNeeded.length : instrumentsNeededOverflowIndex - 1).map((instrument, index) => (
-                  <span key={index} className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '16px' }}>{instrument}</span>
+                  <span key={index} className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '14px' }}>{instrument}</span>
                 ))}
                 {instrumentsNeededOverflowIndex !== -1 && (
-                  <span className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '14px' }}>...</span>
+                  <span className="badge bg-secondary-subtle text-dark mx-1 my-1 fw-medium" style={{ fontSize: '12px' }}>...</span>
                 )}
               </div>
             )}

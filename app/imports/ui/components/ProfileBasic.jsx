@@ -66,14 +66,12 @@ const ProfileBasic = ({ profile, admin }) => {
             </Card.Text>
           </div>
           <div>
-            <Card.Text>
-              <h6>
-                {profile.goals}
-              </h6>
+            <Card.Text className="profile-goals mx-5" style={{ fontSize: '13px' }}>
+              {profile.goals}
             </Card.Text>
           </div>
         </Card.Header>
-        <Card.Body className="flex-grow-1" style={{ overflow: 'hidden' }}>
+        <Card.Body className="flex-grow-1" style={{ maxHeight: '245px', overflow: 'hidden' }}>
           <div className="d-flex flex-column">
             <div className="mb-2" style={{ overflow: 'hidden', whiteSpace: 'nowrap' }} ref={tastesRef}>
               <h6 style={{ fontSize: '1.1rem', marginBottom: '5px' }}>Music Tastes</h6>
@@ -103,7 +101,7 @@ const ProfileBasic = ({ profile, admin }) => {
             </div>
             <hr style={{ margin: '5px 0' }} />
             <div className="mt-2 mb-2">
-              <Card.Text>
+              <Card.Text className="profile-description">
                 <h7>
                   {profile.description}
                 </h7>

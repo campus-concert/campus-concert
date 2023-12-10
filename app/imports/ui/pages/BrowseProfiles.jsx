@@ -117,7 +117,7 @@ const BrowseProfiles = () => {
               </Col>
             </Row>
             {(filteredProfiles.length === 0) ?
-              <h2>No profile match this filtering</h2>
+              <h2>No profiles match this filtering</h2>
               : (
                 <Row xs={1} md={2} lg={3} className="g-4">
                   {filteredProfiles.map((profile, index) => (

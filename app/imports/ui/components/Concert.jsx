@@ -2,9 +2,10 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Card, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Button, Card, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { useParams } from 'react-router';
+import { Star, StarFill } from 'react-bootstrap-icons';
 import { Profiles } from '../../api/profile/Profile';
 import LoadingSpinner from './LoadingSpinner';
 
@@ -47,6 +48,14 @@ const timeDifference = (current, target) => {
 };
 
 const Concert = ({ concert }) => {
+  const toggleBookmark = () => {
+    const newBookmarkState = !concert.bookmarks || !concert.bookmarks.some(e => e.userId === Meteor.userId() && e.state);
+    Meteor.call('bookmarkConcert', concert._id, newBookmarkState, (error) => {
+      if (error) {
+        console.error(error);
+      }
+    });
+  };
   const currentDate = new Date();
   const concertDate = new Date(concert.date.getTime() + 10 * 60 * 60 * 1000);
 
@@ -110,6 +119,17 @@ const Concert = ({ concert }) => {
             </span>
           </OverlayTrigger>
         </span>
+        <Button
+          variant={concert.bookmarks && concert.bookmarks.some(e => e.userId === Meteor.userId() && e.state) ? 'success' : 'outline-secondary'}
+          size="sm"
+          className="position-absolute top-0 end-0 m-2"
+          onClick={(e) => {
+            toggleBookmark();
+            e.preventDefault(); // dont take the redirection link
+          }}
+        >
+          {concert.bookmarks ? <StarFill /> : <Star />}
+        </Button>
       </Card.Header>
       <Card.Body className="flex-grow-1">
         <div className="d-flex flex-column">
@@ -195,6 +215,12 @@ Concert.propTypes = {
     contact: PropTypes.string,
     owner: PropTypes.string,
     _id: PropTypes.string,
+    bookmarks: PropTypes.arrayOf(
+      PropTypes.shape({
+        userId: PropTypes.string,
+        state: PropTypes.bool,
+      }),
+    ),
   }).isRequired,
 };
 
