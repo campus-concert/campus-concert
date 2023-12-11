@@ -48,7 +48,6 @@ test('Test that the navbar works', async (testController) => {
   await navBar.gotoBrowseConcerts(testController);
   await browseConcertsPage.isDisplayed(testController);
   await navBar.gotoCreateConcert(testController);
-  // await createConcertPage.isDisplayed(testController);
   await navBar.logout(testController);
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, adminCredentials.username, adminCredentials.password);
@@ -98,7 +97,6 @@ test('Test that the userhome works', async (testController) => {
   await userHomePage.gotoCreateConcert(testController);
   await navBar.gotoUserHome(testController);
   await userHomePage.isDisplayed(testController);
-  // await createConcertPage.isDisplayed(testController);
   await userHomePage.gotoMyConcerts(testController);
   await navBar.gotoUserHome(testController);
   await userHomePage.isDisplayed(testController);

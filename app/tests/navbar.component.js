@@ -102,7 +102,9 @@ class NavBar {
   }
 
   async gotoUserProfile(testController) {
-    await testController.click('#navbar-current-user');
+    if (!await Selector('#user-profile-nav').visible) {
+      await testController.click('#navbar-current-user');
+    }
     await testController.click('#user-profile-nav');
   }
 
@@ -119,6 +121,9 @@ class NavBar {
   }
 
   async gotoMyConcerts(testController) {
+    if (!await Selector('#my-concerts-nav').visible) {
+      await testController.click('#navbar-current-user');
+    }
     await testController.click('#my-concerts-nav');
   }
 

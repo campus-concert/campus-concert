@@ -14,10 +14,8 @@ class EditProfilePage {
   async editProfile(testController) {
     await testController.typeText('#edit-profile-first-name', 'Edit');
     await testController.typeText('#edit-profile-last-name', 'Edit');
-    // await testController.typeText('#edit-profile-image', 'Edit');
     await testController.typeText('#edit-profile-description', 'Edit');
     await testController.typeText('#edit-profile-goal', 'Edit');
-    await testController.typeText('#edit-profile-location', 'Honolulu');
     await testController.expect(Selector('#edit-profile-submit').exists).ok();
     await testController.click(Selector('#edit-profile-submit .btn.btn-primary'));
     await testController.wait(3000);
@@ -26,7 +24,6 @@ class EditProfilePage {
 
   async checkEditedProfile(testController) {
     await testController.expect(Selector('#profile-name').innerText).contains('Edit');
-    await testController.expect(Selector('#profile-location').innerText).contains('Honolulu');
     await testController.expect(Selector('#profile-goal').innerText).contains('Edit');
     await testController.expect(Selector('#profile-description').innerText).contains('Edit');
   }
@@ -35,10 +32,8 @@ class EditProfilePage {
     await this.clearForm(testController);
     await testController.typeText('#edit-profile-first-name', 'John');
     await testController.typeText('#edit-profile-last-name', 'Foo');
-    // await testController.typeText('#edit-profile-image', 'Edit');
     await testController.typeText('#edit-profile-description', 'John Foo is a fictional user.');
     await testController.typeText('#edit-profile-goal', 'Survive college');
-    await testController.typeText('#edit-profile-location', 'Pearl City');
     await testController.expect(Selector('#edit-profile-submit').exists).ok();
     await testController.click(Selector('#edit-profile-submit .btn.btn-primary'));
     await testController.wait(3000);
