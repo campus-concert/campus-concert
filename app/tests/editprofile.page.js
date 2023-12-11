@@ -19,7 +19,9 @@ class EditProfilePage {
     await testController.typeText('#edit-profile-goal', 'Edit');
     await testController.typeText('#edit-profile-location', 'Honolulu');
     await testController.expect(Selector('#edit-profile-submit').exists).ok();
-    await testController.click(Selector('#edit-profile-submit .btn.btn-primary'));
+    await testController.click(Selector('#edit-profile-first-name'));
+    await testController.click(Selector('#edit-profile-submit > .btn'));
+    await testController.click(Selector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button'));
     await testController.wait(3000);
     await testController.navigateTo('http://localhost:3000/userprofile');
   }

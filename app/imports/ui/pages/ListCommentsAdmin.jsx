@@ -16,13 +16,13 @@ const ListCommentsAdmin = () => {
     };
   }, []);
   return (ready ? (
-    <Container className="py-3">
+    <Container id="admin-comments-page" className="py-3">
       <Row className="justify-content-center">
         <Col xs={10}>
           <Card className="p-4 mb-4">
             <Container>
               <h2 className="text-center p-3">Questions From Users</h2>
-              <Table striped bordered hover>
+              <Table id="comments-table" striped bordered hover>
                 <thead>
                   <tr>
                     <th>Email</th>
@@ -33,9 +33,9 @@ const ListCommentsAdmin = () => {
                 <tbody>
                   {comments.map((comment) => (
                     <tr key={comment._id}>
-                      <td>{comment.email}</td>
-                      <td>{comment.comment}</td>
-                      <td>{comment.createdAt.toString()}</td>
+                      <td id="comment-email">{comment.email}</td>
+                      <td id="comment-message">{comment.comment}</td>
+                      <td id="comment-creation-date">{comment.createdAt.toString()}</td>
                     </tr>
                   ))}
                 </tbody>

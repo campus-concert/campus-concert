@@ -27,7 +27,7 @@ const ContactPage = () => {
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
   return (
-    <Container className="py-3">
+    <Container id="contact-page" className="py-3">
       <Row className="justify-content-center">
         <Col xs={10}>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
@@ -38,9 +38,9 @@ const ContactPage = () => {
                 </Col>
                 <Card>
                   <Card.Body>
-                    <TextField name="email" label="Email" />
-                    <LongTextField name="comment" label="Message" />
-                    <SubmitField value="Submit" />
+                    <TextField id="contact-email" name="email" label="Email" />
+                    <LongTextField id="contact-message" name="comment" label="Message" />
+                    <SubmitField id="contact-submit-button" value="Submit" />
                     <HiddenField name="createdAt" value={new Date()} />
                   </Card.Body>
                 </Card>

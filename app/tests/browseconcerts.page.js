@@ -38,6 +38,24 @@ class BrowseConcertsPage {
     await testController.click('#delete-concert-button');
   }
 
+  async hasLoadButton(testController) {
+    const loadButton = Selector('#load-more-button');
+    await testController.expect(loadButton.exists).ok();
+  }
+
+  async gotoLoadButton(testController) {
+    await testController.click('#load-more-button');
+  }
+
+  async hasBookmarkButton(testController) {
+    const bookmarkButton= Selector('#bookmark-button');
+    await testController.expect(bookmarkButton.exists).ok();
+  }
+
+  async clickBookmarkButton(testController) {
+    await testController.click('#bookmark-button');
+  }
+
 }
 
 export const browseConcertsPage = new BrowseConcertsPage();

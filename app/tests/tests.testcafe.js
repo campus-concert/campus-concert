@@ -9,6 +9,9 @@ import { adminHomePage } from './adminhome.page';
 import { adminBrowseProfilesPage } from './adminBrowseProfiles.page';
 import { browseProfilesPage } from './browseProfiles.page';
 import { browseConcertsPage } from './browseconcerts.page';
+import { footer } from './footer.component';
+import { contactPage } from './contact.page';
+import { adminUserCommentsPage } from './adminUserComments.page';
 
 /* global fixture:false, test:false */
 
@@ -18,6 +21,7 @@ const adminCredentials = { username: 'admin@foo.com', password: 'changeme' };
 
 fixture('campus-concert localhost test with default db')
   .page('http://localhost:3000');
+
 
 test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
@@ -57,6 +61,23 @@ test('Test that browse profiles work', async (testController) => {
   await editProfilePage.isDisplayed(testController);
 });
 
+test('Test that browse concerts work', async (testController) => {
+  // Check non-admin browse concerts
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.isLoggedIn(testController, credentials.username);
+  await navBar.gotoBrowseConcerts(testController);
+  await browseConcertsPage.isDisplayed(testController);
+  await browseConcertsPage.hasEditConcert(testController);
+  await browseConcertsPage.gotoEditConcert(testController);
+  await browseConcertsPage.hasRemoveConcert(testController);
+  await navBar.gotoBrowseConcerts(testController);
+  //await browseConcertsPage.hasLoadButton(testController);
+  //await browseConcertsPage.gotoLoadButton(testController);
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
+});
+
 test('Test that the navbar works', async (testController) => {
   await navBar.isDisplayed(testController);
   await navBar.ensureLogout(testController);
@@ -80,6 +101,29 @@ test('Test that the navbar works', async (testController) => {
   await navBar.checkAdminContent(testController);
   await navBar.gotoAdminHome(testController);
   // await adminHomePage.isDisplayed(testController);
+  await navBar.logout(testController);
+});
+
+test('Test that contact us page works', async (testController) => {
+  await navBar.isDisplayed(testController);
+  await navBar.ensureLogout(testController);
+  await navBar.checkLoggedOutContent(testController);
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.isLoggedIn(testController, credentials.username);
+  await footer.gotoContactPage(testController);
+  await contactPage.isDisplayed(testController);
+  await contactPage.submitQuestion(testController);
+  await navBar.logout(testController);
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(testController, adminCredentials.username);
+  await navBar.gotoAdminHome(testController);
+  await adminHomePage.isDisplayed(testController);
+  await adminHomePage.gotoUserComments(testController);
+  await adminUserCommentsPage.isDisplayed(testController);
+  //await adminUserCommentsPage.checkDetails(testController);
   await navBar.logout(testController);
 });
 

@@ -193,7 +193,7 @@ const EditConcert = () => {
             { doc ? (
               <Row className="mt-3">
                 <Col className="text-center">
-                  <button type="button" className="btn btn-danger" onClick={removeConcert}>
+                  <button id="delete-concert-button" type="button" className="btn btn-danger" onClick={removeConcert}>
                     Delete Concert
                   </button>
                 </Col>

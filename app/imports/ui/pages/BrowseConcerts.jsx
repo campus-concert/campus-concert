@@ -179,7 +179,7 @@ const BrowseConcerts = () => {
               )}
             {displayedConcerts < filteredConcerts.length && (
               <Row className="justify-content-center mt-4">
-                <Button onClick={loadMore} variant="outline-primary" style={{ width: 'fit-content' }}>
+                <Button id="load-more-btn" onClick={loadMore} variant="outline-primary" style={{ width: 'fit-content' }}>
                   Load More
                 </Button>
               </Row>

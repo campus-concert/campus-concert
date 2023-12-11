@@ -129,6 +129,7 @@ const ConcertBasic = ({ concert, admin }) => {
               Posted by {author} • {timeDifference(new Date(), concert.createdAt)}
             </Card.Text>
             <Button
+              id="bookmark-button"
               variant={concert.bookmarks && concert.bookmarks.some(e => e.userId === Meteor.userId() && e.state) ? 'success' : 'outline-secondary'}
               size="sm"
               className="position-absolute top-0 end-0 m-2"
