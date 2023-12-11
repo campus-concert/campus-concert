@@ -1,10 +1,10 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { PersonCircle, MusicNote, MusicNoteBeamed } from 'react-bootstrap-icons';
+import { PersonCircle, MusicNote, ChatLeftText } from 'react-bootstrap-icons';
 
 const AdminHome = () => (
-  <Container id="adminhome-page" className="mt-5 gray-background">
+  <Container id="adminhome-page" className="mt-5 mb-5 rounded gray-background p-4">
     <Row className="justify-content-center mb-4">
       {/* Welcome Title */}
       <Col xs={12} className="text-center">
@@ -38,7 +38,7 @@ const AdminHome = () => (
       <Col xs={10} sm={8} md={6} lg={4} className="mb-4">
         <Link to="/admin-comments" className="text-decoration-none">
           <div id="adminhome-button" className="home-box text-center rounded p-4 border-thick text-black bg-white">
-            <MusicNoteBeamed size={60} className="box-icon mb-3" />
+            <ChatLeftText size={60} className="box-icon mb-3" />
             <h3 id="user-comments" className="box-title">View User Comments</h3>
           </div>
         </Link>
