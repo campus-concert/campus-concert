@@ -25,7 +25,7 @@ class UserHomePage {
   }
 
   async gotoMyConcerts(testController) {
-    await testController.click('#edit-concert');
+    await testController.click('#my-concert');
   }
 
   async gotoBrowseProfiles(testController) {

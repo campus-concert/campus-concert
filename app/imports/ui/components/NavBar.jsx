@@ -32,28 +32,28 @@ const NavBar = () => {
                   id="browse-profiles-nav"
                   to="/browse-all-profiles"
                   className="nav-link-margin"
-                  style={{ borderBottom: isCurrentTab('/userprofile') && '2px solid #007bff', marginBottom: '-2px' }}
+                  style={{ borderBottom: isCurrentTab('/browse-all-profiles') && '2px solid #ffffff', marginBottom: '-2px' }}
                 >
                   Profiles
                 </Nav.Link>
-                <NavLink
-                  id="browse-concerts-nav"
+                <Nav.Link
                   as={NavLink}
+                  id="browse-concerts-nav"
                   to="/browse-all-concerts"
                   className="nav-link-margin"
-                  style={{ borderBottom: isCurrentTab('/userprofile') && '2px solid #007bff', marginBottom: '-2px' }}
+                  style={{ borderBottom: isCurrentTab('/browse-all-concerts') && '2px solid #ffffff', marginBottom: '-2px' }}
                 >
                   Concerts
-                </NavLink>
-                <NavLink
-                  id="create-concert-nav"
+                </Nav.Link>
+                <Nav.Link
                   as={NavLink}
+                  id="create-concert-nav"
                   to="/create-concert"
                   className="nav-link-margin"
-                  style={{ borderBottom: isCurrentTab('/userprofile') && '2px solid #007bff', marginBottom: '-2px' }}
+                  style={{ borderBottom: isCurrentTab('/create-concert') && '2px solid #ffffff', marginBottom: '-2px' }}
                 >
                   Create concert
-                </NavLink>
+                </Nav.Link>
               </>
             ) : ''}
             {Roles.userIsInRole(Meteor.userId(), 'admin') && (

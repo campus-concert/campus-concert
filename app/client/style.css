@@ -114,7 +114,7 @@ footer a:hover {
 }
 
 /* Nav bar styling */
-#browse-concerts-nav, #browse-profiles-nav, #create-concert-nav, #admin-dropdown-nav, #navbar-current-user {
+#login-dropdown, #browse-concerts-nav, #browse-profiles-nav, #create-concert-nav, #admin-dropdown-nav, #navbar-current-user {
   color: white;
 }
 

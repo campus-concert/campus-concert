@@ -31,6 +31,34 @@ test('Test that signin and signout work', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
+test('Test that the navbar works', async (testController) => {
+  await navBar.isDisplayed(testController);
+  await navBar.ensureLogout(testController);
+  await navBar.checkLoggedOutContent(testController);
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.isLoggedIn(testController, credentials.username);
+  await navBar.checkUserContent(testController);
+  await navBar.gotoUserHome(testController);
+  await userHomePage.isDisplayed(testController);
+  await navBar.gotoUserProfile(testController);
+  await userProfilePage.isDisplayed(testController);
+  await navBar.gotoBrowseProfiles(testController);
+  await browseProfilesPage.isDisplayed(testController);
+  await navBar.gotoBrowseConcerts(testController);
+  await browseConcertsPage.isDisplayed(testController);
+  await navBar.gotoCreateConcert(testController);
+  // await createConcertPage.isDisplayed(testController);
+  await navBar.logout(testController);
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(testController, adminCredentials.username);
+  await navBar.checkAdminContent(testController);
+  await navBar.gotoAdminHome(testController);
+  await adminHomePage.isDisplayed(testController);
+  await navBar.logout(testController);
+});
+
 test('Test that browse profiles work', async (testController) => {
   // Check non-admin profile browse profiles
   await navBar.gotoSignInPage(testController);
@@ -57,32 +85,6 @@ test('Test that browse profiles work', async (testController) => {
   await editProfilePage.isDisplayed(testController);
 });
 
-test('Test that the navbar works', async (testController) => {
-  await navBar.isDisplayed(testController);
-  await navBar.ensureLogout(testController);
-  await navBar.checkLoggedOutContent(testController);
-  await navBar.gotoSignInPage(testController);
-  await signinPage.signin(testController, credentials.username, credentials.password);
-  await navBar.isLoggedIn(testController, credentials.username);
-  await navBar.checkUserContent(testController);
-  await navBar.gotoUserHome(testController);
-  await userHomePage.isDisplayed(testController);
-  await navBar.gotoUserProfile(testController);
-  await userProfilePage.isDisplayed(testController);
-  await navBar.gotoCreateConcert(testController);
-  // await createConcertPage.isDisplayed(testController);
-  await navBar.gotoBrowseProfiles(testController);
-  // await browseProfilesPage.isDisplayed(testController);
-  await navBar.logout(testController);
-  await navBar.gotoSignInPage(testController);
-  await signinPage.signin(testController, adminCredentials.username, adminCredentials.password);
-  await navBar.isLoggedIn(testController, adminCredentials.username);
-  await navBar.checkAdminContent(testController);
-  await navBar.gotoAdminHome(testController);
-  // await adminHomePage.isDisplayed(testController);
-  await navBar.logout(testController);
-});
-
 test('Test that the userhome works', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
@@ -101,14 +103,11 @@ test('Test that the userhome works', async (testController) => {
   await navBar.gotoUserHome(testController);
   await userHomePage.isDisplayed(testController);
   await userHomePage.gotoBrowseProfiles(testController);
-  // await browseProfilesPage.isDisplayed(testController);
-  await navBar.gotoUserHome(testController);
-  await userHomePage.isDisplayed(testController);
-  // await userHomePage.gotoBrowseConcerts(testController);
-  // await browseConcertsPage.isDisplayed(testController);
+  await browseProfilesPage.isDisplayed(testController);
   await navBar.gotoUserHome(testController);
   await userHomePage.isDisplayed(testController);
   await userHomePage.gotoBrowseConcerts(testController);
+  await browseConcertsPage.isDisplayed(testController);
   await navBar.logout(testController);
 });
 
