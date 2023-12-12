@@ -19,14 +19,6 @@ class BrowseProfilesPage {
     await testController.click('#view-details');
   }
 
-  async hasMessage(testController) {
-    await testController.expect('#message').ok();
-  }
-
-  async gotoMessage(testController) {
-    await testController.click('#message');
-  }
-
 }
 
 export const browseProfilesPage = new BrowseProfilesPage();

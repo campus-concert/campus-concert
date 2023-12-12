@@ -2,7 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Card, Badge, Image, Button } from 'react-bootstrap';
+import { Card, Badge, Image } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Youtube, Spotify, CloudFog2Fill } from 'react-bootstrap-icons';
 import { Concerts } from '../../api/concert/Concert';
@@ -149,13 +149,7 @@ const Profile = ({ profile, edit = false }) => {
       <Card.Footer>
         {Meteor.user() && (edit || Meteor.user().emails[0].address === profile.contact) ? (
           <Link id="edit-profile-button" to={`/edit/${profile._id}`}>Edit</Link>
-        ) : (
-          <Link id="message" to={`/message/${profile._id}`}>
-            <Button variant="primary" size="md" className="my-2">
-              Message
-            </Button>
-          </Link>
-        )}
+        ) : ('')}
       </Card.Footer>
     </Card>
   ) : <LoadingSpinner />;
