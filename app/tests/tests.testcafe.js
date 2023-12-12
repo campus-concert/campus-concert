@@ -2,6 +2,7 @@ import { landingPage } from './landing.page';
 import { signinPage } from './signin.page';
 import { signoutPage } from './signout.page';
 import { navBar } from './navbar.component';
+import { footer } from './footer.component';
 import { userHomePage } from './userHome.page';
 import { userProfilePage } from './userProfile.page';
 import { editProfilePage } from './editProfile.page';
@@ -12,7 +13,6 @@ import { adminHomePage } from './adminHome.page';
 import { adminBrowseProfilesPage } from './adminBrowseProfiles.page';
 import { adminBrowseConcertsPage } from './adminBrowseConcerts.page';
 import { adminUserCommentsPage } from './adminUserComments.page';
-import { footer } from './footer.component';
 import { contactPage } from './contact.page';
 import { bookmarkedConcertsPage } from './bookmarkedConcerts.page';
 
@@ -63,6 +63,28 @@ test('Test that the navbar works', async (testController) => {
   await navBar.checkAdminContent(testController);
   await navBar.gotoAdminHome(testController);
   await adminHomePage.isDisplayed(testController);
+  await navBar.logout(testController);
+});
+
+test('Test that the footer works', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.isLoggedIn(testController, credentials.username);
+  await footer.isDisplayed(testController);
+  await footer.gotoUserProfile(testController);
+  await userProfilePage.isDisplayed(testController);
+  await footer.gotoUserHome(testController);
+  await userHomePage.isDisplayed(testController);
+  await footer.gotoMyConcerts(testController);
+  await footer.gotoBookmarks(testController);
+  await bookmarkedConcertsPage.isDisplayed(testController);
+  await footer.gotoCreateConcert(testController);
+  await footer.gotoBrowseProfiles(testController);
+  await browseProfilesPage.isDisplayed(testController);
+  await footer.gotoBrowseConcerts(testController);
+  await browseConcertsPage.isDisplayed(testController);
+  await footer.gotoContactPage(testController);
+  await contactPage.isDisplayed(testController);
   await navBar.logout(testController);
 });
 
