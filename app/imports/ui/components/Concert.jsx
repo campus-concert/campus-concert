@@ -71,14 +71,12 @@ const Concert = ({ concert }) => {
     const subscription = Meteor.subscribe(Profiles.userPublicationName);
     const rdy = subscription.ready();
     const userProf = Profiles.collection.findOne({ contact: profileEmail });
-    console.log('isAdmin', admin);
     return {
       userProfile: userProf,
       ready: rdy,
     };
   });
 
-  console.log('isAdmin', admin);
   const author = userProfile ? (
     <span>
       {Meteor.user() && Meteor.user().emails[0].address === concert.owner ? (
@@ -96,7 +94,7 @@ const Concert = ({ concert }) => {
   return ready ? (
     <Card className="d-flex flex-column h-100 style={{ border: '1.5px solid #ccc' }}">
       <Card.Header className="text-center position-relative">
-        <Card.Title className="mt-2" style={{ fontSize: '1.5rem' }}>{concert.concertName}</Card.Title>
+        <Card.Title id="concert-name" className="mt-2" style={{ fontSize: '1.5rem' }}>{concert.concertName}</Card.Title>
         <span className="time-difference-wrapper">
           <span className="time-difference" style={{ fontSize: '0.9rem' }}>
             Posted by {author} •

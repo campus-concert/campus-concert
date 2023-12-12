@@ -97,8 +97,12 @@ class NavBar {
     await testController.click('#login-dropdown-sign-up');
   }
 
-  async gotoUserHome(testController) {
+  async clickNavbarBrand(testController) {
     await testController.click('#home-nav');
+  }
+
+  async gotoUserHome(testController) {
+    await testController.click('#home-two-nav');
   }
 
   async gotoUserProfile(testController) {

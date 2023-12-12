@@ -118,7 +118,7 @@ const ConcertBasic = ({ concert, admin }) => {
   }, [concert.genres, concert.instrumentsNeeded]);
 
   return ready ? (
-    <Link to={admin ? `/userconcert/admin/${concert._id}` : `/userconcert/${concert._id}`} className="card-link" style={{ textDecoration: 'none' }}>
+    <Link id="concert-basic-card" to={admin ? `/userconcert/admin/${concert._id}` : `/userconcert/${concert._id}`} className="card-link" style={{ textDecoration: 'none' }}>
       <div className="d-flex flex-column h-100" style={{ boxShadow: '0px 0px 5px 0px rgba(0, 0, 0, 0.4)', borderRadius: '10px', display: 'flex' }}>
         <Card className="d-flex flex-column h-100" style={{ border: '1.5px solid #ccc', display: 'flex' }}>
           <Card.Header className="bg-white position-relative">

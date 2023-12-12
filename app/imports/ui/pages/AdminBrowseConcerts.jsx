@@ -82,7 +82,7 @@ const AdminBrowseConcerts = () => {
   const visibleConcerts = filteredConcerts.slice(0, displayedConcerts);
 
   return ready ? (
-    <Container id="admin-browse-all-concerts" className="py-3">
+    <Container id="admin-browse-concerts-page" className="py-3">
       <Row className="justify-content-center">
         <Col>
           <Card className="p-4 mb-4"> {/* Stylish box added here */}
