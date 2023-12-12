@@ -11,17 +11,17 @@ const Footer = () => (
           <h5>Campus Concert</h5>
           <ul className="list-unstyled">
             <li><Link className="text-white" to="/userhome">Home</Link></li>
-            <li><Link className="text-white" to="/browse-all-profiles">Browse Profiles</Link></li>
-            <li><Link className="text-white" to="*">Create a Concert</Link></li>
-            <li><Link className="text-white" to="/browse-all-concerts">Browse Concerts</Link></li>
+            <li><Link className="text-white" to="/userprofile">View My Profile</Link></li>
+            <li><Link className="text-white" to="/my-concerts">View My Concerts</Link></li>
+            <li><Link className="text-white" to="/bookmarked-concerts">View Bookmarks</Link></li>
           </ul>
         </Col>
         <Col className="text-left">
-          <h5>Musical Tastes</h5>
+          <h5>Browse Other</h5>
           <ul className="list-unstyled">
-            <li><Link className="text-white" to="*">Jazz</Link></li>
-            <li><Link className="text-white" to="*">Rock</Link></li>
-            <li><Link className="text-white" to="*">Pop</Link></li>
+            <li><Link className="text-white" to="/create-concert">Create a Concert</Link></li>
+            <li><Link className="text-white" to="/browse-all-profiles">Browse Profiles</Link></li>
+            <li><Link className="text-white" to="/browse-all-concerts">Browse Concerts</Link></li>
           </ul>
         </Col>
         <Col className="text-left">
