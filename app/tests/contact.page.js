@@ -4,7 +4,7 @@ class ContactPage {
   constructor() {
     this.pageId = '#contact-page';
     this.pageSelector = Selector(this.pageId);
-    this.submitButton = Selector("#contact-submit-button > .btn")
+    this.submitButton = Selector('#contact-submit-button > .btn');
   }
 
   /** Asserts that this page is currently displayed. */
@@ -13,7 +13,7 @@ class ContactPage {
   }
 
   async submitQuestion(testController) {
-    await testController.typeText("#contact-email", 'test@email.com');
+    await testController.typeText('#contact-email', 'test@email.com');
     await testController.typeText('#contact-message', 'Edit');
     await testController.click(this.submitButton);
     await testController.wait(3000);

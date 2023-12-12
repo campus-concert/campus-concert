@@ -24,24 +24,10 @@ const addProfile = (firstName, lastName, image, description, contact, location, 
   Profiles.collection.insert({ firstName, lastName, image, description, contact, location, goals, instruments, tastes, youtubeLink, spotifyLink, soundcloudLink });
 };
 
-/** if (Profiles.collection.find().count() === 0) {
-  if (Meteor.settings.defaultAccounts) {
-    console.log('Creating default profiles.');
-    Meteor.settings.defaultAccounts.forEach(({ firstName, lastName, image, description, contact, location, goals, instruments, tastes }) => addProfile(firstName, lastName, image, description, contact, location, goals, instruments, tastes));
-  }
-} */
-
 const addConcert = (concert) => {
   console.log(`  Adding concert: ${concert.concertName} (${concert.owner})`);
   Concerts.collection.insert(concert);
 };
-
-/** if (Concerts.collection.find().count() === 0) {
-  if (Meteor.settings.defaultConcerts) {
-    console.log('Creating default concerts.');
-    Meteor.settings.defaultConcerts.forEach(concert => addConcert(concert));
-  }
-} */
 
 /**
  * If the loadAssetsFile field in settings.development.json is true, then load the data in private/concerts.json.

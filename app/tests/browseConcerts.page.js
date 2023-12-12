@@ -48,7 +48,7 @@ class BrowseConcertsPage {
   }
 
   async hasBookmarkButton(testController) {
-    const bookmarkButton= Selector('#bookmark-button');
+    const bookmarkButton = Selector('#bookmark-button');
     await testController.expect(bookmarkButton.exists).ok();
   }
 

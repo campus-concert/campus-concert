@@ -17,7 +17,7 @@ Meteor.methods({
       // If the user already bookmarked, update the state
       Concerts.collection.update(
         { _id: concertId, 'bookmarks.userId': this.userId },
-        { $set: { 'bookmarks.$.state': bookmarkState } }
+        { $set: { 'bookmarks.$.state': bookmarkState } },
       );
     } else {
       // If the user hasn't bookmarked, add a new bookmark
@@ -30,7 +30,7 @@ Meteor.methods({
               state: bookmarkState,
             },
           },
-        }
+        },
       );
     }
   },

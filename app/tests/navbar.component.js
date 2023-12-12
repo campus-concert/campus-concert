@@ -61,7 +61,6 @@ class NavBar {
     await testController.expect(Selector('#navbar-current-user').exists).ok();
     await testController.expect(Selector('#login-dropdown').exists).notOk();
     await testController.expect(Selector('#home-nav').exists).ok();
-    // await testController.expect(Selector('#user-profile-nav').exists).ok();
     await testController.expect(Selector('#browse-profiles-nav').exists).ok();
     await testController.expect(Selector('#browse-concerts-nav').exists).ok();
     await testController.expect(Selector('#create-concert-nav').exists).ok();
