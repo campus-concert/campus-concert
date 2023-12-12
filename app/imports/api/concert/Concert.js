@@ -1,5 +1,4 @@
 import { Mongo } from 'meteor/mongo';
-import { array } from 'prop-types';
 import SimpleSchema from 'simpl-schema';
 
 class ConcertsCollection {
