@@ -61,10 +61,13 @@ class NavBar {
     await testController.expect(Selector('#navbar-current-user').exists).ok();
     await testController.expect(Selector('#login-dropdown').exists).notOk();
     await testController.expect(Selector('#home-nav').exists).ok();
-    await testController.expect(Selector('#user-profile-nav').exists).ok();
+    // await testController.expect(Selector('#user-profile-nav').exists).ok();
     await testController.expect(Selector('#browse-profiles-nav').exists).ok();
-    await testController.expect(Selector('#add-concert-nav').exists).ok();
     await testController.expect(Selector('#browse-concerts-nav').exists).ok();
+    await testController.expect(Selector('#create-concert-nav').exists).ok();
+    await testController.click('#navbar-current-user');
+    await testController.expect(Selector('#user-profile-nav').exists).ok();
+    await testController.expect(Selector('#bookmarked-concerts-nav').exists).ok();
     await testController.expect(Selector('#my-concerts-nav').exists).ok();
   }
 
@@ -75,7 +78,12 @@ class NavBar {
 
   async checkAdminContent(testController) {
     await this.checkLoggedInContent(testController);
-    await testController.expect(Selector('#admin-home').exists).ok();
+    await testController.expect(Selector('#admin-dropdown-nav').exists).ok();
+    await testController.click('#admin-dropdown-nav');
+    await testController.expect(Selector('#admin-home-nav').exists).ok();
+    await testController.expect(Selector('#admin-browse-profiles-nav').exists).ok();
+    await testController.expect(Selector('#admin-browse-concerts-nav').exists).ok();
+    await testController.expect(Selector('#admin-comments-nav').exists).ok();
   }
 
   /** Pull down login menu, go to sign up page. */
@@ -94,6 +102,9 @@ class NavBar {
   }
 
   async gotoUserProfile(testController) {
+    if (!await Selector('#user-profile-nav').visible) {
+      await testController.click('#navbar-current-user');
+    }
     await testController.click('#user-profile-nav');
   }
 
@@ -102,7 +113,7 @@ class NavBar {
   }
 
   async gotoCreateConcert(testController) {
-    await testController.click('#add-concert-nav');
+    await testController.click('#create-concert-nav');
   }
 
   async gotoBrowseConcerts(testController) {
@@ -110,11 +121,17 @@ class NavBar {
   }
 
   async gotoMyConcerts(testController) {
+    if (!await Selector('#my-concerts-nav').visible) {
+      await testController.click('#navbar-current-user');
+    }
     await testController.click('#my-concerts-nav');
   }
 
   async gotoAdminHome(testController) {
-    await testController.click('#admin-home');
+    if (!await Selector('#admin-home-nav').visible) {
+      await testController.click('#admin-dropdown-nav');
+    }
+    await testController.click('#admin-home-nav');
   }
 
 }

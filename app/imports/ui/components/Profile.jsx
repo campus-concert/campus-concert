@@ -27,12 +27,11 @@ const Profile = ({ profile, edit = false }) => {
     return <div>No Profile found</div>;
   }
 
-  const badgeColors = ['primary', 'primary-subtle', 'success', 'success-subtle', 'secondary', 'secondary-subtle',
-    'danger', 'danger-subtle', 'warning', 'warning-subtle', 'info', 'info-subtle', 'light', 'dark', 'dark-subtle'];
-
   const getRandomColor = () => {
+    const badgeColors = ['primary', 'primary-subtle', 'success', 'success-subtle', 'secondary', 'secondary-subtle',
+      'danger', 'danger-subtle', 'warning', 'warning-subtle', 'info', 'info-subtle', 'light', 'dark', 'dark-subtle'];
+
     const randomIndex = Math.floor(Math.random() * badgeColors.length);
-    console.log('color: ', `bg-${badgeColors[randomIndex]}`);
     return `bg-${badgeColors[randomIndex]}`;
   };
 
@@ -122,14 +121,16 @@ const Profile = ({ profile, edit = false }) => {
             {userConcerts && userConcerts.length > 0 ? (
               <div>
                 {userConcerts.map((concert) => {
-                  const badgeColor = getRandomColor(); // Generate a new color for each badge
+                  const badgeColor = getRandomColor();
+                  const isSubtleOrWarning = badgeColor.includes('subtle') || badgeColor.includes('warning');
+                  const textColorClass = isSubtleOrWarning ? 'text-dark' : 'text-white';
 
                   return (
                     <div key={concert._id} className="mb-2">
-                      <Badge className={badgeColor}>
+                      <Badge className={`${badgeColor}`}>
                         <Link
                           to={`/userconcert/${concert._id}`}
-                          className={`mx-1 my-1 fw-medium ${badgeColor.includes('subtle') ? 'text-dark' : 'text-white'}`}
+                          className={`mx-1 my-1 fw-medium ${textColorClass}`}
                           style={{ fontSize: '14px', textDecoration: 'none' }}
                         >
                           {concert.concertName}
