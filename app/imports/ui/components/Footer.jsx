@@ -25,10 +25,10 @@ const Footer = () => (
           </ul>
         </Col>
         <Col className="text-left">
-          <h5>About</h5>
+          <h5>Contact</h5>
           <ul className="list-unstyled">
             <li>Phone: (555) 123-4567</li>
-            <li className="pb-2">Email: fakeemail@email.com</li>
+            <li className="pb-2">Email: campusconcert@email.com</li>
             <li><Link to="/contact-page" className="btn btn-primary" id="contact-button">Contact Us</Link></li>
           </ul>
         </Col>
